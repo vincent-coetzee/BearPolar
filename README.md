@@ -1,0 +1,1 @@
+BearPolar is an app that helps sufferers of bipolar disorder manage and monitor their illness.

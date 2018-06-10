@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Bear Polar</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -20,6 +22,26 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>MuseoSans_100_Italic.otf</string>
+		<string>MuseoSans_300.otf</string>
+		<string>MuseoSans_300_Italic.otf</string>
+		<string>MuseoSans_500.otf</string>
+		<string>MuseoSans_100.otf</string>
+		<string>MuseoSans_500_Italic.otf</string>
+		<string>MuseoSans_700.otf</string>
+		<string>MuseoSans_700_Italic.otf</string>
+		<string>MuseoSans_900.otf</string>
+		<string>MuseoSans_900_Italic.otf</string>
+		<string>MuseoSansRounded_100.otf</string>
+		<string>MuseoSansRounded_300.otf</string>
+		<string>MuseoSansRounded_500.otf</string>
+		<string>MuseoSansRounded_700.otf</string>
+		<string>MuseoSansRounded_900.otf</string>
+		<string>MuseoSansRounded_1000.otf</string>
+		<string>FiraSans-Two.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
