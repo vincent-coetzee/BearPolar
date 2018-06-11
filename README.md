@@ -1,6 +1,6 @@
 ### BearPolar
 
-![](/Users/vincent/Development2018/BearPolar/Artwork/MaskedBear.png)
+![](.//Artwork/MaskedBear.png)
 
 BearPolar is an app that helps sufferers of bipolar disorder types 1 and 2 and sufferers of clinical depression manage and monitor their illness.
 
@@ -10,6 +10,6 @@ For this reason I envision Bear Polar as an open source project that anyone, bip
 
 The the pun on Bipolar is obvious in the name, what may not be obvious is that the livid green color scheme is drawn from the bipolar ribbon.
 
-![](/Users/vincent/Development2018/BearPolar/Artwork/ribbon.jpg) 
+![](.//Artwork/ribbon.jpg) 
 
 Please contact me via Github if you are keen to get involved.
