@@ -12,6 +12,8 @@ import UIKit
 class HeaderView: UIView,Themable
     {
     private let text = CATextLayer()
+    private let helpText = CATextLayer()
+    private var helpFont = UIFont.applicationFont(weight: .weight300, size: 14)
     
     public var themeKey:Theme.Key?
         {
@@ -49,6 +51,19 @@ class HeaderView: UIView,Themable
             }
         }
         
+     @IBInspectable public var help:String = ""
+        {
+        didSet
+            {
+            helpText.string = self.heading
+            let bounds = self.bounds.insetBy(dx:16,dy:16)
+            let rect = helpText.measureText(inWidth:bounds.size.width)
+            helpText.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:16),top:LayoutFrame.Edge(fraction:0,offset:48),right:LayoutFrame.Edge(fraction:1,offset:-16),bottom:LayoutFrame.Edge(fraction:0,offset:rect.size.height + 8))
+            self.invalidateIntrinsicContentSize()
+            setNeedsLayout()
+            }
+        }
+        
     override init(frame:CGRect)
         {
         super.init(frame:frame)
@@ -71,7 +86,9 @@ class HeaderView: UIView,Themable
     
     override var intrinsicContentSize: CGSize
         {
-        return(CGSize(width: UIViewNoIntrinsicMetric,height:90))
+        let bounds = self.bounds.insetBy(dx:16,dy:16)
+        let rect = helpText.measureText(inWidth:bounds.size.width)
+        return(CGSize(width: UIViewNoIntrinsicMetric,height:48 + 8 + rect.size.height))
         }
         
     private func initBorder()
@@ -91,6 +108,8 @@ class HeaderView: UIView,Themable
         theme["heading"]?.apply(to: text)
         theme["content"]?.apply(to: self)
         theme["border"]?.apply(to: (self.layer as! CAShapeLayer))
+        theme["help"]?.apply(to: helpText)
+        helpFont = (theme["help"] as! ThemeTextItem).font!
         }
         
     private func initText()
@@ -99,16 +118,37 @@ class HeaderView: UIView,Themable
         text.string = self.heading
         text.font = "MuseoSans-900" as CFTypeRef
         text.fontSize = 30.0
-        text.frame = self.bounds
         text.foregroundColor = UIColor.darkGray.cgColor
+        var bounds = self.bounds.insetBy(dx:16,dy:16)
+        bounds = text.measureText(inWidth: bounds.size.width)
+        text.alignmentMode = "center"
+        let bottom = bounds.size.height + 16
+        text.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:16),top:LayoutFrame.Edge(fraction:0,offset:16),right:LayoutFrame.Edge(fraction:1,offset:-16),bottom:LayoutFrame.Edge(fraction:0,offset:bottom))
+        self.layer.addSublayer(helpText)
+        text.frame = text.layoutFrame!.rectIn(rect:self.bounds)
+        helpText.string = self.help
+        helpText.font = helpFont.fontName as CFTypeRef
+        helpText.fontSize = helpFont.pointSize
+        helpText.frame = self.bounds
+        helpText.foregroundColor = UIColor.darkGray.cgColor
+        helpText.alignmentMode = kCAAlignmentJustified
+        helpText.isWrapped = true
+        bounds = self.bounds.insetBy(dx:16,dy:16)
+        bounds = helpText.measureText(inWidth: bounds.size.width)
+        helpText.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:16),top:LayoutFrame.Edge(fraction:0,offset:bottom+8),right:LayoutFrame.Edge(fraction:1,offset:-16),bottom:LayoutFrame.Edge(fraction:0,offset: bottom + 8 + bounds.size.height + 8))
+        helpText.frame = helpText.layoutFrame!.rectIn(rect:bounds)
+        helpText.backgroundColor = UIColor.lime.cgColor
+        self.invalidateIntrinsicContentSize()
+        self.setNeedsLayout()
         }
         
     override func layoutSubviews()
         {
         super.layoutSubviews()
-        let attributes:[NSAttributedStringKey:Any] = [.font:UIFont(name:"MuseoSans-900",size:30)!]
-        let size = (self.heading as NSString).size(withAttributes: attributes)
-        text.frame = size.centeredRectInRect(self.bounds)
+        let bounds = self.bounds
+        text.frame = text.layoutFrame!.rectIn(rect:bounds)
+        helpText.frame = helpText.layoutFrame!.rectIn(rect:bounds)
+        initBorder()
         }
         
     override func awakeFromNib()

@@ -15,12 +15,14 @@
 		BF1307EE20CCB8910044E093 /* DecoratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1307ED20CCB8910044E093 /* DecoratorView.swift */; };
 		BF1307F020CCC2120044E093 /* TextEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1307EF20CCC2120044E093 /* TextEntryView.swift */; };
 		BF1307F220CCC2F50044E093 /* KeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1307F120CCC2F50044E093 /* KeyboardController.swift */; };
-		BF1307F520CCCAB50044E093 /* InitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1307F320CCCAB50044E093 /* InitDetailsViewController.swift */; };
-		BF1307F620CCCAB50044E093 /* InitDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF1307F420CCCAB50044E093 /* InitDetailsViewController.xib */; };
+		BF1307F520CCCAB50044E093 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1307F320CCCAB50044E093 /* InformationViewController.swift */; };
+		BF1307F620CCCAB50044E093 /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF1307F420CCCAB50044E093 /* InformationViewController.xib */; };
 		BF1307F820CCEB790044E093 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1307F720CCEB790044E093 /* UIColor+Extensions.swift */; };
 		BF13080020CCFD5C0044E093 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1307FF20CCFD5C0044E093 /* UITextField.swift */; };
 		BF1CC24F20C8716200E3D97A /* EditableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1CC24E20C8716200E3D97A /* EditableView.swift */; };
 		BF1F352F20C220930021ECA1 /* ThemePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1F352E20C220930021ECA1 /* ThemePalette.swift */; };
+		BF60135D20CE0C53008EBFB9 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60135C20CE0C53008EBFB9 /* CALayer+Extensions.swift */; };
+		BF60135F20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60135E20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift */; };
 		BF72BFEC20C2DA4E000806F2 /* InitAccessControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72BFEB20C2DA4E000806F2 /* InitAccessControlViewController.swift */; };
 		BF72BFEE20C2E615000806F2 /* DigitPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF72BFED20C2E615000806F2 /* DigitPadView.xib */; };
 		BF72C00020C30516000806F2 /* MuseoSans_300_Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF72BFF120C30511000806F2 /* MuseoSans_300_Italic.otf */; };
@@ -68,6 +70,12 @@
 		BFE2009820CD61FA008F7D48 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2009620CD61FA008F7D48 /* AlertViewController.swift */; };
 		BFE2009920CD61FA008F7D48 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE2009720CD61FA008F7D48 /* AlertViewController.xib */; };
 		BFE2009C20CD7FC7008F7D48 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2009B20CD7FC7008F7D48 /* LoginViewController.swift */; };
+		BFE2009E20CD89C3008F7D48 /* LabeledHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2009D20CD89C3008F7D48 /* LabeledHolderView.swift */; };
+		BFE200A020CD8B9E008F7D48 /* LabeledButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2009F20CD8B9E008F7D48 /* LabeledButtonView.swift */; };
+		BFE200A320CD8C34008F7D48 /* LayoutFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE200A120CD8C33008F7D48 /* LayoutFrame.swift */; };
+		BFE200A420CD8C34008F7D48 /* LayoutFrameEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE200A220CD8C33008F7D48 /* LayoutFrameEdge.swift */; };
+		BFE200A620CD8C6C008F7D48 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE200A520CD8C6C008F7D48 /* UIView+Extensions.swift */; };
+		BFE200A820CD8D3A008F7D48 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE200A720CD8D3A008F7D48 /* UIFont+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,13 +97,15 @@
 		BF1307ED20CCB8910044E093 /* DecoratorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorView.swift; sourceTree = "<group>"; };
 		BF1307EF20CCC2120044E093 /* TextEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntryView.swift; sourceTree = "<group>"; };
 		BF1307F120CCC2F50044E093 /* KeyboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardController.swift; sourceTree = "<group>"; };
-		BF1307F320CCCAB50044E093 /* InitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDetailsViewController.swift; sourceTree = "<group>"; };
-		BF1307F420CCCAB50044E093 /* InitDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InitDetailsViewController.xib; sourceTree = "<group>"; };
+		BF1307F320CCCAB50044E093 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		BF1307F420CCCAB50044E093 /* InformationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
 		BF1307F720CCEB790044E093 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		BF1307FF20CCFD5C0044E093 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		BF1CC24E20C8716200E3D97A /* EditableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableView.swift; sourceTree = "<group>"; };
 		BF1F352E20C220930021ECA1 /* ThemePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePalette.swift; sourceTree = "<group>"; };
 		BF1F354020C2261B0021ECA1 /* MuseoSans_100.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSans_100.otf; sourceTree = "<group>"; };
+		BF60135C20CE0C53008EBFB9 /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
+		BF60135E20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATextLayer+Extensions.swift"; sourceTree = "<group>"; };
 		BF72BFEB20C2DA4E000806F2 /* InitAccessControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitAccessControlViewController.swift; sourceTree = "<group>"; };
 		BF72BFED20C2E615000806F2 /* DigitPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DigitPadView.xib; sourceTree = "<group>"; };
 		BF72BFF120C30511000806F2 /* MuseoSans_300_Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSans_300_Italic.otf; sourceTree = "<group>"; };
@@ -147,6 +157,12 @@
 		BFE2009620CD61FA008F7D48 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		BFE2009720CD61FA008F7D48 /* AlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		BFE2009B20CD7FC7008F7D48 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BFE2009D20CD89C3008F7D48 /* LabeledHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledHolderView.swift; sourceTree = "<group>"; };
+		BFE2009F20CD8B9E008F7D48 /* LabeledButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledButtonView.swift; sourceTree = "<group>"; };
+		BFE200A120CD8C33008F7D48 /* LayoutFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutFrame.swift; sourceTree = "<group>"; };
+		BFE200A220CD8C33008F7D48 /* LayoutFrameEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutFrameEdge.swift; sourceTree = "<group>"; };
+		BFE200A520CD8C6C008F7D48 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		BFE200A720CD8D3A008F7D48 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,8 +218,8 @@
 				BF01E48C20CD4792005D4AF8 /* Launch View Controller */,
 				BF01E48E20CD47D3005D4AF8 /* Identity View Controller */,
 				BFA5461920CC0405007385A7 /* InitAccessControlTypeViewController.swift */,
-				BF1307F320CCCAB50044E093 /* InitDetailsViewController.swift */,
-				BF1307F420CCCAB50044E093 /* InitDetailsViewController.xib */,
+				BF1307F320CCCAB50044E093 /* InformationViewController.swift */,
+				BF1307F420CCCAB50044E093 /* InformationViewController.xib */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -323,6 +339,8 @@
 		BFD8EE7020C2C2BF009AB3C6 /* Custom Controls */ = {
 			isa = PBXGroup;
 			children = (
+				BFE200A120CD8C33008F7D48 /* LayoutFrame.swift */,
+				BFE200A220CD8C33008F7D48 /* LayoutFrameEdge.swift */,
 				BF1CC24E20C8716200E3D97A /* EditableView.swift */,
 				BF8A426620C833C600D8EE1E /* BorderedTextField.swift */,
 				BF1307ED20CCB8910044E093 /* DecoratorView.swift */,
@@ -332,6 +350,8 @@
 				BF1307EF20CCC2120044E093 /* TextEntryView.swift */,
 				BF01E48F20CD4942005D4AF8 /* ImageLayer.swift */,
 				BFE2009420CD59CC008F7D48 /* PaddingView.swift */,
+				BFE2009D20CD89C3008F7D48 /* LabeledHolderView.swift */,
+				BFE2009F20CD8B9E008F7D48 /* LabeledButtonView.swift */,
 			);
 			path = "Custom Controls";
 			sourceTree = "<group>";
@@ -355,6 +375,10 @@
 				BFAA2B8720CC80A700BE6950 /* CGSize+Extensions.swift */,
 				BF1307F720CCEB790044E093 /* UIColor+Extensions.swift */,
 				BF1307FF20CCFD5C0044E093 /* UITextField.swift */,
+				BFE200A520CD8C6C008F7D48 /* UIView+Extensions.swift */,
+				BFE200A720CD8D3A008F7D48 /* UIFont+Extensions.swift */,
+				BF60135C20CE0C53008EBFB9 /* CALayer+Extensions.swift */,
+				BF60135E20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -459,7 +483,7 @@
 				BF72C00820C30516000806F2 /* MuseoSans_100_Italic.otf in Resources */,
 				BFA4695F20C1A0F70038FC24 /* Assets.xcassets in Resources */,
 				BF72C00B20C30516000806F2 /* MuseoSansRounded-1000.otf in Resources */,
-				BF1307F620CCCAB50044E093 /* InitDetailsViewController.xib in Resources */,
+				BF1307F620CCCAB50044E093 /* InformationViewController.xib in Resources */,
 				BF72C00720C30516000806F2 /* MuseoSans_700_Italic.otf in Resources */,
 				BF72C00C20C30516000806F2 /* MuseoSans_900.otf in Resources */,
 				BF72C00920C30516000806F2 /* MuseoSans_700.otf in Resources */,
@@ -489,9 +513,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE200A020CD8B9E008F7D48 /* LabeledButtonView.swift in Sources */,
+				BFE2009E20CD89C3008F7D48 /* LabeledHolderView.swift in Sources */,
 				BFE2009C20CD7FC7008F7D48 /* LoginViewController.swift in Sources */,
+				BFE200A320CD8C34008F7D48 /* LayoutFrame.swift in Sources */,
 				BFA4697D20C1A1790038FC24 /* PublicKey.swift in Sources */,
 				BF8A426720C833C600D8EE1E /* BorderedTextField.swift in Sources */,
+				BFE200A620CD8C6C008F7D48 /* UIView+Extensions.swift in Sources */,
+				BFE200A420CD8C34008F7D48 /* LayoutFrameEdge.swift in Sources */,
 				BF13080020CCFD5C0044E093 /* UITextField.swift in Sources */,
 				BFA4695A20C1A0F40038FC24 /* LaunchViewController.swift in Sources */,
 				BF1CC24F20C8716200E3D97A /* EditableView.swift in Sources */,
@@ -507,17 +536,20 @@
 				BF1307F220CCC2F50044E093 /* KeyboardController.swift in Sources */,
 				BFA5462320CC2655007385A7 /* ThemeEntryKey.swift in Sources */,
 				BFDA9F4E20C7B94C00CBF35B /* CGPoint+Extensions.swift in Sources */,
+				BF60135D20CE0C53008EBFB9 /* CALayer+Extensions.swift in Sources */,
 				BF01E49220CD4D78005D4AF8 /* PanelView.swift in Sources */,
 				BF1307F020CCC2120044E093 /* TextEntryView.swift in Sources */,
 				BF1307EE20CCB8910044E093 /* DecoratorView.swift in Sources */,
 				BF72BFEC20C2DA4E000806F2 /* InitAccessControlViewController.swift in Sources */,
-				BF1307F520CCCAB50044E093 /* InitDetailsViewController.swift in Sources */,
+				BF1307F520CCCAB50044E093 /* InformationViewController.swift in Sources */,
 				BFDA9F4420C790AA00CBF35B /* PIN.swift in Sources */,
 				BFA4695820C1A0F40038FC24 /* AppDelegate.swift in Sources */,
 				BFA5462720CC284E007385A7 /* BorderLayer.swift in Sources */,
 				BFAA2B8820CC80A700BE6950 /* CGSize+Extensions.swift in Sources */,
 				BF72C01320C31467000806F2 /* PINViewController.swift in Sources */,
 				BF01E49020CD4942005D4AF8 /* ImageLayer.swift in Sources */,
+				BFE200A820CD8D3A008F7D48 /* UIFont+Extensions.swift in Sources */,
+				BF60135F20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift in Sources */,
 				BFDA9F4C20C7B80200CBF35B /* CGRect+Extensions.swift in Sources */,
 				BF72C01120C30D5E000806F2 /* InitInformationViewController.swift in Sources */,
 				BF1F352F20C220930021ECA1 /* ThemePalette.swift in Sources */,

@@ -90,12 +90,13 @@ public class ThemePalette
         theme["content"] = ThemeItem.content(backgroundColor: .white)
         theme["keys"] = ThemeItem.childTheme()
         theme["keys.content"] = ThemeItem.content(backgroundColor:.clear,contentColor:.tangerine)
-        theme["keys.text"] = ThemeItem.text(textColor:.black,font:UIFont(name:"MuseoSans-900",size:40))
+        theme["keys.text"] = ThemeItem.text(textColor:.black,font:UIFont.applicationFont(weight: .weight900, size: 40))
         theme = Theme(.header)
         themes[theme.key] = theme
-        theme["content"] = ThemeItem.content(backgroundColor:UIColor.orange)
+        theme["content"] = ThemeItem.content(backgroundColor:UIColor.tangerine)
         theme["border"] = ThemeItem.border(borderColor: .tangerine,width: 1)
-        theme["heading"] = ThemeItem.text(textColor: .darkGray,font:UIFont(name:"MuseoSans-900",size:30))
+        theme["heading"] = ThemeItem.text(textColor: .black,font:UIFont.boldSystemFont(ofSize: 18))
+        theme["help"] = ThemeItem.text(textColor: .darkGray,font:UIFont.boldSystemFont(ofSize: 14))
         themes[theme.key] = theme
         theme = Theme(.navigationBar)
         themes[theme.key] = theme
@@ -104,10 +105,10 @@ public class ThemePalette
         themes[theme.key] = theme
         theme["label"] = ThemeItem.childTheme()
         theme["field"] = ThemeItem.childTheme()
-        theme["content"] = ThemeItem.content(backgroundColor:.white)
+        theme["content"] = ThemeItem.content(backgroundColor:.white,highlightColor: .tangerine)
         theme["border"] = ThemeItem.border(borderColor:.tangerine,width: 1)
-        theme["label.text"] = ThemeItem.text(textColor:.tangerine,font:font(size:20))
-        theme["field.text"] = ThemeItem.text(textColor:.darkGray,font:font(size:20))
+        theme["label.text"] = ThemeItem.text(textColor:.darkGray,font:font(size:16))
+        theme["field.text"] = ThemeItem.text(textColor:.darkGray,font:font(size:16))
         themes[theme.key] = theme
         }
         

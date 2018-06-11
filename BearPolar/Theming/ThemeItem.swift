@@ -22,7 +22,7 @@ public class ThemeItem
         
     class func content(backgroundColor:UIColor? = nil,contentColor:UIColor? = nil,highlightColor:UIColor? = nil,selectedColor:UIColor? = nil) -> ThemeItem
         {
-        return(ThemeContentItem(backgroundColor:backgroundColor,contentColor:contentColor))
+        return(ThemeContentItem(backgroundColor:backgroundColor,contentColor:contentColor,highlightColor:highlightColor))
         }
         
     class func border(borderColor:UIColor?,width:CGFloat?=nil,corners:UIRectCorner? = nil,radius:CGFloat?=nil,edges:UIRectEdge? = nil) -> ThemeItem
@@ -185,11 +185,13 @@ public class ThemeContentItem:ThemeItem
     {
     let backgroundColor:UIColor?
     let contentColor:UIColor?
+    let highlightColor:UIColor?
     
-    init(backgroundColor:UIColor?,contentColor:UIColor?)
+    init(backgroundColor:UIColor?,contentColor:UIColor?,highlightColor:UIColor?)
         {
         self.backgroundColor = backgroundColor
         self.contentColor = contentColor
+        self.highlightColor = highlightColor
         }
         
     override func apply(to view:UIView)
