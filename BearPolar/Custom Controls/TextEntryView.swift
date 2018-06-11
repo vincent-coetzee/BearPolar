@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class TextEntryView: UIView,Themable
+class TextEntryView: UIView,Themable,FocusField
     {
     private static let TapAnimationDuration:CFTimeInterval = 10.0
     
@@ -35,6 +35,7 @@ class TextEntryView: UIView,Themable
     var highlightColor:UIColor = .clear
     var textColor:UIColor = .black
     var inStartEditingAnimation:Bool = false
+    var oldFrame:CGRect = .zero
     
     public var themeKey:Theme.Key?
         {
@@ -47,6 +48,15 @@ class TextEntryView: UIView,Themable
             {
             fieldLabel.string = label
             }
+        }
+        
+    func didGainFocus()
+        {
+        }
+        
+    func didLoseFocus()
+        {
+        startEndEditingAnimation()
         }
         
     fileprivate func initComponents() 
@@ -113,6 +123,7 @@ class TextEntryView: UIView,Themable
         {
         if !inStartEditingAnimation
             {
+            keyboardController.activeField = self
             startBeginEditingAnimation()
             }
         }
@@ -128,16 +139,15 @@ class TextEntryView: UIView,Themable
         return(copy)
         }
         
-    private func startBeginEditingAnimation()
+    private func startEndEditingAnimation()
         {
         inStartEditingAnimation = true
         let duration = CFTimeInterval(0.3)
         let copy = cloneLabelField()
         fieldLabel.removeFromSuperlayer()
         self.layer.addSublayer(copy)
-        let scaleFactor:CGFloat = 0.75
-        let newSize = (copy.frame.size * CGPoint(x:scaleFactor,y:scaleFactor)) / 2.0
-        let toPosition = CGPoint(x:8 + newSize.width,y:2+newSize.height)
+        let toPosition = oldFrame.centerPoint
+        let scaleFactor = oldFrame.size.width / fieldLabel.frame.size.width
         copy.removeAllAnimations()
         CATransaction.begin()
         CATransaction.setDisableActions(true)
@@ -185,13 +195,72 @@ class TextEntryView: UIView,Themable
             CATransaction.setCompletionBlock
             {
             print("primary ended")
+            self.fieldLabel = copy
+            }
+        CATransaction.commit()
+        }
+        
+    private func startBeginEditingAnimation()
+        {
+        inStartEditingAnimation = true
+        let duration = CFTimeInterval(0.3)
+        let copy = cloneLabelField()
+        oldFrame = fieldLabel.frame
+        fieldLabel.removeFromSuperlayer()
+        self.layer.addSublayer(copy)
+        let scaleFactor:CGFloat = 0.75
+        let newSize = (copy.frame.size * CGPoint(x:scaleFactor,y:scaleFactor)) / 2.0
+        let toPosition = CGPoint(x:8 + newSize.width,y:2+newSize.height)
+        copy.removeAllAnimations()
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
+            let mediaTime = CACurrentMediaTime() + 0.2
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            CATransaction.setAnimationDuration(duration)
+                copy.fontSize = fieldLabel.fontSize
+                let fromPosition = copy.frame.centerPoint
+                let movement = CABasicAnimation(keyPath: "position")
+                print("copy fromPosition = \(fromPosition) toPosition \(toPosition)")
+                movement.beginTime = mediaTime + 0.1
+                movement.toValue = toPosition
+                movement.fromValue = fromPosition
+                movement.isRemovedOnCompletion = true
+                movement.fillMode = kCAFillModeBoth
+                copy.add(movement,forKey:nil)
+            CATransaction.setCompletionBlock
+                {
+                print("move ended copy.position=\(copy.position) to \(toPosition)")
+//                copy.setValue(toPosition,forKey:"position")
+                }
+            CATransaction.commit()
+            copy.position = toPosition
+            CATransaction.begin()
+            CATransaction.setAnimationDuration(duration)
+            CATransaction.setDisableActions(true)
+                copy.font = fieldLabel.font
+                let resizing = CABasicAnimation(keyPath: "transform")
+                let toTransform = CATransform3DMakeScale(scaleFactor,scaleFactor,1)
+                resizing.toValue = toTransform
+                resizing.fromValue = copy.model().transform
+                resizing.isRemovedOnCompletion = true
+                resizing.beginTime = mediaTime
+                resizing.fillMode = kCAFillModeBoth
+                copy.add(resizing, forKey: nil)
+                CATransaction.setCompletionBlock
+                    {
+                    print("size ended \(copy.position)")
+//                    copy.setValue(CATransform3DMakeScale(scaleFactor,scaleFactor,1),forKeyPath:"transform")
+                    }
+            CATransaction.commit()
+            copy.transform = toTransform
+            CATransaction.setCompletionBlock
+            {
+            print("primary ended")
 //                copy.position = toPosition
 //                copy.transform = CATransform3DMakeScale(scaleFactor,scaleFactor,1)
-            self.fieldLabel.transform = copy.transform
-            self.fieldLabel.position = toPosition
-            self.fieldLabel.foregroundColor = self.highlightColor.cgColor
-//                self.layer.addSublayer(self.fieldLabel)
-//                copy.removeFromSuperlayer()
+            self.fieldLabel = copy
             }
         CATransaction.commit()
         }

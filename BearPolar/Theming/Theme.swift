@@ -45,6 +45,9 @@ public class Theme
         case header
         case navigationBar
         case textEntry
+        case lime
+        case tangerine
+        case aqua
         }
     
     public typealias TextAttributes = [NSAttributedStringKey:Any]
