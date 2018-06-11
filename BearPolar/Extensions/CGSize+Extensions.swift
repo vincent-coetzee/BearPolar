@@ -20,6 +20,15 @@ extension CGSize
         return(CGSize(width:lhs.width/rhs,height:lhs.height/rhs))
         }
         
+    static func *(lhs:CGSize,rhs:CGFloat) -> CGSize
+        {
+        return(CGSize(width:lhs.width*rhs,height:lhs.height*rhs))
+        }
+        
+    var centerPoint:CGPoint
+        {
+        return(CGPoint(x:width/2.0,y:height/2.0))
+        }
         
     func centeredRectInRect(_ rect:CGRect) -> CGRect
         {

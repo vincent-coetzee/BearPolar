@@ -11,14 +11,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="FiraSans-Regular.ttf">
-            <string>FiraSans-Regular</string>
-        </array>
-        <array key="FiraSans-Thin.ttf">
-            <string>FiraSans-Thin</string>
+        <array key="MuseoSansRounded-900.otf">
+            <string>MuseoSansRounded-900</string>
         </array>
         <array key="MuseoSans_500.otf">
             <string>MuseoSans-500</string>
+        </array>
+        <array key="MuseoSans_900.otf">
+            <string>MuseoSans-900</string>
         </array>
     </customFonts>
     <scenes>
@@ -30,55 +30,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BearPolygon800.Green" translatesAutoresizingMaskIntoConstraints="NO" id="WG0-FG-Tcz">
-                                <rect key="frame" x="0.0" y="104" width="375" height="375"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="WG0-FG-Tcz" secondAttribute="height" multiplier="1:1" id="3vF-c6-BqP"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0C-Cb-gaa">
-                                <rect key="frame" x="0.0" y="125.66666666666667" width="375" height="58.333333333333329"/>
-                                <fontDescription key="fontDescription" name="FiraSans-Thin" family="Fira Sans" pointSize="50"/>
+                                <rect key="frame" x="0.0" y="124" width="375" height="60"/>
+                                <fontDescription key="fontDescription" name="MuseoSans-900" family="Museo Sans" pointSize="50"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POLAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBx-u9-vpr">
-                                <rect key="frame" x="0.0" y="407" width="375" height="58.333333333333314"/>
-                                <fontDescription key="fontDescription" name="FiraSans-Thin" family="Fira Sans" pointSize="50"/>
+                                <rect key="frame" x="0.0" y="407" width="375" height="60"/>
+                                <fontDescription key="fontDescription" name="MuseoSans-900" family="Museo Sans" pointSize="50"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A6g-g6-NcL" customClass="BearPolarMaskedImageView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="108" width="375" height="375"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="A6g-g6-NcL" secondAttribute="height" multiplier="1:1" id="heN-BF-C5T"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m82-SU-onM">
-                                <rect key="frame" x="153.66666666666666" y="745" width="68" height="37"/>
-                                <fontDescription key="fontDescription" name="FiraSans-Regular" family="Fira Sans" pointSize="21"/>
-                                <state key="normal" title="SETUP">
+                                <rect key="frame" x="143" y="689" width="89" height="38"/>
+                                <fontDescription key="fontDescription" name="MuseoSansRounded-900" family="Museo Sans Rounded" pointSize="21"/>
+                                <state key="normal" title="continue">
                                     <color key="titleColor" name="Green.Bright.Text"/>
                                 </state>
-                                <connections>
-                                    <segue destination="mhs-Tj-qyq" kind="show" id="D3s-Zt-beH"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="A6g-g6-NcL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0yL-4n-P3R"/>
                             <constraint firstItem="m82-SU-onM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6wL-zS-QLe"/>
                             <constraint firstItem="M0C-Cb-gaa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7A9-HC-LGW"/>
-                            <constraint firstItem="WG0-FG-Tcz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CHS-hn-uNS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="m82-SU-onM" secondAttribute="bottom" constant="30" id="Kyn-LI-GVH"/>
-                            <constraint firstItem="WG0-FG-Tcz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="LgQ-1q-FBq"/>
+                            <constraint firstItem="A6g-g6-NcL" firstAttribute="top" secondItem="M0C-Cb-gaa" secondAttribute="bottom" constant="-76" id="8Je-ip-wlg"/>
+                            <constraint firstItem="A6g-g6-NcL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="JWz-Ry-lHe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="m82-SU-onM" secondAttribute="bottom" constant="85" id="Kyn-LI-GVH"/>
                             <constraint firstItem="gBx-u9-vpr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Po9-A6-uVL"/>
                             <constraint firstItem="gBx-u9-vpr" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="SKq-6N-SF7"/>
-                            <constraint firstItem="gBx-u9-vpr" firstAttribute="top" secondItem="WG0-FG-Tcz" secondAttribute="bottom" constant="-72" id="UI1-lB-kCh"/>
+                            <constraint firstItem="M0C-Cb-gaa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="Y6r-U3-LJE"/>
+                            <constraint firstItem="gBx-u9-vpr" firstAttribute="top" secondItem="M0C-Cb-gaa" secondAttribute="bottom" constant="223" id="cvf-ht-CFZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M0C-Cb-gaa" secondAttribute="trailing" id="oU3-7A-FU8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WG0-FG-Tcz" secondAttribute="trailing" id="sGc-4F-4wJ"/>
-                            <constraint firstItem="WG0-FG-Tcz" firstAttribute="top" secondItem="M0C-Cb-gaa" secondAttribute="bottom" constant="-80" id="xsp-SN-6NX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="actionButton" destination="m82-SU-onM" id="mHN-08-aic"/>
+                        <outlet property="bottomLabel" destination="gBx-u9-vpr" id="Zsj-HE-9Eh"/>
+                        <outlet property="topLabel" destination="M0C-Cb-gaa" id="Mzb-DP-fhT"/>
+                        <segue destination="b2a-vs-2XK" kind="show" identifier="MoveToLogin" id="uPb-2J-62P"/>
+                        <segue destination="mhs-Tj-qyq" kind="show" identifier="MoveToInformation" id="XZS-9g-72Y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="194" y="-147"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ei6-fA-olo">
+            <objects>
+                <viewController id="b2a-vs-2XK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rzR-JW-mxf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRy-YE-enA">
+                                <rect key="frame" x="158" y="333" width="76" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="MuseoSans-500" family="Museo Sans" pointSize="24"/>
+                                <state key="normal" title="LOGIN">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gTT-CS-0gu"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5i-sb-qB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1238" y="903"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RDt-U9-nSL">
@@ -89,7 +120,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="CGD-M6-Qn7" kind="relationship" relationship="rootViewController" id="sjH-y8-RkE"/>
+                        <segue destination="v8B-zt-qG5" kind="relationship" relationship="rootViewController" id="Qr0-b4-ToN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ac-RL-Nk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,6 +174,7 @@
                         <viewLayoutGuide key="safeArea" id="nNp-QW-0aD"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="47v-SB-gDE"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yEl-ok-Qba" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -254,9 +286,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BearPolygon800.Green" width="800" height="800"/>
         <namedColor name="Green.Bright.Text">
             <color red="0.67450980392156867" green="0.96862745098039216" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Qr0-b4-ToN"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -32,6 +32,7 @@
                     <connections>
                         <outlet property="keyboardController" destination="t2h-4G-YXR" id="hsg-nK-xLU"/>
                         <outlet property="nextField" destination="Ode-Oo-QO8" id="XMz-wf-4Fi"/>
+                        <outlet property="sharedColumn" destination="jFn-HM-GkK" id="58d-iz-Rr7"/>
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="Ode-Oo-QO8" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
@@ -43,6 +44,7 @@
                     <connections>
                         <outlet property="keyboardController" destination="t2h-4G-YXR" id="Wgc-b6-YT5"/>
                         <outlet property="nextField" destination="Qud-hJ-WD2" id="1ql-T3-t6c"/>
+                        <outlet property="sharedColumn" destination="jFn-HM-GkK" id="vzg-RA-eg7"/>
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="Qud-hJ-WD2" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
@@ -54,6 +56,7 @@
                     <connections>
                         <outlet property="keyboardController" destination="t2h-4G-YXR" id="vZx-oP-tP4"/>
                         <outlet property="nextField" destination="NZw-Ze-eeA" id="qDc-Z2-rSS"/>
+                        <outlet property="sharedColumn" destination="jFn-HM-GkK" id="kXP-DW-nqn"/>
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="NZw-Ze-eeA" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
@@ -64,6 +67,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="keyboardController" destination="t2h-4G-YXR" id="WPA-9Z-9gU"/>
+                        <outlet property="sharedColumn" destination="jFn-HM-GkK" id="moO-AV-pHS"/>
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" verticalCompressionResistancePriority="752" placeholderIntrinsicWidth="562" placeholderIntrinsicHeight="90" translatesAutoresizingMaskIntoConstraints="NO" id="sSD-Gl-BQb" customClass="HeaderView" customModule="BearPolar" customModuleProvider="target">
@@ -102,6 +106,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-128" y="712"/>
         </view>
+        <customObject id="jFn-HM-GkK" customClass="TextColumn" customModule="BearPolar" customModuleProvider="target"/>
         <customObject id="t2h-4G-YXR" customClass="KeyboardController" customModule="BearPolar" customModuleProvider="target"/>
     </objects>
 </document>

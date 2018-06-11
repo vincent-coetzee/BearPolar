@@ -61,7 +61,7 @@ public class ThemePalette
         {
         bundle = Bundle(for: aClass)
         initThemes()
-        palette = palettes[.aqua]!
+        palette = palettes[.coral]!
         }
 
     fileprivate func color(named name:String) -> UIColor
@@ -86,6 +86,14 @@ public class ThemePalette
         {
         initAquaTheme()
         initTangerineTheme()
+        initCoralTheme()
+        initCanaryTheme()
+        initMidnightTheme()
+        }
+        
+    public var dominantColor:UIColor
+        {
+        return(.coral)
         }
         
     public func initTangerineTheme()
@@ -103,8 +111,8 @@ public class ThemePalette
         themes[theme.key] = theme
         theme["content"] = ThemeItem.content(backgroundColor:UIColor.tangerine)
         theme["border"] = ThemeItem.border(borderColor: .tangerine,width: 1)
-        theme["heading"] = ThemeItem.text(textColor: .black,font:UIFont.boldSystemFont(ofSize: 18))
-        theme["help"] = ThemeItem.text(textColor: .darkGray,font:UIFont.boldSystemFont(ofSize: 14))
+        theme["heading"] = ThemeItem.text(textColor: .black,font:UIFont.boldSystemFont(ofSize: 16))
+        theme["help"] = ThemeItem.text(textColor: .darkGray,font:UIFont.boldSystemFont(ofSize: 12))
         themes[theme.key] = theme
         theme = Theme(.navigationBar)
         themes[theme.key] = theme
@@ -118,7 +126,120 @@ public class ThemePalette
         theme["label.text"] = ThemeItem.text(textColor:.darkGray,font:font(size:16))
         theme["field.text"] = ThemeItem.text(textColor:.darkGray,font:font(size:16))
         themes[theme.key] = theme
+        theme["palette"] = ThemeColorPalette(primary: .tangerine)
+        themes[theme.key] = theme
         palettes[.tangerine] = themes
+        }
+        
+    public func initCoralTheme()
+        {
+        let darkCoral = UIColor.coral.muchDarker
+        var themes:[Theme.Key:Theme] = [:]
+        var theme = Theme(.pinPad)
+        themes[theme.key] = theme
+        theme["digits"] = ThemeItem.childTheme()
+        theme["digits.border"] = ThemeItem.border(borderColor:.coral,width:2.0)
+        theme["content"] = ThemeItem.content(backgroundColor: .white)
+        theme["keys"] = ThemeItem.childTheme()
+        theme["keys.content"] = ThemeItem.content(backgroundColor:.clear,contentColor:.coral)
+        theme["keys.text"] = ThemeItem.text(textColor:darkCoral,font:UIFont.applicationFont(weight: .weight900, size: 40))
+        theme = Theme(.header)
+        themes[theme.key] = theme
+        theme["content"] = ThemeItem.content(backgroundColor:UIColor.coral)
+        theme["border"] = ThemeItem.border(borderColor: darkCoral,width: 1)
+        theme["heading"] = ThemeItem.text(textColor: .black,font:UIFont.boldSystemFont(ofSize: 18))
+        theme["help"] = ThemeItem.text(textColor: darkCoral,font:UIFont.boldSystemFont(ofSize: 14))
+        themes[theme.key] = theme
+        theme = Theme(.navigationBar)
+        themes[theme.key] = theme
+        theme["bar"] = ThemeItem.navigationBar(tint:.black,barTint: .coral,titleAttributes: [.foregroundColor: UIColor.black])
+        theme = Theme(.textEntry)
+        themes[theme.key] = theme
+        theme["label"] = ThemeItem.childTheme()
+        theme["field"] = ThemeItem.childTheme()
+        theme["content"] = ThemeItem.content(backgroundColor:.white,highlightColor: .coral)
+        theme["border"] = ThemeItem.border(borderColor: darkCoral,width: 1)
+        theme["label.text"] = ThemeItem.text(textColor:.coral,font:font(size:16))
+        theme["field.text"] = ThemeItem.text(textColor: darkCoral,font:font(size:16))
+        themes[theme.key] = theme
+        theme = Theme(.palette)
+        theme["palette"] = ThemeColorPalette(primary: .coral)
+        themes[theme.key] = theme
+        palettes[.coral] = themes
+        }
+        
+    public func initCanaryTheme()
+        {
+        let darkCanary = UIColor.canary.muchDarker
+        var themes:[Theme.Key:Theme] = [:]
+        var theme = Theme(.pinPad)
+        themes[theme.key] = theme
+        theme["digits"] = ThemeItem.childTheme()
+        theme["digits.border"] = ThemeItem.border(borderColor:.coral,width:2.0)
+        theme["content"] = ThemeItem.content(backgroundColor: .white)
+        theme["keys"] = ThemeItem.childTheme()
+        theme["keys.content"] = ThemeItem.content(backgroundColor:.clear,contentColor:.canary)
+        theme["keys.text"] = ThemeItem.text(textColor:darkCanary,font:UIFont.applicationFont(weight: .weight900, size: 40))
+        theme = Theme(.header)
+        themes[theme.key] = theme
+        theme["content"] = ThemeItem.content(backgroundColor:UIColor.canary)
+        theme["border"] = ThemeItem.border(borderColor: darkCanary,width: 1)
+        theme["heading"] = ThemeItem.text(textColor: .black,font:UIFont.boldSystemFont(ofSize: 18))
+        theme["help"] = ThemeItem.text(textColor: darkCanary,font:UIFont.boldSystemFont(ofSize: 14))
+        themes[theme.key] = theme
+        theme = Theme(.navigationBar)
+        themes[theme.key] = theme
+        theme["bar"] = ThemeItem.navigationBar(tint:.black,barTint: .canary,titleAttributes: [.foregroundColor: UIColor.black])
+        theme = Theme(.textEntry)
+        themes[theme.key] = theme
+        theme["label"] = ThemeItem.childTheme()
+        theme["field"] = ThemeItem.childTheme()
+        theme["content"] = ThemeItem.content(backgroundColor:.white,highlightColor: .canary)
+        theme["border"] = ThemeItem.border(borderColor: darkCanary,width: 1)
+        theme["label.text"] = ThemeItem.text(textColor:.canary,font:font(size:16))
+        theme["field.text"] = ThemeItem.text(textColor: darkCanary,font:font(size:16))
+        themes[theme.key] = theme
+        theme = Theme(.palette)
+        theme["palette"] = ThemeColorPalette(primary: .canary)
+        themes[theme.key] = theme
+        palettes[.canary] = themes
+        }
+        
+    public func initMidnightTheme()
+        {
+        let darkMidnight = UIColor.canary.muchDarker
+        var themes:[Theme.Key:Theme] = [:]
+        var theme = Theme(.pinPad)
+        themes[theme.key] = theme
+        theme["digits"] = ThemeItem.childTheme()
+        theme["digits.border"] = ThemeItem.border(borderColor:.midnight,width:2.0)
+        theme["content"] = ThemeItem.content(backgroundColor: .white)
+        theme["keys"] = ThemeItem.childTheme()
+        theme["keys.content"] = ThemeItem.content(backgroundColor:.clear,contentColor:.midnight)
+        theme["keys.text"] = ThemeItem.text(textColor:darkMidnight,font:UIFont.applicationFont(weight: .weight900, size: 40))
+        theme = Theme(.header)
+        themes[theme.key] = theme
+        theme["content"] = ThemeItem.content(backgroundColor:UIColor.midnight)
+        theme["border"] = ThemeItem.border(borderColor: darkMidnight,width: 1)
+        theme["heading"] = ThemeItem.text(textColor: .black,font:UIFont.boldSystemFont(ofSize: 18))
+        theme["help"] = ThemeItem.text(textColor: darkMidnight,font:UIFont.boldSystemFont(ofSize: 14))
+        themes[theme.key] = theme
+        theme = Theme(.navigationBar)
+        themes[theme.key] = theme
+        theme["bar"] = ThemeItem.navigationBar(tint:.black,barTint: .midnight,titleAttributes: [.foregroundColor: UIColor.black])
+        theme = Theme(.textEntry)
+        themes[theme.key] = theme
+        theme["label"] = ThemeItem.childTheme()
+        theme["field"] = ThemeItem.childTheme()
+        theme["content"] = ThemeItem.content(backgroundColor:.white,highlightColor: .midnight)
+        theme["border"] = ThemeItem.border(borderColor: darkMidnight,width: 1)
+        theme["label.text"] = ThemeItem.text(textColor:.midnight,font:font(size:16))
+        theme["field.text"] = ThemeItem.text(textColor: darkMidnight,font:font(size:16))
+        themes[theme.key] = theme
+        theme = Theme(.palette)
+        theme["palette"] = ThemeColorPalette(primary: .midnight)
+        themes[theme.key] = theme
+        palettes[.midnight] = themes
         }
         
     public func initAquaTheme()
@@ -150,6 +271,8 @@ public class ThemePalette
         theme["border"] = ThemeItem.border(borderColor:.aqua,width: 1)
         theme["label.text"] = ThemeItem.text(textColor:.darkGray,font:font(size:16))
         theme["field.text"] = ThemeItem.text(textColor:.darkGray,font:font(size:16))
+        themes[theme.key] = theme
+        theme["palette"] = ThemeColorPalette(primary: .blue)
         themes[theme.key] = theme
         palettes[.aqua] = themes
         }

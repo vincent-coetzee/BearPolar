@@ -41,6 +41,7 @@ public class Theme
     public enum Key:String
         {
         case null
+        case palette
         case pinPad
         case header
         case navigationBar
@@ -48,6 +49,9 @@ public class Theme
         case lime
         case tangerine
         case aqua
+        case coral
+        case midnight
+        case canary
         }
     
     public typealias TextAttributes = [NSAttributedStringKey:Any]
