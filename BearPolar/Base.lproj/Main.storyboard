@@ -96,7 +96,7 @@
             </objects>
             <point key="canvasLocation" x="1239" y="133"/>
         </scene>
-        <!--Access Control-->
+        <!--Protection-->
         <scene sceneID="Cbm-cz-dmL">
             <objects>
                 <viewController id="CGD-M6-Qn7" customClass="InitAccessControlViewController" customModule="BearPolar" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,7 +106,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="igz-z3-Hg2"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Access Control" id="Ds1-Lj-h4E"/>
+                    <navigationItem key="navigationItem" title="Protection" id="Ds1-Lj-h4E"/>
                     <connections>
                         <segue destination="v8B-zt-qG5" kind="show" identifier="MoveToInitInformation" id="L86-2l-ghD"/>
                     </connections>
@@ -123,9 +123,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xo8-0Q-fYW">
-                                <rect key="frame" x="117" y="280" width="142" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xo8-0Q-fYW">
+                                <rect key="frame" x="116.66666666666669" y="619" width="142" height="41"/>
                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MuseoSans-500" family="Museo Sans" pointSize="24"/>
                                 <state key="normal" title="Go To Home">
@@ -137,13 +136,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nNp-QW-0aD" firstAttribute="bottom" secondItem="xo8-0Q-fYW" secondAttribute="bottom" constant="64" id="660-0R-XeF"/>
+                            <constraint firstItem="xo8-0Q-fYW" firstAttribute="centerX" secondItem="nNp-QW-0aD" secondAttribute="centerX" id="Mgm-HK-Ca7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nNp-QW-0aD"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yEl-ok-Qba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3642" y="131"/>
+            <point key="canvasLocation" x="3640.8000000000002" y="130.78817733990149"/>
         </scene>
         <!--Home-->
         <scene sceneID="iis-pU-CvG">

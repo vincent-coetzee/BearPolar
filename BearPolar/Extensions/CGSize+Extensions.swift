@@ -10,6 +10,17 @@ import UIKit
 
 extension CGSize
     {
+    static func *(lhs:CGSize,rhs:CGPoint) -> CGSize
+        {
+        return(CGSize(width:lhs.width*rhs.x,height:lhs.height*rhs.y))
+        }
+        
+    static func /(lhs:CGSize,rhs:CGFloat) -> CGSize
+        {
+        return(CGSize(width:lhs.width/rhs,height:lhs.height/rhs))
+        }
+        
+        
     func centeredRectInRect(_ rect:CGRect) -> CGRect
         {
         let deltaY = floor((rect.height - self.height)/2.0)

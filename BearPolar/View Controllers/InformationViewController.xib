@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InformationViewController" customModule="BearPolar" customModuleProvider="target">
+            <connections>
+                <outlet property="leftView" destination="Ode-Oo-QO8" id="lmT-QV-UNL"/>
+                <outlet property="rightView" destination="Ode-Oo-QO8" id="BUe-Fq-WQK"/>
+                <outlet property="topView" destination="wyN-dr-RlA" id="1Xt-aj-Z8F"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="562" height="1800"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="wyN-dr-RlA" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="20" width="562" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="label" value="First Name"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="Ode-Oo-QO8" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="67" width="562" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="label" value="Last Name"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="Qud-hJ-WD2" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="114" width="562" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="label" value="Age"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="NZw-Ze-eeA" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="161" width="562" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="label" value="Gender"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" verticalCompressionResistancePriority="752" placeholderIntrinsicWidth="562" placeholderIntrinsicHeight="90" translatesAutoresizingMaskIntoConstraints="NO" id="sSD-Gl-BQb" customClass="HeaderView" customModule="BearPolar" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="208" width="562" height="90"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="heading" value="Medication"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="help">
+                            <string key="value">If you wish to track how well you are managing your medication, you may complete the following section ( which is of course, like most things in BearPolar, quite optional). Completing this section entails defining all your medications, and when and how you take them. BearPolar can also generate notifications to remind you if you forget to take particular medications.</string>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Ode-Oo-QO8" firstAttribute="leading" secondItem="wyN-dr-RlA" secondAttribute="leading" id="6zU-eI-JUW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sSD-Gl-BQb" secondAttribute="bottom" constant="1406" id="BvL-8b-cfQ"/>
+                <constraint firstItem="NZw-Ze-eeA" firstAttribute="trailing" secondItem="Ode-Oo-QO8" secondAttribute="trailing" id="DB7-uH-A7o"/>
+                <constraint firstItem="Qud-hJ-WD2" firstAttribute="top" secondItem="Ode-Oo-QO8" secondAttribute="bottom" constant="-1" id="FKr-Ku-W19"/>
+                <constraint firstItem="NZw-Ze-eeA" firstAttribute="width" secondItem="Qud-hJ-WD2" secondAttribute="width" id="GgB-Du-FRv"/>
+                <constraint firstItem="Ode-Oo-QO8" firstAttribute="trailing" secondItem="wyN-dr-RlA" secondAttribute="trailing" id="J8Q-da-Hvg"/>
+                <constraint firstItem="NZw-Ze-eeA" firstAttribute="leading" secondItem="Qud-hJ-WD2" secondAttribute="leading" id="MPZ-HD-aC7"/>
+                <constraint firstItem="wyN-dr-RlA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OPT-gR-mGl"/>
+                <constraint firstItem="NZw-Ze-eeA" firstAttribute="top" secondItem="Qud-hJ-WD2" secondAttribute="bottom" constant="-1" id="STZ-Ch-3fg"/>
+                <constraint firstItem="Qud-hJ-WD2" firstAttribute="leading" secondItem="Ode-Oo-QO8" secondAttribute="leading" id="X4v-9k-vcM"/>
+                <constraint firstItem="sSD-Gl-BQb" firstAttribute="top" secondItem="NZw-Ze-eeA" secondAttribute="bottom" constant="-1" id="gqC-Tf-mFe"/>
+                <constraint firstItem="wyN-dr-RlA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jYS-8r-FoI"/>
+                <constraint firstItem="sSD-Gl-BQb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jfl-GE-o2f"/>
+                <constraint firstItem="NZw-Ze-eeA" firstAttribute="trailing" secondItem="Qud-hJ-WD2" secondAttribute="trailing" id="jiY-Eh-NuU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wyN-dr-RlA" secondAttribute="trailing" id="m62-Xh-8CK"/>
+                <constraint firstItem="Ode-Oo-QO8" firstAttribute="top" secondItem="wyN-dr-RlA" secondAttribute="bottom" constant="-1" id="owp-6d-fvO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sSD-Gl-BQb" secondAttribute="trailing" id="rJJ-SI-8xd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="-128" y="712"/>
+        </view>
+    </objects>
+</document>
