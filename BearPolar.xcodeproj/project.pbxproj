@@ -23,6 +23,8 @@
 		BF1F352F20C220930021ECA1 /* ThemePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1F352E20C220930021ECA1 /* ThemePalette.swift */; };
 		BF60135D20CE0C53008EBFB9 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60135C20CE0C53008EBFB9 /* CALayer+Extensions.swift */; };
 		BF60135F20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60135E20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift */; };
+		BF60136120CE2531008EBFB9 /* TextWrangler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60136020CE2531008EBFB9 /* TextWrangler.swift */; };
+		BF60136320CE332E008EBFB9 /* FocusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60136220CE332E008EBFB9 /* FocusField.swift */; };
 		BF72BFEC20C2DA4E000806F2 /* InitAccessControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72BFEB20C2DA4E000806F2 /* InitAccessControlViewController.swift */; };
 		BF72BFEE20C2E615000806F2 /* DigitPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF72BFED20C2E615000806F2 /* DigitPadView.xib */; };
 		BF72C00020C30516000806F2 /* MuseoSans_300_Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF72BFF120C30511000806F2 /* MuseoSans_300_Italic.otf */; };
@@ -106,6 +108,8 @@
 		BF1F354020C2261B0021ECA1 /* MuseoSans_100.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSans_100.otf; sourceTree = "<group>"; };
 		BF60135C20CE0C53008EBFB9 /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
 		BF60135E20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATextLayer+Extensions.swift"; sourceTree = "<group>"; };
+		BF60136020CE2531008EBFB9 /* TextWrangler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWrangler.swift; sourceTree = "<group>"; };
+		BF60136220CE332E008EBFB9 /* FocusField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusField.swift; sourceTree = "<group>"; };
 		BF72BFEB20C2DA4E000806F2 /* InitAccessControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitAccessControlViewController.swift; sourceTree = "<group>"; };
 		BF72BFED20C2E615000806F2 /* DigitPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DigitPadView.xib; sourceTree = "<group>"; };
 		BF72BFF120C30511000806F2 /* MuseoSans_300_Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSans_300_Italic.otf; sourceTree = "<group>"; };
@@ -352,6 +356,7 @@
 				BFE2009420CD59CC008F7D48 /* PaddingView.swift */,
 				BFE2009D20CD89C3008F7D48 /* LabeledHolderView.swift */,
 				BFE2009F20CD8B9E008F7D48 /* LabeledButtonView.swift */,
+				BF60136220CE332E008EBFB9 /* FocusField.swift */,
 			);
 			path = "Custom Controls";
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				BFE200A720CD8D3A008F7D48 /* UIFont+Extensions.swift */,
 				BF60135C20CE0C53008EBFB9 /* CALayer+Extensions.swift */,
 				BF60135E20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift */,
+				BF60136020CE2531008EBFB9 /* TextWrangler.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -551,10 +557,12 @@
 				BFE200A820CD8D3A008F7D48 /* UIFont+Extensions.swift in Sources */,
 				BF60135F20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift in Sources */,
 				BFDA9F4C20C7B80200CBF35B /* CGRect+Extensions.swift in Sources */,
+				BF60136120CE2531008EBFB9 /* TextWrangler.swift in Sources */,
 				BF72C01120C30D5E000806F2 /* InitInformationViewController.swift in Sources */,
 				BF1F352F20C220930021ECA1 /* ThemePalette.swift in Sources */,
 				BFAA2B8620CC7BC700BE6950 /* HeaderView.swift in Sources */,
 				BFA5462520CC26D3007385A7 /* Theme.swift in Sources */,
+				BF60136320CE332E008EBFB9 /* FocusField.swift in Sources */,
 				BFA4697920C1A1190038FC24 /* Keychain.swift in Sources */,
 				BFA4697F20C1A19F0038FC24 /* PrivateKey.swift in Sources */,
 			);

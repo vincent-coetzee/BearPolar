@@ -29,6 +29,10 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="label" value="First Name"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="keyboardController" destination="t2h-4G-YXR" id="hsg-nK-xLU"/>
+                        <outlet property="nextField" destination="Ode-Oo-QO8" id="XMz-wf-4Fi"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="Ode-Oo-QO8" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="67" width="562" height="48"/>
@@ -36,6 +40,10 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="label" value="Last Name"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="keyboardController" destination="t2h-4G-YXR" id="Wgc-b6-YT5"/>
+                        <outlet property="nextField" destination="Qud-hJ-WD2" id="1ql-T3-t6c"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="Qud-hJ-WD2" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="114" width="562" height="48"/>
@@ -43,6 +51,10 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="label" value="Age"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="keyboardController" destination="t2h-4G-YXR" id="vZx-oP-tP4"/>
+                        <outlet property="nextField" destination="NZw-Ze-eeA" id="qDc-Z2-rSS"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="NZw-Ze-eeA" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="161" width="562" height="48"/>
@@ -50,10 +62,14 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="label" value="Gender"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="keyboardController" destination="t2h-4G-YXR" id="WPA-9Z-9gU"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" verticalCompressionResistancePriority="752" placeholderIntrinsicWidth="562" placeholderIntrinsicHeight="90" translatesAutoresizingMaskIntoConstraints="NO" id="sSD-Gl-BQb" customClass="HeaderView" customModule="BearPolar" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="208" width="562" height="90"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="heading" value="Medication"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="help">
@@ -86,5 +102,6 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-128" y="712"/>
         </view>
+        <customObject id="t2h-4G-YXR" customClass="KeyboardController" customModule="BearPolar" customModuleProvider="target"/>
     </objects>
 </document>

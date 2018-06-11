@@ -19,4 +19,9 @@ public extension UIColor
         {
         return(UIColor(red:0.556,green:0.979,blue:0,alpha:1))
         }
+        
+    class var aqua:UIColor
+        {
+        return(UIColor(red:0,green:0.590,blue:1,alpha:1))
+        }
     }

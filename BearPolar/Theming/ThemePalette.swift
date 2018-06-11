@@ -11,7 +11,8 @@ import UIKit
 public class ThemePalette
     {
     private let bundle:Bundle 
-    private var themes:[Theme.Key:Theme] = [:]
+    private var palettes:[Theme.Key:[Theme.Key:Theme]] = [:]
+    private var palette:[Theme.Key:Theme] = [:]
     
     private let NavigationBarTintColorName = "Color.NavigationBarTint"
     private let NavigationBarTitleTextColorName = "Color.NavigationBarTitleText"
@@ -43,7 +44,7 @@ public class ThemePalette
     
     subscript(_ key:Theme.Key) -> Theme
         {
-        return(themes[key]!)
+        return(palette[key]!)
         }
         
     public static var shared:ThemePalette
@@ -60,6 +61,7 @@ public class ThemePalette
         {
         bundle = Bundle(for: aClass)
         initThemes()
+        palette = palettes[.aqua]!
         }
 
     fileprivate func color(named name:String) -> UIColor
@@ -82,8 +84,14 @@ public class ThemePalette
             
     public func initThemes()
         {
+        initAquaTheme()
+        initTangerineTheme()
+        }
+        
+    public func initTangerineTheme()
+        {
+        var themes:[Theme.Key:Theme] = [:]
         var theme = Theme(.pinPad)
-        theme = Theme(.pinPad)
         themes[theme.key] = theme
         theme["digits"] = ThemeItem.childTheme()
         theme["digits.border"] = ThemeItem.border(borderColor:.tangerine,width:2.0)
@@ -110,6 +118,40 @@ public class ThemePalette
         theme["label.text"] = ThemeItem.text(textColor:.darkGray,font:font(size:16))
         theme["field.text"] = ThemeItem.text(textColor:.darkGray,font:font(size:16))
         themes[theme.key] = theme
+        palettes[.tangerine] = themes
+        }
+        
+    public func initAquaTheme()
+        {
+        var themes:[Theme.Key:Theme] = [:]
+        var theme = Theme(.pinPad)
+        themes[theme.key] = theme
+        theme["digits"] = ThemeItem.childTheme()
+        theme["digits.border"] = ThemeItem.border(borderColor:.aqua,width:2.0)
+        theme["content"] = ThemeItem.content(backgroundColor: .white)
+        theme["keys"] = ThemeItem.childTheme()
+        theme["keys.content"] = ThemeItem.content(backgroundColor:.clear,contentColor:.aqua)
+        theme["keys.text"] = ThemeItem.text(textColor:.black,font:UIFont.applicationFont(weight: .weight900, size: 40))
+        theme = Theme(.header)
+        themes[theme.key] = theme
+        theme["content"] = ThemeItem.content(backgroundColor:UIColor.aqua)
+        theme["border"] = ThemeItem.border(borderColor: .aqua,width: 1)
+        theme["heading"] = ThemeItem.text(textColor: .white,font:UIFont.boldSystemFont(ofSize: 18))
+        theme["help"] = ThemeItem.text(textColor: .white,font:UIFont.boldSystemFont(ofSize: 14))
+        themes[theme.key] = theme
+        theme = Theme(.navigationBar)
+        themes[theme.key] = theme
+        theme["bar"] = ThemeItem.navigationBar(tint:.black,barTint: .aqua,titleAttributes: [.foregroundColor: UIColor.black])
+        theme = Theme(.textEntry)
+        themes[theme.key] = theme
+        theme["label"] = ThemeItem.childTheme()
+        theme["field"] = ThemeItem.childTheme()
+        theme["content"] = ThemeItem.content(backgroundColor:.white,highlightColor: .aqua)
+        theme["border"] = ThemeItem.border(borderColor:.aqua,width: 1)
+        theme["label.text"] = ThemeItem.text(textColor:.darkGray,font:font(size:16))
+        theme["field.text"] = ThemeItem.text(textColor:.darkGray,font:font(size:16))
+        themes[theme.key] = theme
+        palettes[.aqua] = themes
         }
         
     public var highlightColor:UIColor

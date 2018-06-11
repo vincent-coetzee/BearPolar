@@ -86,9 +86,11 @@ class HeaderView: UIView,Themable
     
     override var intrinsicContentSize: CGSize
         {
-        let bounds = self.bounds.insetBy(dx:16,dy:16)
-        let rect = helpText.measureText(inWidth:bounds.size.width)
-        return(CGSize(width: UIViewNoIntrinsicMetric,height:48 + 8 + rect.size.height))
+        let bounds = self.bounds.insetBy(dx:16,dy:0)
+        let textRect = text.measureText(inWidth:bounds.size.width)
+        let helpRect = helpText.measureText(inWidth:bounds.size.width)
+        let rect1 = TextWrangler.measure(string:help,usingFont:helpFont,inWidth:bounds.size.width)
+        return(CGSize(width: UIViewNoIntrinsicMetric,height:32 + textRect.height + 16 + helpRect.size.height + 48))
         }
         
     private func initBorder()
@@ -119,11 +121,11 @@ class HeaderView: UIView,Themable
         text.font = "MuseoSans-900" as CFTypeRef
         text.fontSize = 30.0
         text.foregroundColor = UIColor.darkGray.cgColor
-        var bounds = self.bounds.insetBy(dx:16,dy:16)
-        bounds = text.measureText(inWidth: bounds.size.width)
+        let bounds = self.bounds
+        var sizeRect = text.measureText(inWidth: bounds.size.width)
         text.alignmentMode = "center"
-        let bottom = bounds.size.height + 16
-        text.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:16),top:LayoutFrame.Edge(fraction:0,offset:16),right:LayoutFrame.Edge(fraction:1,offset:-16),bottom:LayoutFrame.Edge(fraction:0,offset:bottom))
+        var height = sizeRect.size.height
+        text.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:16),top:LayoutFrame.Edge(fraction:0,offset:16),right:LayoutFrame.Edge(fraction:1,offset:-16),bottom:LayoutFrame.Edge(fraction:0,offset:16 + height + 16))
         self.layer.addSublayer(helpText)
         text.frame = text.layoutFrame!.rectIn(rect:self.bounds)
         helpText.string = self.help
@@ -133,11 +135,10 @@ class HeaderView: UIView,Themable
         helpText.foregroundColor = UIColor.darkGray.cgColor
         helpText.alignmentMode = kCAAlignmentJustified
         helpText.isWrapped = true
-        bounds = self.bounds.insetBy(dx:16,dy:16)
-        bounds = helpText.measureText(inWidth: bounds.size.width)
-        helpText.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:16),top:LayoutFrame.Edge(fraction:0,offset:bottom+8),right:LayoutFrame.Edge(fraction:1,offset:-16),bottom:LayoutFrame.Edge(fraction:0,offset: bottom + 8 + bounds.size.height + 8))
+        height += 16
+        sizeRect = helpText.measureText(inWidth: bounds.size.width)
+        helpText.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:16),top:LayoutFrame.Edge(fraction:0,offset:height),right:LayoutFrame.Edge(fraction:1,offset:-16),bottom:LayoutFrame.Edge(fraction:0,offset: height + 16 + sizeRect.size.height + 48))
         helpText.frame = helpText.layoutFrame!.rectIn(rect:bounds)
-        helpText.backgroundColor = UIColor.lime.cgColor
         self.invalidateIntrinsicContentSize()
         self.setNeedsLayout()
         }
