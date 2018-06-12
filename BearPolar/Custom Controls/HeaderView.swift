@@ -86,11 +86,20 @@ class HeaderView: UIView,Themable
     
     override var intrinsicContentSize: CGSize
         {
-        let bounds = self.bounds.insetBy(dx:16,dy:0)
+        let size = self.measure()
+        return(CGSize(width: UIViewNoIntrinsicMetric,height:size.height))
+        }
+        
+    private func measure() -> CGSize
+        {
+        let insets = Theme.insets
+        let bounds = self.bounds.insetBy(dx:insets.left,dy:0)
         let textRect = text.measureText(inWidth:bounds.size.width)
         let helpRect = helpText.measureText(inWidth:bounds.size.width)
-        let rect1 = TextWrangler.measure(string:help,usingFont:helpFont,inWidth:bounds.size.width)
-        return(CGSize(width: UIViewNoIntrinsicMetric,height:32 + textRect.height + 16 + helpRect.size.height + 48))
+        var height = insets.top + insets.bottom
+        height += insets.top + textRect.height + helpRect.height + insets.top
+        height += 16
+        return(CGSize(width:bounds.size.width,height:height))
         }
         
     private func initBorder()
@@ -116,6 +125,7 @@ class HeaderView: UIView,Themable
         
     private func initText()
         {
+        let insets = Theme.insets
         self.layer.addSublayer(text)
         text.string = self.heading
         text.font = "MuseoSans-900" as CFTypeRef
@@ -125,7 +135,7 @@ class HeaderView: UIView,Themable
         var sizeRect = text.measureText(inWidth: bounds.size.width)
         text.alignmentMode = "center"
         var height = sizeRect.size.height
-        text.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:16),top:LayoutFrame.Edge(fraction:0,offset:16),right:LayoutFrame.Edge(fraction:1,offset:-16),bottom:LayoutFrame.Edge(fraction:0,offset:16 + height + 16))
+        text.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:insets.left),top:LayoutFrame.Edge(fraction:0,offset:insets.top),right:LayoutFrame.Edge(fraction:1,offset:-insets.right),bottom:LayoutFrame.Edge(fraction:0,offset:insets.top + height + insets.bottom))
         self.layer.addSublayer(helpText)
         text.frame = text.layoutFrame!.rectIn(rect:self.bounds)
         helpText.string = self.help
@@ -135,9 +145,8 @@ class HeaderView: UIView,Themable
         helpText.foregroundColor = UIColor.darkGray.cgColor
         helpText.alignmentMode = kCAAlignmentJustified
         helpText.isWrapped = true
-        height += 16
         sizeRect = helpText.measureText(inWidth: bounds.size.width)
-        helpText.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:16),top:LayoutFrame.Edge(fraction:0,offset:height),right:LayoutFrame.Edge(fraction:1,offset:-16),bottom:LayoutFrame.Edge(fraction:0,offset: height + 16 + sizeRect.size.height + 48))
+        helpText.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:insets.left),top:LayoutFrame.Edge(fraction:0,offset:height),right:LayoutFrame.Edge(fraction:1,offset:-insets.right),bottom:LayoutFrame.Edge(fraction:0,offset: height + sizeRect.size.height + 48))
         helpText.frame = helpText.layoutFrame!.rectIn(rect:bounds)
         self.invalidateIntrinsicContentSize()
         self.setNeedsLayout()
