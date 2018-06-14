@@ -22,4 +22,21 @@ public struct TextWrangler
         layoutManager.glyphRange(for: textContainer)
         return(layoutManager.usedRect(for: textContainer).size)
         }
+        
+    public static func measure(string:String,usingFont font:UIFont,inWidth width:CGFloat,alignment:NSTextAlignment,lineBreakMode:NSLineBreakMode) -> CGSize
+        {
+        let textStorage = NSTextStorage(string: string)
+        let textContainer = NSTextContainer(size: CGSize(width:width,height:CGFloat.greatestFiniteMagnitude))
+        let layoutManager = NSLayoutManager()
+        layoutManager.addTextContainer(textContainer)
+        textStorage.addLayoutManager(layoutManager)
+        textStorage.addAttribute(.font, value: font, range: NSRange(location: 0, length: string.count))
+        let style = NSMutableParagraphStyle()
+        style.alignment = alignment
+        style.lineBreakMode = lineBreakMode
+        textStorage.addAttribute(.paragraphStyle, value: style, range: NSRange(location: 0, length: string.count))
+        textContainer.lineFragmentPadding = 0.0
+        layoutManager.glyphRange(for: textContainer)
+        return(layoutManager.usedRect(for: textContainer).size)
+        }
     }

@@ -31,7 +31,7 @@ class LaunchViewController: UIViewController
             title = "continue"
 //            actionButton.addTarget(self, action: #selector(onContinue) ,for: .touchDown)
             }
-        let text = NSAttributedString(string: title,attributes:[.font: UIFont(name:"MuseoSans-900",size:20)!,.foregroundColor: ThemePalette.shared.dominantColor])
+        let text = NSAttributedString(string: title,attributes:[.font: UIFont(name:"MuseoSans-900",size:20)!,.foregroundColor: Theme.shared.colorPalette.primaryColor])
         actionButton.setAttributedTitle(text, for: .normal)
         actionButton.addTarget(self, action: #selector(onJump) ,for: .touchDown)
         }

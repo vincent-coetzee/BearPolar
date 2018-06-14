@@ -20,7 +20,8 @@
 		BF1307F820CCEB790044E093 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1307F720CCEB790044E093 /* UIColor+Extensions.swift */; };
 		BF13080020CCFD5C0044E093 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1307FF20CCFD5C0044E093 /* UITextField.swift */; };
 		BF1CC24F20C8716200E3D97A /* EditableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1CC24E20C8716200E3D97A /* EditableView.swift */; };
-		BF1F352F20C220930021ECA1 /* ThemePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1F352E20C220930021ECA1 /* ThemePalette.swift */; };
+		BF31C23720D1A056006E07C4 /* ThemeItemDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31C23620D1A056006E07C4 /* ThemeItemDictionary.swift */; };
+		BF31C23920D1A201006E07C4 /* ThemeColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31C23820D1A201006E07C4 /* ThemeColorPalette.swift */; };
 		BF60135D20CE0C53008EBFB9 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60135C20CE0C53008EBFB9 /* CALayer+Extensions.swift */; };
 		BF60135F20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60135E20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift */; };
 		BF60136120CE2531008EBFB9 /* TextWrangler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60136020CE2531008EBFB9 /* TextWrangler.swift */; };
@@ -46,7 +47,6 @@
 		BF72C01320C31467000806F2 /* PINViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72C01220C31467000806F2 /* PINViewController.swift */; };
 		BF80DD8820CEF2E100360750 /* BearPolarMaskedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF80DD8720CEF2E100360750 /* BearPolarMaskedImageView.swift */; };
 		BF80DD8A20CF0B1400360750 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF80DD8920CF0B1400360750 /* Person.swift */; };
-		BF8A426720C833C600D8EE1E /* BorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8A426620C833C600D8EE1E /* BorderedTextField.swift */; };
 		BFA4695820C1A0F40038FC24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4695720C1A0F40038FC24 /* AppDelegate.swift */; };
 		BFA4695A20C1A0F40038FC24 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4695920C1A0F40038FC24 /* LaunchViewController.swift */; };
 		BFA4695D20C1A0F40038FC24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA4695B20C1A0F40038FC24 /* Main.storyboard */; };
@@ -59,7 +59,6 @@
 		BFA4697F20C1A19F0038FC24 /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4697E20C1A19F0038FC24 /* PrivateKey.swift */; };
 		BFA5461A20CC0405007385A7 /* InitAccessControlTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5461920CC0405007385A7 /* InitAccessControlTypeViewController.swift */; };
 		BFA5461C20CC050B007385A7 /* Themable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5461B20CC050B007385A7 /* Themable.swift */; };
-		BFA5462320CC2655007385A7 /* ThemeEntryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5462220CC2655007385A7 /* ThemeEntryKey.swift */; };
 		BFA5462520CC26D3007385A7 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5462420CC26D3007385A7 /* Theme.swift */; };
 		BFA5462720CC284E007385A7 /* BorderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5462620CC284E007385A7 /* BorderLayer.swift */; };
 		BFA5462920CC5795007385A7 /* ThemeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5462820CC5795007385A7 /* ThemeItem.swift */; };
@@ -106,8 +105,9 @@
 		BF1307F720CCEB790044E093 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		BF1307FF20CCFD5C0044E093 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		BF1CC24E20C8716200E3D97A /* EditableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableView.swift; sourceTree = "<group>"; };
-		BF1F352E20C220930021ECA1 /* ThemePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePalette.swift; sourceTree = "<group>"; };
 		BF1F354020C2261B0021ECA1 /* MuseoSans_100.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSans_100.otf; sourceTree = "<group>"; };
+		BF31C23620D1A056006E07C4 /* ThemeItemDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeItemDictionary.swift; sourceTree = "<group>"; };
+		BF31C23820D1A201006E07C4 /* ThemeColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorPalette.swift; sourceTree = "<group>"; };
 		BF60135C20CE0C53008EBFB9 /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
 		BF60135E20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATextLayer+Extensions.swift"; sourceTree = "<group>"; };
 		BF60136020CE2531008EBFB9 /* TextWrangler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWrangler.swift; sourceTree = "<group>"; };
@@ -133,7 +133,6 @@
 		BF72C01220C31467000806F2 /* PINViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINViewController.swift; sourceTree = "<group>"; };
 		BF80DD8720CEF2E100360750 /* BearPolarMaskedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearPolarMaskedImageView.swift; sourceTree = "<group>"; };
 		BF80DD8920CF0B1400360750 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		BF8A426620C833C600D8EE1E /* BorderedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextField.swift; sourceTree = "<group>"; };
 		BFA4695420C1A0F40038FC24 /* BearPolar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BearPolar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA4695720C1A0F40038FC24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFA4695920C1A0F40038FC24 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -150,7 +149,6 @@
 		BFA4697E20C1A19F0038FC24 /* PrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
 		BFA5461920CC0405007385A7 /* InitAccessControlTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitAccessControlTypeViewController.swift; sourceTree = "<group>"; };
 		BFA5461B20CC050B007385A7 /* Themable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themable.swift; sourceTree = "<group>"; };
-		BFA5462220CC2655007385A7 /* ThemeEntryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEntryKey.swift; sourceTree = "<group>"; };
 		BFA5462420CC26D3007385A7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		BFA5462620CC284E007385A7 /* BorderLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderLayer.swift; sourceTree = "<group>"; };
 		BFA5462820CC5795007385A7 /* ThemeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeItem.swift; sourceTree = "<group>"; };
@@ -338,9 +336,9 @@
 				BFA5462620CC284E007385A7 /* BorderLayer.swift */,
 				BFA5461B20CC050B007385A7 /* Themable.swift */,
 				BFA5462420CC26D3007385A7 /* Theme.swift */,
-				BFA5462220CC2655007385A7 /* ThemeEntryKey.swift */,
 				BFA5462820CC5795007385A7 /* ThemeItem.swift */,
-				BF1F352E20C220930021ECA1 /* ThemePalette.swift */,
+				BF31C23620D1A056006E07C4 /* ThemeItemDictionary.swift */,
+				BF31C23820D1A201006E07C4 /* ThemeColorPalette.swift */,
 			);
 			path = Theming;
 			sourceTree = "<group>";
@@ -351,7 +349,6 @@
 				BFE200A120CD8C33008F7D48 /* LayoutFrame.swift */,
 				BFE200A220CD8C33008F7D48 /* LayoutFrameEdge.swift */,
 				BF1CC24E20C8716200E3D97A /* EditableView.swift */,
-				BF8A426620C833C600D8EE1E /* BorderedTextField.swift */,
 				BF1307ED20CCB8910044E093 /* DecoratorView.swift */,
 				BFAA2B8520CC7BC700BE6950 /* HeaderView.swift */,
 				BF1307F120CCC2F50044E093 /* KeyboardController.swift */,
@@ -530,8 +527,8 @@
 				BFE2009C20CD7FC7008F7D48 /* LoginViewController.swift in Sources */,
 				BFE200A320CD8C34008F7D48 /* LayoutFrame.swift in Sources */,
 				BFA4697D20C1A1790038FC24 /* PublicKey.swift in Sources */,
-				BF8A426720C833C600D8EE1E /* BorderedTextField.swift in Sources */,
 				BFE200A620CD8C6C008F7D48 /* UIView+Extensions.swift in Sources */,
+				BF31C23920D1A201006E07C4 /* ThemeColorPalette.swift in Sources */,
 				BFE200A420CD8C34008F7D48 /* LayoutFrameEdge.swift in Sources */,
 				BF13080020CCFD5C0044E093 /* UITextField.swift in Sources */,
 				BFA4695A20C1A0F40038FC24 /* LaunchViewController.swift in Sources */,
@@ -546,7 +543,6 @@
 				BF1307F820CCEB790044E093 /* UIColor+Extensions.swift in Sources */,
 				BFDA9F4920C7B04B00CBF35B /* PINPadView.swift in Sources */,
 				BF1307F220CCC2F50044E093 /* KeyboardController.swift in Sources */,
-				BFA5462320CC2655007385A7 /* ThemeEntryKey.swift in Sources */,
 				BFDA9F4E20C7B94C00CBF35B /* CGPoint+Extensions.swift in Sources */,
 				BF60135D20CE0C53008EBFB9 /* CALayer+Extensions.swift in Sources */,
 				BF01E49220CD4D78005D4AF8 /* PanelView.swift in Sources */,
@@ -563,11 +559,11 @@
 				BF72C01320C31467000806F2 /* PINViewController.swift in Sources */,
 				BF01E49020CD4942005D4AF8 /* ImageLayer.swift in Sources */,
 				BFE200A820CD8D3A008F7D48 /* UIFont+Extensions.swift in Sources */,
+				BF31C23720D1A056006E07C4 /* ThemeItemDictionary.swift in Sources */,
 				BF60135F20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift in Sources */,
 				BFDA9F4C20C7B80200CBF35B /* CGRect+Extensions.swift in Sources */,
 				BF60136120CE2531008EBFB9 /* TextWrangler.swift in Sources */,
 				BF72C01120C30D5E000806F2 /* InitInformationViewController.swift in Sources */,
-				BF1F352F20C220930021ECA1 /* ThemePalette.swift in Sources */,
 				BFAA2B8620CC7BC700BE6950 /* HeaderView.swift in Sources */,
 				BFA5462520CC26D3007385A7 /* Theme.swift in Sources */,
 				BF60136320CE332E008EBFB9 /* FocusField.swift in Sources */,

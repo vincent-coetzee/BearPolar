@@ -67,7 +67,7 @@ public class PanelView:UIView
         padder.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         padder.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         padder.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        var lastPadder = padder
+        let lastPadder = padder
         messageLabel.text = message
         messageLabel.font = messageFont
         padder = PaddingView(width:8,height:16,view:messageLabel)
@@ -102,7 +102,7 @@ public class PanelView:UIView
     override public func prepareForInterfaceBuilder()
         {
         super.prepareForInterfaceBuilder()
-        ThemePalette.shared(for: type(of: self))
+        Theme.initSharedTheme(for: type(of: self))
         initComponents()
         }
         

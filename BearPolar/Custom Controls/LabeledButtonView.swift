@@ -51,9 +51,4 @@ class LabeledButtonView: LabeledHolderView
             button.layoutFrame = layoutFrame
             }
         }
-        
-    override func applyTheme(_ theme:Theme)
-        {
-        super.applyTheme(theme)
-        }
     }

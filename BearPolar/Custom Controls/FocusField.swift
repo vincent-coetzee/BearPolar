@@ -10,6 +10,7 @@ import Foundation
 
 public protocol FocusField
     {
+    func releaseFocus() -> Bool
     func didLoseFocus()
     func didGainFocus()
     }

@@ -23,9 +23,9 @@ class PINPadView: UIView,Themable
     
     typealias TextAttributes = [NSAttributedStringKey:Any]
     
-    public var themeKey:Theme.Key?
+    public var themeEntryKey:Theme.EntryKey
         {
-        return(Theme.Key.pinPad)
+        return(.pinPad)
         }
         
     public var PINEntryCompletion: (PINPadView,PIN) -> () = { view,pin in }
@@ -97,10 +97,10 @@ class PINPadView: UIView,Themable
         {
         var themeKey = "digits"
             
-        init(strokeColor:UIColor)
+        override init()
             {
             super.init()
-            self.strokeColor = strokeColor.cgColor
+            self.strokeColor = UIColor.red.cgColor
             self.lineWidth = 2
             self.fillColor = UIColor.clear.cgColor
             setNeedsLayout()
@@ -146,26 +146,26 @@ class PINPadView: UIView,Themable
         {
         super.awakeFromNib()
         initComponents()
-        self.applyTheme()
+        self.applyTheming()
         setNeedsLayout()
         }
         
-    func applyTheme(_ theme:Theme)
+    func apply(themeItem theme:ThemeItem)
         {
         theme["view"]?.apply(to: self)
         let border = theme["digits.border"] as! ThemeBorderItem
         for marker in markers
             {
-            marker.strokeColor = border.borderColor!.cgColor
-            marker.lineWidth = border.width!
+            marker.strokeColor = border.borderColor.cgColor
+            marker.lineWidth = border.borderWidth
             }
         let text = theme["keys.text"] as! ThemeTextItem
         let content = theme["keys.content"] as! ThemeContentItem
         for key in keys
             {
-            key.font = text.font!
-            key.text.foregroundColor = text.textColor?.cgColor
-            key.backgroundColor = content.backgroundColor?.cgColor
+            key.font = text.font
+            key.text.foregroundColor = text.textColor.cgColor
+            key.backgroundColor = content.backgroundColor.cgColor
             key.circle.fillColor = content.contentColor?.cgColor
             key.setNeedsLayout()
             }
@@ -175,7 +175,7 @@ class PINPadView: UIView,Themable
     private func initComponents()
         {
         self.backgroundColor = UIColor.clear
-        let textAttributes:TextAttributes = [.font: UIFont(name: ThemePalette.shared.KeypadFontName,size: 16)!,.foregroundColor: ThemePalette.shared.numberPadDigitColor]
+        let textAttributes:TextAttributes = [.font: UIFont.systemFont(ofSize:10),.foregroundColor: UIColor.black]
         for keyEntry in keyEntries
             {
             makeKeyLayer(for: keyEntry,textAttributes: textAttributes,filled: !(keyEntry == " "))
@@ -189,8 +189,7 @@ class PINPadView: UIView,Themable
         
     private func makeDigitMarkerLayer()
         {
-        let color = ThemePalette.shared.highlightColor
-        let markerLayer = DigitMarkerLayer(strokeColor: color)
+        let markerLayer = DigitMarkerLayer()
         markers.append(markerLayer)
         self.layer.addSublayer(markerLayer)
         }
@@ -317,9 +316,9 @@ class PINPadView: UIView,Themable
     override func prepareForInterfaceBuilder()
         {
         super.prepareForInterfaceBuilder()
-        ThemePalette.shared(for: type(of: self))
+        Theme.initSharedTheme(for: type(of: self))
         initComponents()
-        applyTheme()
+        applyTheming()
         self.setNeedsLayout()
         }
     }

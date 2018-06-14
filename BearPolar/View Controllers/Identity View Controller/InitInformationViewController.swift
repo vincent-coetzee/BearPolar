@@ -14,7 +14,7 @@ class InitInformationViewController: UIViewController,UIAdaptivePresentationCont
     override func viewDidLoad() 
         {
         super.viewDidLoad()
-        self.title = "Information"
+        self.navigationItem.title = "Information"
         let controller = InformationViewController()
         let contentView = controller.view!
         let scrollView = UIScrollView(frame: .zero)
