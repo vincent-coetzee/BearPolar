@@ -12,6 +12,11 @@ import UIKit
     
 public class Theme
     {
+    public static var insets:UIEdgeInsets
+        {
+        return(UIEdgeInsets(top:10,left:10,bottom:10,right:10))
+        }
+        
     public enum Alignment
         {
         case left
@@ -41,13 +46,16 @@ public class Theme
     public enum Key:String
         {
         case null
+        case palette
         case pinPad
         case header
         case navigationBar
         case textEntry
         case lime
         case tangerine
-        case aqua
+        case coral
+        case midnight
+        case canary
         }
     
     public typealias TextAttributes = [NSAttributedStringKey:Any]

@@ -8,10 +8,35 @@
 
 import UIKit
 
+public class TextColumn:NSObject
+    {
+    var leftOffset:CGFloat = 0
+    var rightOffset:CGFloat = 0
+    
+    var columnWidth:CGFloat
+        {
+        return(rightOffset - leftOffset)
+        }
+        
+    func share(leftOffset:CGFloat,rightOffset:CGFloat)
+        {
+        if leftOffset > 0 && self.leftOffset == 0
+            {
+            self.leftOffset = leftOffset
+            }
+        else
+            {
+            self.leftOffset = min(self.leftOffset,leftOffset)
+            }
+        self.rightOffset = max(self.rightOffset,rightOffset)
+        }
+    }
+    
 @IBDesignable
 class TextEntryView: UIView,Themable,FocusField
     {
-    private static let TapAnimationDuration:CFTimeInterval = 10.0
+    
+    private static let TapAnimationDuration:CFTimeInterval = 0.3
     
     override class var layerClass:AnyClass
         {
@@ -19,6 +44,7 @@ class TextEntryView: UIView,Themable,FocusField
         }
         
     @IBOutlet var keyboardController:KeyboardController!
+    @IBOutlet var sharedColumn:TextColumn!
     
     @IBOutlet var nextField:TextEntryView?
         {
@@ -34,8 +60,13 @@ class TextEntryView: UIView,Themable,FocusField
     var font:UIFont = UIFont(name:"MuseoSans-700",size:20)!
     var highlightColor:UIColor = .clear
     var textColor:UIColor = .black
-    var inStartEditingAnimation:Bool = false
+    var hasFocus:Bool = false
     var oldFrame:CGRect = .zero
+    var fontName:String = ""
+    var fontSize:CGFloat = 0
+    var standardSize:CGFloat = 16
+    var smallSize:CGFloat = 10
+    var entryField:UITextField?
     
     public var themeKey:Theme.Key?
         {
@@ -47,16 +78,22 @@ class TextEntryView: UIView,Themable,FocusField
         didSet
             {
             fieldLabel.string = label
+            setNeedsLayout()
             }
         }
         
     func didGainFocus()
         {
+        hasFocus = true
+        let bounds = self.bounds.insetBy(dx:16,dy:8)
+        entryField = UITextField(frame:bounds)
+        entryField!.textColor = UIColor.coral
+        entryField!.font = font
+        self.addSubview(entryField!)
         }
         
     func didLoseFocus()
         {
-        startEndEditingAnimation()
         }
         
     fileprivate func initComponents() 
@@ -84,6 +121,8 @@ class TextEntryView: UIView,Themable,FocusField
         theme["border"]?.apply(to: (self.layer as! CAShapeLayer))
         theme["label.text"]?.apply(to: fieldLabel)
         font = (theme["label.text"] as! ThemeTextItem).font!
+        fontName = font.fontName
+        fontSize = font.pointSize
         textColor = (theme["label.text"] as! ThemeTextItem).textColor!
         }
         
@@ -107,7 +146,7 @@ class TextEntryView: UIView,Themable,FocusField
         let size = measure()
         let bounds = self.bounds
         let fontSize = font.pointSize
-        fieldLabel.frame = CGRect(x:16,y:16.0,width:size.width,height:size.height)
+        fieldLabel.frame = CGRect(x:sharedColumn.leftOffset,y:16.0,width:sharedColumn!.columnWidth,height:size.height)
         let offset = size.width + fontSize*3
         let width = bounds.size.width - offset - fontSize
         //field.frame = CGRect(x:offset,y:fontSize,width:width,height: fontSize)
@@ -121,28 +160,27 @@ class TextEntryView: UIView,Themable,FocusField
         
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) 
         {
-        if !inStartEditingAnimation
+        guard !hasFocus else
             {
-            keyboardController.activeField = self
-            startBeginEditingAnimation()
+            return
             }
+        keyboardController.activeField = self
+        startGainFocusAnimation()
         }
         
     private func cloneLabelField() -> CATextLayer
         {
         let copy = CATextLayer()
         copy.foregroundColor = highlightColor.cgColor
-        copy.font = fieldLabel.font
-        copy.fontSize = fieldLabel.fontSize
-        copy.string = fieldLabel.string
+        copy.font = fontName as CFTypeRef
+        copy.fontSize = fontSize
+        copy.string = label
         copy.frame = fieldLabel.frame
         return(copy)
         }
         
-    private func startEndEditingAnimation()
+    private func startLoseFocusAnimation()
         {
-        inStartEditingAnimation = true
-        let duration = CFTimeInterval(0.3)
         let copy = cloneLabelField()
         fieldLabel.removeFromSuperlayer()
         self.layer.addSublayer(copy)
@@ -152,172 +190,82 @@ class TextEntryView: UIView,Themable,FocusField
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
-            let mediaTime = CACurrentMediaTime() + 0.2
-            CATransaction.begin()
-            CATransaction.setDisableActions(true)
-            CATransaction.setAnimationDuration(duration)
-                copy.fontSize = fieldLabel.fontSize
-                let fromPosition = copy.frame.centerPoint
-                let movement = CABasicAnimation(keyPath: "position")
-                print("copy fromPosition = \(fromPosition) toPosition \(toPosition)")
-                movement.beginTime = mediaTime + 0.1
-                movement.toValue = toPosition
-                movement.fromValue = fromPosition
-                movement.isRemovedOnCompletion = true
-                movement.fillMode = kCAFillModeBoth
-                copy.add(movement,forKey:nil)
-            CATransaction.setCompletionBlock
-                {
-                print("move ended copy.position=\(copy.position) to \(toPosition)")
-                copy.setValue(toPosition,forKey:"position")
-                }
-            CATransaction.commit()
-            copy.position = toPosition
-            CATransaction.begin()
-            CATransaction.setAnimationDuration(duration)
-            CATransaction.setDisableActions(true)
-                copy.font = fieldLabel.font
-                let resizing = CABasicAnimation(keyPath: "transform")
-                let toTransform = CATransform3DMakeScale(scaleFactor,scaleFactor,1)
-                resizing.toValue = toTransform
-                resizing.fromValue = copy.model().transform
-                resizing.isRemovedOnCompletion = true
-                resizing.beginTime = mediaTime
-                resizing.fillMode = kCAFillModeBoth
-                copy.add(resizing, forKey: nil)
-                CATransaction.setCompletionBlock
-                    {
-                    print("size ended \(copy.position)")
-                    copy.setValue(CATransform3DMakeScale(scaleFactor,scaleFactor,1),forKeyPath:"transform")
-                    }
-            CATransaction.commit()
-            copy.transform = toTransform
-            CATransaction.setCompletionBlock
+        CATransaction.setAnimationDuration(TextEntryView.TapAnimationDuration)
+        let fromPosition = copy.frame.centerPoint
+        copy.position = toPosition
+        let movement = CABasicAnimation(keyPath: "position")
+        movement.toValue = toPosition
+        movement.fromValue = fromPosition
+        movement.isRemovedOnCompletion = true
+        movement.fillMode = kCAFillModeForwards
+        copy.add(movement,forKey:nil)
+        copy.font = fieldLabel.font
+        let fromTransform = copy.transform
+        let toTransform = CATransform3DMakeScale(scaleFactor,scaleFactor,1)
+        copy.transform = toTransform
+        let resizing = CABasicAnimation(keyPath: "transform")
+        resizing.toValue = toTransform
+        resizing.fromValue = fromTransform
+        resizing.isRemovedOnCompletion = true
+        resizing.fillMode = kCAFillModeBoth
+        copy.add(resizing, forKey: nil)
+        CATransaction.setCompletionBlock
             {
-            print("primary ended")
             self.fieldLabel = copy
             }
         CATransaction.commit()
         }
         
-    private func startBeginEditingAnimation()
+    private func startGainFocusAnimation()
         {
-        inStartEditingAnimation = true
-        let duration = CFTimeInterval(0.3)
-        let copy = cloneLabelField()
         oldFrame = fieldLabel.frame
+        let copy = cloneLabelField()
         fieldLabel.removeFromSuperlayer()
         self.layer.addSublayer(copy)
-        let scaleFactor:CGFloat = 0.75
-        let newSize = (copy.frame.size * CGPoint(x:scaleFactor,y:scaleFactor)) / 2.0
-        let toPosition = CGPoint(x:8 + newSize.width,y:2+newSize.height)
+        let scaleFactor = smallSize/standardSize
+        let targetSize = copy.frame.size * scaleFactor
         copy.removeAllAnimations()
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
-            let mediaTime = CACurrentMediaTime() + 0.2
-            CATransaction.begin()
-            CATransaction.setDisableActions(true)
-            CATransaction.setAnimationDuration(duration)
-                copy.fontSize = fieldLabel.fontSize
-                let fromPosition = copy.frame.centerPoint
-                let movement = CABasicAnimation(keyPath: "position")
-                print("copy fromPosition = \(fromPosition) toPosition \(toPosition)")
-                movement.beginTime = mediaTime + 0.1
-                movement.toValue = toPosition
-                movement.fromValue = fromPosition
-                movement.isRemovedOnCompletion = true
-                movement.fillMode = kCAFillModeBoth
-                copy.add(movement,forKey:nil)
-            CATransaction.setCompletionBlock
-                {
-                print("move ended copy.position=\(copy.position) to \(toPosition)")
-//                copy.setValue(toPosition,forKey:"position")
-                }
-            CATransaction.commit()
-            copy.position = toPosition
-            CATransaction.begin()
-            CATransaction.setAnimationDuration(duration)
-            CATransaction.setDisableActions(true)
-                copy.font = fieldLabel.font
-                let resizing = CABasicAnimation(keyPath: "transform")
-                let toTransform = CATransform3DMakeScale(scaleFactor,scaleFactor,1)
-                resizing.toValue = toTransform
-                resizing.fromValue = copy.model().transform
-                resizing.isRemovedOnCompletion = true
-                resizing.beginTime = mediaTime
-                resizing.fillMode = kCAFillModeBoth
-                copy.add(resizing, forKey: nil)
-                CATransaction.setCompletionBlock
-                    {
-                    print("size ended \(copy.position)")
-//                    copy.setValue(CATransform3DMakeScale(scaleFactor,scaleFactor,1),forKeyPath:"transform")
-                    }
-            CATransaction.commit()
-            copy.transform = toTransform
-            CATransaction.setCompletionBlock
+        CATransaction.setAnimationDuration(TextEntryView.TapAnimationDuration)
+        copy.fontSize = fieldLabel.fontSize
+        let fromPosition = copy.position
+        var toPosition = fromPosition
+        toPosition.y = 2 + targetSize.height/2.0
+        toPosition.x = copy.frame.origin.x + targetSize.width/2.0
+        copy.position = toPosition
+        let movement = CABasicAnimation(keyPath: "position")
+        movement.toValue = toPosition
+        movement.fromValue = fromPosition
+        movement.isRemovedOnCompletion = true
+        movement.fillMode = kCAFillModeForwards
+        copy.add(movement,forKey:nil)
+        let toTransform = CATransform3DMakeScale(scaleFactor,scaleFactor,1)
+        let fromTransform = copy.transform
+        copy.transform = toTransform
+        let resizing = CABasicAnimation(keyPath: "transform")
+        resizing.toValue = toTransform
+        resizing.fromValue = fromTransform
+        resizing.isRemovedOnCompletion = true
+        resizing.fillMode = kCAFillModeBoth
+        copy.add(resizing, forKey: nil)
+        CATransaction.setCompletionBlock
             {
-            print("primary ended")
-//                copy.position = toPosition
-//                copy.transform = CATransform3DMakeScale(scaleFactor,scaleFactor,1)
             self.fieldLabel = copy
             }
         CATransaction.commit()
-        }
-        
-    func textAsLetters(text:String) -> [String]
-        {
-        var letters = [String]()
-        for letter in text
-            {
-            letters.append(String(letter))
-            }
-        return(letters)
-        }
-        
-    func letterSizes(letters:[String],font:UIFont) -> [CGSize]
-        {
-        var sizes:[CGSize] = []
-        let attributes:[NSAttributedStringKey:Any] = [.font:font]
-        for letter in letters
-            {
-            sizes.append(letter.size(withAttributes: attributes))
-            }
-        return(sizes)
-        }
-        
-    func textLayers(startingAt:CGPoint,letters:[String],sizes:[CGSize],font:UIFont,color:UIColor) -> [CATextLayer]
-        {
-        var layers:[CATextLayer] = []
-        let rawColor = color.cgColor
-        let fontName = font.fontName
-        let fontSize = font.pointSize
-        var offset = startingAt
-        var index = 0
-        for letter in letters
-            {
-            let layer = CATextLayer()
-            layer.contentsScale = UIScreen.main.nativeScale
-            layer.foregroundColor = rawColor
-            layer.string = letter
-            layer.font = fontName as CFTypeRef
-            layer.fontSize = fontSize
-            layer.frame = CGRect(origin:offset,size:sizes[index])
-            offset.x += sizes[index].width
-            layers.append(layer)
-            }
-        return(layers)
         }
         
     func measure() -> CGSize
         {
         let attributes:[NSAttributedStringKey:Any] = [.font:font]
         let size = label.size(withAttributes:attributes)
-        if let aField = nextField
+        if let column = sharedColumn
             {
-            return(size.maximum(of:aField.measure()))
+            column.share(leftOffset:16,rightOffset:size.width + 32)
             }
-        return(size)
+        return(CGSize(width:sharedColumn!.columnWidth,height:size.height))
         }
         
     required init?(coder aDecoder: NSCoder) 

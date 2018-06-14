@@ -10,6 +10,8 @@ import UIKit
 
 class KeyboardController: NSObject 
     {
+    @IBOutlet var scrollView:UIScrollView!
+    
     var activeField:FocusField?
         {
         didSet(oldField)

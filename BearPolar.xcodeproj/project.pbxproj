@@ -44,6 +44,8 @@
 		BF72C00E20C30516000806F2 /* MuseoSans_900_Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF72BFFF20C30515000806F2 /* MuseoSans_900_Italic.otf */; };
 		BF72C01120C30D5E000806F2 /* InitInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72C01020C30D5E000806F2 /* InitInformationViewController.swift */; };
 		BF72C01320C31467000806F2 /* PINViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72C01220C31467000806F2 /* PINViewController.swift */; };
+		BF80DD8820CEF2E100360750 /* BearPolarMaskedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF80DD8720CEF2E100360750 /* BearPolarMaskedImageView.swift */; };
+		BF80DD8A20CF0B1400360750 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF80DD8920CF0B1400360750 /* Person.swift */; };
 		BF8A426720C833C600D8EE1E /* BorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8A426620C833C600D8EE1E /* BorderedTextField.swift */; };
 		BFA4695820C1A0F40038FC24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4695720C1A0F40038FC24 /* AppDelegate.swift */; };
 		BFA4695A20C1A0F40038FC24 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4695920C1A0F40038FC24 /* LaunchViewController.swift */; };
@@ -129,6 +131,8 @@
 		BF72BFFF20C30515000806F2 /* MuseoSans_900_Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSans_900_Italic.otf; sourceTree = "<group>"; };
 		BF72C01020C30D5E000806F2 /* InitInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitInformationViewController.swift; sourceTree = "<group>"; };
 		BF72C01220C31467000806F2 /* PINViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINViewController.swift; sourceTree = "<group>"; };
+		BF80DD8720CEF2E100360750 /* BearPolarMaskedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearPolarMaskedImageView.swift; sourceTree = "<group>"; };
+		BF80DD8920CF0B1400360750 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		BF8A426620C833C600D8EE1E /* BorderedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextField.swift; sourceTree = "<group>"; };
 		BFA4695420C1A0F40038FC24 /* BearPolar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BearPolar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA4695720C1A0F40038FC24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				BFDA9F4320C790AA00CBF35B /* PIN.swift */,
+				BF80DD8920CF0B1400360750 /* Person.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				BFE2009B20CD7FC7008F7D48 /* LoginViewController.swift */,
+				BF80DD8720CEF2E100360750 /* BearPolarMaskedImageView.swift */,
 			);
 			path = "Login View Controller";
 			sourceTree = "<group>";
@@ -546,8 +552,10 @@
 				BF01E49220CD4D78005D4AF8 /* PanelView.swift in Sources */,
 				BF1307F020CCC2120044E093 /* TextEntryView.swift in Sources */,
 				BF1307EE20CCB8910044E093 /* DecoratorView.swift in Sources */,
+				BF80DD8820CEF2E100360750 /* BearPolarMaskedImageView.swift in Sources */,
 				BF72BFEC20C2DA4E000806F2 /* InitAccessControlViewController.swift in Sources */,
 				BF1307F520CCCAB50044E093 /* InformationViewController.swift in Sources */,
+				BF80DD8A20CF0B1400360750 /* Person.swift in Sources */,
 				BFDA9F4420C790AA00CBF35B /* PIN.swift in Sources */,
 				BFA4695820C1A0F40038FC24 /* AppDelegate.swift in Sources */,
 				BFA5462720CC284E007385A7 /* BorderLayer.swift in Sources */,

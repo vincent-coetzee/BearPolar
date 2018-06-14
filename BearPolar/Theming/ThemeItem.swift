@@ -181,6 +181,20 @@ public class ThemeChildItem:ThemeItem
         }
     }
     
+public class ThemeColorPalette:ThemeItem
+    {
+    let darkerPrimaryColor:UIColor
+    let primaryColor:UIColor
+    let lighterPrimaryColor:UIColor
+    
+    init(primary:UIColor,darker:UIColor? = nil,lighter:UIColor? = nil)
+        {
+        primaryColor = primary
+        darkerPrimaryColor = darker == nil ? primaryColor.darker : darker!
+        lighterPrimaryColor = lighter == nil ? primaryColor.lighter : lighter!
+        }
+    }
+    
 public class ThemeContentItem:ThemeItem
     {
     let backgroundColor:UIColor?
