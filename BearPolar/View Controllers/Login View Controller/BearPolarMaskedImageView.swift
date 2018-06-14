@@ -29,7 +29,7 @@ public class BearPolarMaskedImageView:UIView
     func initContents()
         {
         self.backgroundColor = UIColor.black
-        backColorLayer.backgroundColor = UIColor.lime.cgColor
+        backColorLayer.backgroundColor = Theme.shared.colorPalette.primaryColor.cgColor
         self.layer.addSublayer(backColorLayer)
         let bundle = Bundle(for: type(of: self))
         backMask.contents = UIImage(named:"BearMask",in: bundle, compatibleWith: nil)?.cgImage

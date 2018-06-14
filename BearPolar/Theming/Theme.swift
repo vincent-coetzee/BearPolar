@@ -76,9 +76,10 @@ public class Theme
         case header
         case textEntry
         case navigationBar
+        case labeledButton
         }
     
-    public static let DefaultThemeKey:Theme.Key = .lime
+    public static let DefaultThemeKey:Theme.Key = .tangerine
     
     private static var defaultBundle:Bundle = Bundle.main
     private static var themes:[Theme.Key:Theme] = [:]
@@ -175,6 +176,11 @@ public class Theme
         items["textEntry.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1)
         items["textEntry.label.text"] = ThemeItem.text(textColor: colorPalette.textColor,font:themeFont(weight:.weight500,size:16))
         items["textEntry.field.text"] = ThemeItem.text(textColor: colorPalette.textColor,font:themeFont(weight:.weight500,size:16))
+        items["labeledButton.content"] = ThemeItem.content(backgroundColor: .white)
+        items["labeledButton.button.content"] = ThemeItem.content(backgroundColor: colorPalette.primaryColor)
+        items["labeledButton.button.text"] = ThemeItem.text(textColor: .white,font:themeFont(weight:.weight500,size:16))
+        items["labeledButton.label.text"] = ThemeItem.text(textColor: .darkGray,font:themeFont(weight:.weight500,size:16))
+        items["labeledButton.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1)
         }
         
     private func testRatios()

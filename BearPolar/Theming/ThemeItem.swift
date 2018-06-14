@@ -141,6 +141,15 @@ public class ThemeItem
         return(item)
         }
         
+    func borderItem(at path:ThemeItem.Path) -> ThemeBorderItem
+        {
+        guard let item = self[path] as? ThemeBorderItem else
+            {
+            fatalError("No item found for path \(path)")
+            }
+        return(item)
+        }
+        
     func contentItem(at path:ThemeItem.Path) -> ThemeContentItem
         {
         guard let item = self[path] as? ThemeContentItem else
@@ -155,6 +164,11 @@ public class ThemeItem
         }
         
     func apply(to label:UILabel)
+        {
+        
+        }
+        
+    func apply(to button:UIButton)
         {
         
         }
@@ -302,6 +316,11 @@ public class ThemeContentItem:ThemeItem
         {
         layer.backgroundColor = backgroundColor.cgColor
         }
+        
+    override func apply(to button:UIButton)
+        {
+        button.backgroundColor = backgroundColor
+        }
     }
     
 public class ThemeTextItem:ThemeItem
@@ -334,6 +353,11 @@ public class ThemeTextItem:ThemeItem
         label.textColor = textColor
         label.font = font
         label.textAlignment = alignment.nsTextAlignment
+        }
+        
+    override func apply(to button:UIButton)
+        {
+        button.setTitleColor(textColor, for: .normal)
         }
     }
     

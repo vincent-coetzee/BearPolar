@@ -76,7 +76,6 @@
 		BFE2009E20CD89C3008F7D48 /* LabeledHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2009D20CD89C3008F7D48 /* LabeledHolderView.swift */; };
 		BFE200A020CD8B9E008F7D48 /* LabeledButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2009F20CD8B9E008F7D48 /* LabeledButtonView.swift */; };
 		BFE200A320CD8C34008F7D48 /* LayoutFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE200A120CD8C33008F7D48 /* LayoutFrame.swift */; };
-		BFE200A420CD8C34008F7D48 /* LayoutFrameEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE200A220CD8C33008F7D48 /* LayoutFrameEdge.swift */; };
 		BFE200A620CD8C6C008F7D48 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE200A520CD8C6C008F7D48 /* UIView+Extensions.swift */; };
 		BFE200A820CD8D3A008F7D48 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE200A720CD8D3A008F7D48 /* UIFont+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -166,7 +165,6 @@
 		BFE2009D20CD89C3008F7D48 /* LabeledHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledHolderView.swift; sourceTree = "<group>"; };
 		BFE2009F20CD8B9E008F7D48 /* LabeledButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledButtonView.swift; sourceTree = "<group>"; };
 		BFE200A120CD8C33008F7D48 /* LayoutFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutFrame.swift; sourceTree = "<group>"; };
-		BFE200A220CD8C33008F7D48 /* LayoutFrameEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutFrameEdge.swift; sourceTree = "<group>"; };
 		BFE200A520CD8C6C008F7D48 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		BFE200A720CD8D3A008F7D48 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -347,7 +345,6 @@
 			isa = PBXGroup;
 			children = (
 				BFE200A120CD8C33008F7D48 /* LayoutFrame.swift */,
-				BFE200A220CD8C33008F7D48 /* LayoutFrameEdge.swift */,
 				BF1CC24E20C8716200E3D97A /* EditableView.swift */,
 				BF1307ED20CCB8910044E093 /* DecoratorView.swift */,
 				BFAA2B8520CC7BC700BE6950 /* HeaderView.swift */,
@@ -529,7 +526,6 @@
 				BFA4697D20C1A1790038FC24 /* PublicKey.swift in Sources */,
 				BFE200A620CD8C6C008F7D48 /* UIView+Extensions.swift in Sources */,
 				BF31C23920D1A201006E07C4 /* ThemeColorPalette.swift in Sources */,
-				BFE200A420CD8C34008F7D48 /* LayoutFrameEdge.swift in Sources */,
 				BF13080020CCFD5C0044E093 /* UITextField.swift in Sources */,
 				BFA4695A20C1A0F40038FC24 /* LaunchViewController.swift in Sources */,
 				BF1CC24F20C8716200E3D97A /* EditableView.swift in Sources */,

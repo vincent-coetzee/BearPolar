@@ -11,47 +11,49 @@ import UIKit
 class LabeledHolderView: UIView,Themable
     {
     internal var childView:UIView?
+    internal var labelLayer = CATextLayer()
+    internal var labelFont:UIFont = UIFont.applicationFont(weight: .weight500, size: 20)
+    
+    @IBOutlet var sharedColumn:TextColumn!
     
     override class var layerClass:AnyClass
         {
         return(CAShapeLayer.self)
         }
-        
-    @IBOutlet var keyboardController:KeyboardController!
     
-    @IBOutlet var nextField:TextEntryView?
+    public var themeEntryKey:Theme.EntryKey?
+        {
+        return(.textEntry)
+        }
+        
+    @IBInspectable var labelFraction:CGFloat = 0.5
         {
         didSet
             {
-            setNeedsLayout()
+            self.setNeedsLayout()
             }
         }
         
-    //@IBOutlet var field:UITextField!
-    
-    var fieldLabel = CATextLayer()
-    var font:UIFont = UIFont(name:"MuseoSans-700",size:20)!
-    
-    public var themeEntryKey:Theme.EntryKey
+    @IBInspectable var childFraction:CGFloat = 0.25
         {
-        return(.textEntry)
+        didSet
+            {
+            self.setNeedsLayout()
+            }
         }
         
     @IBInspectable var label:String = "Label"
         {
         didSet
             {
-            fieldLabel.string = label
+            labelLayer.string = label
             }
         }
         
     internal func initComponents() 
         {
-        self.layer.addSublayer(fieldLabel)
-        fieldLabel.string = label
-        fieldLabel.font = font.fontName as CFTypeRef
-        fieldLabel.fontSize = font.pointSize
-        fieldLabel.foregroundColor = UIColor.lightGray.cgColor
+        self.layer.addSublayer(labelLayer)
+        labelLayer.string = label
         initBorder()
         applyTheming()
         setNeedsLayout()
@@ -65,9 +67,9 @@ class LabeledHolderView: UIView,Themable
         
     func apply(themeItem:ThemeItem)
         {
-        themeItem["content"]?.apply(to: self)
-        themeItem["border"]?.apply(to: (self.layer as! CAShapeLayer))
-        themeItem["label.text"]?.apply(to: fieldLabel)
+        themeItem.contentItem(at: "content").apply(to: self)
+        themeItem.borderItem(at: "border").apply(to: (self.layer as! CAShapeLayer))
+        themeItem.textItem(at: "label.text").apply(to: labelLayer)
         }
         
     func initBorder()
@@ -87,27 +89,27 @@ class LabeledHolderView: UIView,Themable
     override func layoutSubviews()
         {
         super.layoutSubviews()
-        guard let child = childView,let layoutFrame = child.layoutFrame else
-            {
-            return
-            }
-        child.frame = layoutFrame.rectIn(rect:self.bounds)
+        let size = measure()
+        labelLayer.frame = CGRect(x:16,y:16.0,width: (self.bounds.size.width * labelFraction) - 16,height:size.height)
         }
     
+    @discardableResult
+    func measure() -> CGSize
+        {
+        if sharedColumn != nil
+            {            
+            let size = TextWrangler.measure(string: label, usingFont: labelFont, inWidth: 10000)
+            sharedColumn!.share(leftOffset:16,rightOffset:size.width + 32)
+            return(CGSize(width:sharedColumn!.columnWidth,height:size.height))
+            }
+        let width = (self.bounds.size.width * labelFraction) - 16
+        let size = TextWrangler.measure(string: label, usingFont: labelFont, inWidth: width)
+        return(CGSize(width:width,height:size.height))
+        }
+        
     public override var intrinsicContentSize:CGSize
         {
         return(CGSize(width: UIViewNoIntrinsicMetric,height: 48))
-        }
-        
-    func measure() -> CGSize
-        {
-        let attributes:[NSAttributedStringKey:Any] = [.font:font]
-        let size = label.size(withAttributes:attributes)
-        if let aField = nextField
-            {
-            return(size.maximum(of:aField.measure()))
-            }
-        return(size)
         }
         
     required init?(coder aDecoder: NSCoder) 
@@ -119,6 +121,7 @@ class LabeledHolderView: UIView,Themable
     override func prepareForInterfaceBuilder()
         {
         super.prepareForInterfaceBuilder()
+        Theme.initSharedTheme(for: type(of: self))
         initComponents()
         }
         
