@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CF0928AFA0EC6A54D0F30C7 /* Pods_BearPolarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7742AC05A045724A53231F57 /* Pods_BearPolarTests.framework */; };
 		BF01E49020CD4942005D4AF8 /* ImageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01E48F20CD4942005D4AF8 /* ImageLayer.swift */; };
 		BF01E49220CD4D78005D4AF8 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01E49120CD4D78005D4AF8 /* PanelView.swift */; };
 		BF03191A20C46F4C0006CF0C /* FiraSans-Two.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF03191920C46F4B0006CF0C /* FiraSans-Two.ttf */; };
@@ -47,6 +48,9 @@
 		BF72C01320C31467000806F2 /* PINViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72C01220C31467000806F2 /* PINViewController.swift */; };
 		BF80DD8820CEF2E100360750 /* BearPolarMaskedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF80DD8720CEF2E100360750 /* BearPolarMaskedImageView.swift */; };
 		BF80DD8A20CF0B1400360750 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF80DD8920CF0B1400360750 /* Person.swift */; };
+		BF9B087820D2A1BB006D5A92 /* MaskingImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B087720D2A1BB006D5A92 /* MaskingImageButton.swift */; };
+		BF9B087C20D2BF09006D5A92 /* ChoiceMatrixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B087B20D2BF09006D5A92 /* ChoiceMatrixView.swift */; };
+		BF9B087E20D2C17B006D5A92 /* UIEdgeInsets+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B087D20D2C17B006D5A92 /* UIEdgeInsets+Extensions.swift */; };
 		BFA4695820C1A0F40038FC24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4695720C1A0F40038FC24 /* AppDelegate.swift */; };
 		BFA4695A20C1A0F40038FC24 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4695920C1A0F40038FC24 /* LaunchViewController.swift */; };
 		BFA4695D20C1A0F40038FC24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA4695B20C1A0F40038FC24 /* Main.storyboard */; };
@@ -91,6 +95,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		291014D68E5161006CE06718 /* Pods-BearPolarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearPolarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BearPolarTests/Pods-BearPolarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		63BEB57CFF2DE8CEB7C48A74 /* Pods-BearPolar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearPolar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BearPolar/Pods-BearPolar.debug.xcconfig"; sourceTree = "<group>"; };
+		7742AC05A045724A53231F57 /* Pods_BearPolarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BearPolarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5B1B358F01550559CE9581C /* Pods_BearPolar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BearPolar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF01E48F20CD4942005D4AF8 /* ImageLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLayer.swift; sourceTree = "<group>"; };
 		BF01E49120CD4D78005D4AF8 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		BF03191920C46F4B0006CF0C /* FiraSans-Two.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Two.ttf"; sourceTree = "<group>"; };
@@ -132,6 +140,9 @@
 		BF72C01220C31467000806F2 /* PINViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINViewController.swift; sourceTree = "<group>"; };
 		BF80DD8720CEF2E100360750 /* BearPolarMaskedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearPolarMaskedImageView.swift; sourceTree = "<group>"; };
 		BF80DD8920CF0B1400360750 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		BF9B087720D2A1BB006D5A92 /* MaskingImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskingImageButton.swift; sourceTree = "<group>"; };
+		BF9B087B20D2BF09006D5A92 /* ChoiceMatrixView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceMatrixView.swift; sourceTree = "<group>"; };
+		BF9B087D20D2C17B006D5A92 /* UIEdgeInsets+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Extensions.swift"; sourceTree = "<group>"; };
 		BFA4695420C1A0F40038FC24 /* BearPolar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BearPolar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA4695720C1A0F40038FC24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFA4695920C1A0F40038FC24 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +178,8 @@
 		BFE200A120CD8C33008F7D48 /* LayoutFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutFrame.swift; sourceTree = "<group>"; };
 		BFE200A520CD8C6C008F7D48 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		BFE200A720CD8D3A008F7D48 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		C0239CD13BDC7051859BA92C /* Pods-BearPolarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearPolarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BearPolarTests/Pods-BearPolarTests.release.xcconfig"; sourceTree = "<group>"; };
+		F092A7C78FFF2DA1F39851F9 /* Pods-BearPolar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearPolar.release.xcconfig"; path = "Pods/Target Support Files/Pods-BearPolar/Pods-BearPolar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,12 +194,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CF0928AFA0EC6A54D0F30C7 /* Pods_BearPolarTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07737E587C82AF58987A5DC8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5B1B358F01550559CE9581C /* Pods_BearPolar.framework */,
+				7742AC05A045724A53231F57 /* Pods_BearPolarTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		66E98CB5B441A7881265FC9F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				63BEB57CFF2DE8CEB7C48A74 /* Pods-BearPolar.debug.xcconfig */,
+				F092A7C78FFF2DA1F39851F9 /* Pods-BearPolar.release.xcconfig */,
+				291014D68E5161006CE06718 /* Pods-BearPolarTests.debug.xcconfig */,
+				C0239CD13BDC7051859BA92C /* Pods-BearPolarTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BF01E48C20CD4792005D4AF8 /* Launch View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +277,8 @@
 				BFA4695620C1A0F40038FC24 /* BearPolar */,
 				BFA4696B20C1A0F80038FC24 /* BearPolarTests */,
 				BFA4695520C1A0F40038FC24 /* Products */,
+				66E98CB5B441A7881265FC9F /* Pods */,
+				07737E587C82AF58987A5DC8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -344,18 +380,20 @@
 		BFD8EE7020C2C2BF009AB3C6 /* Custom Controls */ = {
 			isa = PBXGroup;
 			children = (
-				BFE200A120CD8C33008F7D48 /* LayoutFrame.swift */,
-				BF1CC24E20C8716200E3D97A /* EditableView.swift */,
+				BF9B087B20D2BF09006D5A92 /* ChoiceMatrixView.swift */,
 				BF1307ED20CCB8910044E093 /* DecoratorView.swift */,
-				BFAA2B8520CC7BC700BE6950 /* HeaderView.swift */,
-				BF1307F120CCC2F50044E093 /* KeyboardController.swift */,
-				BFD8EE7120C2C2E5009AB3C6 /* NavigationBar.swift */,
-				BF1307EF20CCC2120044E093 /* TextEntryView.swift */,
-				BF01E48F20CD4942005D4AF8 /* ImageLayer.swift */,
-				BFE2009420CD59CC008F7D48 /* PaddingView.swift */,
-				BFE2009D20CD89C3008F7D48 /* LabeledHolderView.swift */,
-				BFE2009F20CD8B9E008F7D48 /* LabeledButtonView.swift */,
+				BF1CC24E20C8716200E3D97A /* EditableView.swift */,
 				BF60136220CE332E008EBFB9 /* FocusField.swift */,
+				BFAA2B8520CC7BC700BE6950 /* HeaderView.swift */,
+				BF01E48F20CD4942005D4AF8 /* ImageLayer.swift */,
+				BF1307F120CCC2F50044E093 /* KeyboardController.swift */,
+				BFE2009F20CD8B9E008F7D48 /* LabeledButtonView.swift */,
+				BFE2009D20CD89C3008F7D48 /* LabeledHolderView.swift */,
+				BFE200A120CD8C33008F7D48 /* LayoutFrame.swift */,
+				BF9B087720D2A1BB006D5A92 /* MaskingImageButton.swift */,
+				BFD8EE7120C2C2E5009AB3C6 /* NavigationBar.swift */,
+				BFE2009420CD59CC008F7D48 /* PaddingView.swift */,
+				BF1307EF20CCC2120044E093 /* TextEntryView.swift */,
 			);
 			path = "Custom Controls";
 			sourceTree = "<group>";
@@ -384,6 +422,7 @@
 				BF60135C20CE0C53008EBFB9 /* CALayer+Extensions.swift */,
 				BF60135E20CE0D5C008EBFB9 /* CATextLayer+Extensions.swift */,
 				BF60136020CE2531008EBFB9 /* TextWrangler.swift */,
+				BF9B087D20D2C17B006D5A92 /* UIEdgeInsets+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -421,6 +460,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFA4697420C1A0F80038FC24 /* Build configuration list for PBXNativeTarget "BearPolarTests" */;
 			buildPhases = (
+				167F506E812109B06C9C3665 /* [CP] Check Pods Manifest.lock */,
 				BFA4696420C1A0F80038FC24 /* Sources */,
 				BFA4696520C1A0F80038FC24 /* Frameworks */,
 				BFA4696620C1A0F80038FC24 /* Resources */,
@@ -514,6 +554,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		167F506E812109B06C9C3665 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BearPolarTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BFA4695020C1A0F40038FC24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -532,6 +593,7 @@
 				BFA5461C20CC050B007385A7 /* Themable.swift in Sources */,
 				BFA4697B20C1A14E0038FC24 /* CryptographicKey.swift in Sources */,
 				BFA5461A20CC0405007385A7 /* InitAccessControlTypeViewController.swift in Sources */,
+				BF9B087E20D2C17B006D5A92 /* UIEdgeInsets+Extensions.swift in Sources */,
 				BFE2009820CD61FA008F7D48 /* AlertViewController.swift in Sources */,
 				BFE2009520CD59CC008F7D48 /* PaddingView.swift in Sources */,
 				BFA5462920CC5795007385A7 /* ThemeItem.swift in Sources */,
@@ -548,6 +610,7 @@
 				BF72BFEC20C2DA4E000806F2 /* InitAccessControlViewController.swift in Sources */,
 				BF1307F520CCCAB50044E093 /* InformationViewController.swift in Sources */,
 				BF80DD8A20CF0B1400360750 /* Person.swift in Sources */,
+				BF9B087820D2A1BB006D5A92 /* MaskingImageButton.swift in Sources */,
 				BFDA9F4420C790AA00CBF35B /* PIN.swift in Sources */,
 				BFA4695820C1A0F40038FC24 /* AppDelegate.swift in Sources */,
 				BFA5462720CC284E007385A7 /* BorderLayer.swift in Sources */,
@@ -560,6 +623,7 @@
 				BFDA9F4C20C7B80200CBF35B /* CGRect+Extensions.swift in Sources */,
 				BF60136120CE2531008EBFB9 /* TextWrangler.swift in Sources */,
 				BF72C01120C30D5E000806F2 /* InitInformationViewController.swift in Sources */,
+				BF9B087C20D2BF09006D5A92 /* ChoiceMatrixView.swift in Sources */,
 				BFAA2B8620CC7BC700BE6950 /* HeaderView.swift in Sources */,
 				BFA5462520CC26D3007385A7 /* Theme.swift in Sources */,
 				BF60136320CE332E008EBFB9 /* FocusField.swift in Sources */,

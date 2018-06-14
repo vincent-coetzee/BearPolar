@@ -6,4 +6,17 @@
 //  Copyright © 2018 MacSemantics. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UIEdgeInsets
+    {
+    public var totalHorizontalInset:CGFloat
+        {
+        return(left + right)
+        }
+        
+    public var totalVerticallInset:CGFloat
+        {
+        return(top + bottom)
+        }
+    }

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,102 +50,131 @@
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="Qud-hJ-WD2" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="114" width="562" height="48"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2f-Zn-mYB">
-                            <rect key="frame" x="368" y="10" width="186" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Tap Here to Enter Your Age">
-                                <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                        </button>
-                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="label" value="Age"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="keyboardController" destination="t2h-4G-YXR" id="vZx-oP-tP4"/>
-                        <outlet property="nextField" destination="NZw-Ze-eeA" id="qDc-Z2-rSS"/>
                         <outlet property="sharedColumn" destination="jFn-HM-GkK" id="kXP-DW-nqn"/>
                     </connections>
                 </view>
-                <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="NZw-Ze-eeA" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="161" width="562" height="48"/>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="160" translatesAutoresizingMaskIntoConstraints="NO" id="hRl-qn-fJ3" customClass="LabeledHolderView" customModule="BearPolar" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="162" width="562" height="166"/>
                     <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GSN-Xs-e86">
-                            <rect key="frame" x="254" y="11" width="300" height="29"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Cis Male"/>
-                                <segment title="Cis Female"/>
-                                <segment title="Trans"/>
-                            </segments>
-                            <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </segmentedControl>
+                        <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="IN6-n8-9IE" customClass="ChoiceMatrixView" customModule="BearPolar" customModuleProvider="target">
+                            <rect key="frame" x="274" y="8" width="280" height="150"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="280" id="jRG-IE-ENU"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="entryText" value="Cis Male,Cis Female,Trans Male,Trans Female,Other"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="IN6-n8-9IE" secondAttribute="bottom" constant="8" id="fsX-XD-QTo"/>
+                        <constraint firstAttribute="trailing" secondItem="IN6-n8-9IE" secondAttribute="trailing" constant="8" id="vgP-P4-a6q"/>
+                        <constraint firstItem="IN6-n8-9IE" firstAttribute="top" secondItem="hRl-qn-fJ3" secondAttribute="top" constant="8" id="yyI-KW-Dv4"/>
+                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="label" value="Gender"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="keyboardController" destination="t2h-4G-YXR" id="WPA-9Z-9gU"/>
-                        <outlet property="sharedColumn" destination="jFn-HM-GkK" id="moO-AV-pHS"/>
+                        <outlet property="childView" destination="IN6-n8-9IE" id="TDs-9r-aj0"/>
                     </connections>
                 </view>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="3jL-ol-8FG" customClass="LabeledHolderView" customModule="BearPolar" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="328" width="562" height="166"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="f8F-6E-dtb" customClass="ChoiceMatrixView" customModule="BearPolar" customModuleProvider="target">
+                            <rect key="frame" x="274" y="8" width="280" height="150"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="280" id="dmg-xk-MRk"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="entryText" value="Bipolar Disorder Type 1,Bipolar Disorder Type 2,Clinical Depression,Mood Related Disorder,I don't know"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="f8F-6E-dtb" secondAttribute="bottom" constant="8" id="aa9-Y7-eHE"/>
+                        <constraint firstItem="f8F-6E-dtb" firstAttribute="top" secondItem="3jL-ol-8FG" secondAttribute="top" constant="8" id="hWm-x6-13M"/>
+                        <constraint firstAttribute="trailing" secondItem="f8F-6E-dtb" secondAttribute="trailing" constant="8" id="o3b-a7-05h"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="label" value="Condition"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <view contentMode="scaleToFill" verticalCompressionResistancePriority="752" placeholderIntrinsicWidth="562" placeholderIntrinsicHeight="90" translatesAutoresizingMaskIntoConstraints="NO" id="sSD-Gl-BQb" customClass="HeaderView" customModule="BearPolar" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="208" width="562" height="90"/>
+                    <rect key="frame" x="0.0" y="495" width="562" height="90"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="heading" value="Medication"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="help">
-                            <string key="value">If you wish to track how well you are managing your medication, you may complete the following section ( which is of course, like most things in BearPolar, quite optional). Completing this section entails defining all your medications, and when and how you take them. BearPolar can also generate notifications to remind you if you forget to take particular medications.</string>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kHx-DJ-tG9" customClass="LabeledButtonView" customModule="BearPolar" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="298" width="562" height="48"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="48" id="XmC-Ji-DkN"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="label" value="Add a Medication"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="+"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="help" value="To track your adherence to your medication regimen or to be sent reminders regarding your medication, add medications."/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ace-9c-MUB" customClass="LabeledHolderView" customModule="BearPolar" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="346" width="562" height="48"/>
+                    <rect key="frame" x="0.0" y="586" width="562" height="48"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JO4-GK-OHw" customClass="MaskingImageButton" customModule="BearPolar" customModuleProvider="target">
+                            <rect key="frame" x="524" y="9" width="30" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="C6q-VS-BO8"/>
+                                <constraint firstAttribute="width" constant="30" id="SBh-B6-XLY"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                    <color key="value" name="Color.PureGreen"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="maskImageName" value="Mask.ButtonDefault"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="4mH-jr-TD7"/>
+                        <constraint firstAttribute="trailing" secondItem="JO4-GK-OHw" secondAttribute="trailing" constant="8" id="Hpa-oe-PEy"/>
+                        <constraint firstItem="JO4-GK-OHw" firstAttribute="centerY" secondItem="Ace-9c-MUB" secondAttribute="centerY" id="XTJ-NU-XUC"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="label" value="No Medication"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="childView" destination="JO4-GK-OHw" id="DOU-Ld-3BP"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Ace-9c-MUB" firstAttribute="top" secondItem="kHx-DJ-tG9" secondAttribute="bottom" id="0Li-la-fBJ"/>
+                <constraint firstItem="hRl-qn-fJ3" firstAttribute="top" secondItem="Qud-hJ-WD2" secondAttribute="bottom" id="1NG-oz-1JJ"/>
+                <constraint firstItem="3jL-ol-8FG" firstAttribute="top" secondItem="hRl-qn-fJ3" secondAttribute="bottom" id="5NJ-8B-2ig"/>
+                <constraint firstItem="sSD-Gl-BQb" firstAttribute="top" secondItem="3jL-ol-8FG" secondAttribute="bottom" constant="1" id="5sd-PM-XAh"/>
                 <constraint firstItem="Ode-Oo-QO8" firstAttribute="leading" secondItem="wyN-dr-RlA" secondAttribute="leading" id="6zU-eI-JUW"/>
-                <constraint firstItem="NZw-Ze-eeA" firstAttribute="trailing" secondItem="Ode-Oo-QO8" secondAttribute="trailing" id="DB7-uH-A7o"/>
+                <constraint firstItem="Ace-9c-MUB" firstAttribute="top" secondItem="sSD-Gl-BQb" secondAttribute="bottom" constant="1" id="EK1-o7-TXp"/>
                 <constraint firstItem="Qud-hJ-WD2" firstAttribute="top" secondItem="Ode-Oo-QO8" secondAttribute="bottom" constant="-1" id="FKr-Ku-W19"/>
-                <constraint firstItem="NZw-Ze-eeA" firstAttribute="width" secondItem="Qud-hJ-WD2" secondAttribute="width" id="GgB-Du-FRv"/>
+                <constraint firstItem="Qud-hJ-WD2" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Fmc-bk-2bV"/>
                 <constraint firstItem="Ode-Oo-QO8" firstAttribute="trailing" secondItem="wyN-dr-RlA" secondAttribute="trailing" id="J8Q-da-Hvg"/>
                 <constraint firstItem="Ace-9c-MUB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LFT-oa-UCh"/>
-                <constraint firstItem="NZw-Ze-eeA" firstAttribute="leading" secondItem="Qud-hJ-WD2" secondAttribute="leading" id="MPZ-HD-aC7"/>
+                <constraint firstItem="hRl-qn-fJ3" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="LqZ-67-DhQ"/>
                 <constraint firstItem="wyN-dr-RlA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OPT-gR-mGl"/>
-                <constraint firstItem="NZw-Ze-eeA" firstAttribute="top" secondItem="Qud-hJ-WD2" secondAttribute="bottom" constant="-1" id="STZ-Ch-3fg"/>
+                <constraint firstItem="3jL-ol-8FG" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="TdK-Be-i7o"/>
                 <constraint firstItem="Qud-hJ-WD2" firstAttribute="leading" secondItem="Ode-Oo-QO8" secondAttribute="leading" id="X4v-9k-vcM"/>
-                <constraint firstItem="kHx-DJ-tG9" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="a6s-PO-mUi"/>
                 <constraint firstItem="Ace-9c-MUB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="b5m-eC-Loz"/>
-                <constraint firstItem="kHx-DJ-tG9" firstAttribute="top" secondItem="sSD-Gl-BQb" secondAttribute="bottom" id="bj7-Qc-MnJ"/>
-                <constraint firstItem="kHx-DJ-tG9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fLa-1F-e15"/>
-                <constraint firstItem="sSD-Gl-BQb" firstAttribute="top" secondItem="NZw-Ze-eeA" secondAttribute="bottom" constant="-1" id="gqC-Tf-mFe"/>
+                <constraint firstItem="3jL-ol-8FG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="i1P-kY-Wqd"/>
                 <constraint firstItem="wyN-dr-RlA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jYS-8r-FoI"/>
                 <constraint firstItem="sSD-Gl-BQb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jfl-GE-o2f"/>
-                <constraint firstItem="NZw-Ze-eeA" firstAttribute="trailing" secondItem="Qud-hJ-WD2" secondAttribute="trailing" id="jiY-Eh-NuU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wyN-dr-RlA" secondAttribute="trailing" id="m62-Xh-8CK"/>
+                <constraint firstItem="hRl-qn-fJ3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nyK-oT-1sa"/>
                 <constraint firstItem="Ode-Oo-QO8" firstAttribute="top" secondItem="wyN-dr-RlA" secondAttribute="bottom" constant="-1" id="owp-6d-fvO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sSD-Gl-BQb" secondAttribute="trailing" id="rJJ-SI-8xd"/>
+                <constraint firstItem="Qud-hJ-WD2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="y3i-DO-OpW"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -153,4 +183,9 @@
         <customObject id="jFn-HM-GkK" customClass="TextColumn" customModule="BearPolar" customModuleProvider="target"/>
         <customObject id="t2h-4G-YXR" customClass="KeyboardController" customModule="BearPolar" customModuleProvider="target"/>
     </objects>
+    <resources>
+        <namedColor name="Color.PureGreen">
+            <color red="0.0" green="0.65098039215686276" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

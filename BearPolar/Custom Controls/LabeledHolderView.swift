@@ -8,11 +8,11 @@
 
 import UIKit
 
+@IBDesignable
 class LabeledHolderView: UIView,Themable
     {
-    internal var childView:UIView?
     internal var labelLayer = CATextLayer()
-    internal var labelFont:UIFont = UIFont.applicationFont(weight: .weight500, size: 20)
+    internal var labelFont:UIFont = UIFont.applicationFont(weight: .weight500, size: 16)
     
     @IBOutlet var sharedColumn:TextColumn!
     
@@ -23,9 +23,18 @@ class LabeledHolderView: UIView,Themable
     
     public var themeEntryKey:Theme.EntryKey?
         {
-        return(.textEntry)
+        return(.labeledButton)
         }
         
+    @IBOutlet var childView:UIView!
+        {
+        didSet
+            {
+            self.invalidateIntrinsicContentSize()
+            self.setNeedsLayout()
+            }
+        }
+    
     @IBInspectable var labelFraction:CGFloat = 0.5
         {
         didSet
@@ -47,13 +56,19 @@ class LabeledHolderView: UIView,Themable
         didSet
             {
             labelLayer.string = label
+            labelLayer.setNeedsDisplay()
+            setNeedsLayout()
+            setNeedsDisplay()
             }
         }
         
     internal func initComponents() 
         {
         self.layer.addSublayer(labelLayer)
-        labelLayer.string = label
+        labelLayer.string = "This Label"
+        labelLayer.font = labelFont.fontName as CFTypeRef
+        labelLayer.fontSize = labelFont.pointSize
+        labelLayer.foregroundColor = UIColor.darkGray.cgColor
         initBorder()
         applyTheming()
         setNeedsLayout()
@@ -91,6 +106,7 @@ class LabeledHolderView: UIView,Themable
         super.layoutSubviews()
         let size = measure()
         labelLayer.frame = CGRect(x:16,y:16.0,width: (self.bounds.size.width * labelFraction) - 16,height:size.height)
+        initBorder()
         }
     
     @discardableResult
@@ -109,7 +125,21 @@ class LabeledHolderView: UIView,Themable
         
     public override var intrinsicContentSize:CGSize
         {
-        return(CGSize(width: UIViewNoIntrinsicMetric,height: 48))
+        var height:CGFloat = 16
+        
+        if let view = childView 
+            {
+            let childSize = view.intrinsicContentSize
+            if childSize.height != UIViewNoIntrinsicMetric
+                {
+                height += childSize.height
+                }
+            }
+        else
+            {
+            height += 16
+            }
+        return(CGSize(width: UIViewNoIntrinsicMetric,height: height))
         }
         
     required init?(coder aDecoder: NSCoder) 

@@ -18,6 +18,7 @@ class NavigationBar: UINavigationBar,Themable
     override public func awakeFromNib()
         {
         super.awakeFromNib()
+        prefersLargeTitles = true
         applyTheming()
         }
         

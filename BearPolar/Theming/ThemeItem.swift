@@ -96,9 +96,9 @@ public class ThemeItem
             }
         }
     
-    class func navigationBar(tint:UIColor,barTint:UIColor,titleAttributes:Theme.TextAttributes? = nil) -> ThemeItem
+    class func navigationBar(tint:UIColor,barTint:UIColor,titleAttributes:Theme.TextAttributes? = nil,prefersLargeTitles:Bool = false,largeTitleAttributes:Theme.TextAttributes?=nil) -> ThemeItem
         {
-        return(ThemeNavigationBarItem(tint:tint,barTint:barTint,titleAttributes:titleAttributes))
+        return(ThemeNavigationBarItem(tint:tint,barTint:barTint,titleAttributes:titleAttributes,prefersLargeTitles:prefersLargeTitles,largeTitleAttributes:largeTitleAttributes))
         }
         
     class func text(textColor:UIColor = .black,font:UIFont = UIFont.systemFont(ofSize:12),alignment:Theme.Alignment = .left,wrapped:Bool = false) -> ThemeItem
@@ -132,6 +132,15 @@ public class ThemeItem
             }
         }
         
+    func item<T>(at path:ThemeItem.Path) -> T
+        {
+        guard let item = self[path] as? T else
+            {
+            fatalError("No item found for path \(path)")
+            }
+        return(item)
+        }
+        
     func textItem(at path:ThemeItem.Path) -> ThemeTextItem
         {
         guard let item = self[path] as? ThemeTextItem else
@@ -153,6 +162,15 @@ public class ThemeItem
     func contentItem(at path:ThemeItem.Path) -> ThemeContentItem
         {
         guard let item = self[path] as? ThemeContentItem else
+            {
+            fatalError("No item found for path \(path)")
+            }
+        return(item)
+        }
+        
+    func containerItem(at path:ThemeItem.Path) -> ThemeContainerItem
+        {
+        guard let item = self[path] as? ThemeContainerItem else
             {
             fatalError("No item found for path \(path)")
             }
@@ -224,19 +242,32 @@ public class ThemeNavigationBarItem:ThemeItem
     let tint:UIColor?
     let barTint:UIColor?
     let titleAttributes:Theme.TextAttributes?
+    let prefersLargeTitles:Bool
+    let largeTitleAttributes:Theme.TextAttributes?
     
-    init(tint:UIColor?,barTint:UIColor?,titleAttributes:Theme.TextAttributes?)
+    init(tint:UIColor,barTint:UIColor,titleAttributes:Theme.TextAttributes?,prefersLargeTitles:Bool,largeTitleAttributes:Theme.TextAttributes?)
         {
         self.tint = tint
         self.barTint = barTint
         self.titleAttributes = titleAttributes
+        self.prefersLargeTitles = prefersLargeTitles
+        self.largeTitleAttributes = largeTitleAttributes
         }
         
     override func apply(to bar:UINavigationBar)
         {
         bar.tintColor = tint
         bar.barTintColor = barTint
-        bar.titleTextAttributes = titleAttributes
+        if self.prefersLargeTitles
+            {
+            bar.prefersLargeTitles = true
+            bar.largeTitleTextAttributes = largeTitleAttributes
+            }
+        else
+            {
+            bar.prefersLargeTitles = true
+            bar.titleTextAttributes = titleAttributes
+            }
         }
     }
     

@@ -68,6 +68,7 @@ public class Theme
         case coral
         case midnight
         case canary
+        case green
         }
         
     public enum EntryKey:String
@@ -77,9 +78,10 @@ public class Theme
         case textEntry
         case navigationBar
         case labeledButton
+        case choiceMatrix
         }
     
-    public static let DefaultThemeKey:Theme.Key = .tangerine
+    public static let DefaultThemeKey:Theme.Key = .green
     
     private static var defaultBundle:Bundle = Bundle.main
     private static var themes:[Theme.Key:Theme] = [:]
@@ -111,6 +113,7 @@ public class Theme
         initTheme(key:.canary,colorPalette: ThemeColorPalette(primary: .canary))
         initTheme(key:.midnight,colorPalette: ThemeColorPalette(primary: .midnight))
         initTheme(key:.lime,colorPalette: ThemeColorPalette(primary: .lime))
+        initTheme(key:.green,colorPalette: ThemeColorPalette(primary: .yellowGreen))
         themes[.lime]?.testRatios()
         }
         
@@ -171,16 +174,24 @@ public class Theme
         items["header.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1)
         items["header.heading"] = ThemeItem.text(textColor: .black,font:UIFont.boldSystemFont(ofSize: 16),alignment: .center)
         items["header.help"] = ThemeItem.text(textColor: colorPalette.textColor,font:UIFont.boldSystemFont(ofSize: 12))
-        items["navigationBar"] = ThemeItem.navigationBar(tint:.black,barTint: colorPalette.primaryColor,titleAttributes: [.foregroundColor: UIColor.black])
+        let attributes:Theme.TextAttributes = [.font: themeFont(weight:.weight900,size:28),.foregroundColor: UIColor.white]
+        items["navigationBar"] = ThemeItem.navigationBar(tint:.black,barTint: colorPalette.primaryColor,prefersLargeTitles:true,largeTitleAttributes: attributes)
         items["textEntry.content"] = ThemeItem.content(backgroundColor:.white,highlightColor: colorPalette.primaryColor)
         items["textEntry.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1)
         items["textEntry.label.text"] = ThemeItem.text(textColor: colorPalette.textColor,font:themeFont(weight:.weight500,size:16))
         items["textEntry.field.text"] = ThemeItem.text(textColor: colorPalette.textColor,font:themeFont(weight:.weight500,size:16))
+        items["textEntry.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1)
         items["labeledButton.content"] = ThemeItem.content(backgroundColor: .white)
         items["labeledButton.button.content"] = ThemeItem.content(backgroundColor: colorPalette.primaryColor)
         items["labeledButton.button.text"] = ThemeItem.text(textColor: .white,font:themeFont(weight:.weight500,size:16))
         items["labeledButton.label.text"] = ThemeItem.text(textColor: .darkGray,font:themeFont(weight:.weight500,size:16))
         items["labeledButton.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1)
+        items["choiceMatrix.content"] = ThemeItem.content(backgroundColor: colorPalette.primaryColor)
+        items["choiceMatrix.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1,radius:6)
+        items["choiceMatrix.entry.normal.text"] = ThemeItem.text(textColor: .darkGray,font:themeFont(weight:.weight500,size:16))
+        items["choiceMatrix.entry.normal.content"] = ThemeItem.content(backgroundColor: colorPalette.primaryColor)
+        items["choiceMatrix.entry.selection.text"] = ThemeItem.text(textColor: .white,font:themeFont(weight:.weight900,size:20))
+        items["choiceMatrix.entry.selection.content"] = ThemeItem.content(backgroundColor: .lime)
         }
         
     private func testRatios()
@@ -206,6 +217,12 @@ public class Theme
         let darkGreenHSB = UIColor.gray.hsbComponents
         print("Gray HSB\(darkGreenHSB)")
         let newColor = UIColor.lime.tweakedToContrast(against: .white)
+        }
+        
+    public func image(named: String) -> UIImage
+        {
+        let image = UIImage(named: named,in: Theme.defaultBundle,compatibleWith: nil)!
+        return(image)
         }
         
     subscript(_ inputKey:Theme.EntryKey) -> ThemeItem?
