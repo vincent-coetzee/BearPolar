@@ -29,7 +29,7 @@ class LabeledButtonView: LabeledHolderView
         }
         
     public var onTapped:(LabeledButtonView) -> () = { _ in }
-    private var textAttributes:[NSAttributedString.Key:Any] = [:]
+    private var textAttributes:[NSAttributedStringKey:Any] = [:]
     
     private var button:UIButton
         {

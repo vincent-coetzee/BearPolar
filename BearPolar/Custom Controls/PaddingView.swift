@@ -27,7 +27,7 @@ public class PaddingView:UIView
         view.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: paddingX).isActive = true
         }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
