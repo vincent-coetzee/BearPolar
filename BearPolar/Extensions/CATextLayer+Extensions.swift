@@ -15,6 +15,14 @@ extension CATextLayer
         return(UIFont(name: self.font as! String,size:self.fontSize)!)
         }
         
+        
+    public func setUIFont(_ newFont:UIFont)
+        {
+        self.font = newFont.fontName as CFTypeRef
+        self.fontSize = newFont.pointSize
+        }
+        
+        
     var textAttributes:[NSAttributedStringKey:Any]
         {
         return([.font: self.uiFont,.foregroundColor: UIColor(cgColor: self.foregroundColor!)])

@@ -15,12 +15,14 @@ public extension UIColor
         let hue:CGFloat
         let saturation:CGFloat
         let brightness:CGFloat
+        let alpha:CGFloat
         
-        init(hue:CGFloat,saturation:CGFloat,brightness:CGFloat)
+        init(hue:CGFloat,saturation:CGFloat,brightness:CGFloat,alpha:CGFloat)
             {
             self.hue = hue
             self.brightness = brightness
             self.saturation = saturation
+            self.alpha = alpha
             }
         }
         
@@ -98,10 +100,14 @@ public extension UIColor
     var rgbaComponents:RGBA
         {
         let pieces = self.cgColor.components!
+        if pieces.count == 2
+            {
+            return(RGBA(red:pieces[0],green:pieces[0],blue:pieces[0],alpha:pieces[1]))
+            }
         return(RGBA(red:pieces[0],green:pieces[1],blue:pieces[2],alpha:pieces[3]))
         }
         
-    func alphaMixed(with color:UIColor,proportion:CGFloat) -> UIColor
+    func alphaMixed(with color:UIColor,proportionOfSelf proportion:CGFloat) -> UIColor
         {
         let fraction1 = max(0.0,min(proportion,1.0))
         let fraction2 = 1.0 - fraction1
@@ -147,7 +153,66 @@ public extension UIColor
             saturation = 1.0 - (rgbMin / rgbMax)
             }
         hue = hue / 360.0
-        return(HSB(hue:hue,saturation:saturation,brightness:brightness))
+        return(HSB(hue:hue,saturation:saturation,brightness:brightness,alpha: components.alpha))
+        }
+        
+    var perceivedBrightness:CGFloat
+        {
+        let pieces = rgbaComponents
+        let (r,g,b) = (pieces.red*pieces.red,pieces.green*pieces.green,pieces.blue*pieces.blue)
+        let perceivedBrightness = sqrt(0.241*r + 0.691*g + 0.068*b)
+        return(perceivedBrightness)
+        }
+        
+    var luminosity:CGFloat
+        {
+        let rgba = rgbaComponents
+        let (r,g,b) = (pow(rgba.red,2.2),pow(rgba.green,2.2),pow(rgba.blue,2.2))
+        let luminosity = 0.2126*r + 0.7152*g + 0.00722*b 
+        let perceivedBrightness = sqrt(0.241*r + 0.691*g + 0.068*b)
+        return(perceivedBrightness)
+        }
+        
+    func luminosityContrastRatio(with color:UIColor) -> CGFloat
+        {
+        let l1 = self.luminosity
+        let l2 = color.luminosity
+        let ratio = (max(l1,l2)+0.05) / (min(l1,l2)+0.05)
+        return(ratio)
+        }
+        
+    func tweakedToContrast(against other:UIColor) -> UIColor
+        {
+        let targetRatio:CGFloat = 3.0
+        let maximumMix:CGFloat = 1.0
+        
+        let contrastRatio = self.contrastRatio(with:other)
+        if contrastRatio >= targetRatio
+            {
+            return(self)
+            }
+        let mixInColor = other.perceivedBrightness > self.perceivedBrightness ? UIColor.black : UIColor.white
+        let ratio = min((targetRatio - contrastRatio),targetRatio) / targetRatio
+        let delta = 1.0 - ratio
+        print("self contrastRatio = \(contrastRatio)")
+        let newColor = self.alphaMixed(with: mixInColor, proportionOfSelf: ratio)
+        let newContrastRatio = newColor.contrastRatio(with: other)
+        print("newColor contrastRatio = \(newContrastRatio)")
+        return(newColor)
+        }
+        
+    func contrastsPoorly(with: UIColor) -> Bool
+        {
+        return(self.contrastRatio(with:with) < 3.0)
+        }
+        
+    func contrastRatio(with toColor:UIColor) -> CGFloat
+        {
+        let pb1 = self.perceivedBrightness
+        let pb2 = toColor.perceivedBrightness
+        let (l1,l2) = pb1 > pb2 ? (pb1,pb2) : (pb2,pb1)
+        let contrastRatio = (l1+0.05)/(l2 + 0.05)
+        return(contrastRatio)
         }
         
     var lighter:UIColor
@@ -169,12 +234,12 @@ public extension UIColor
         
     var blacker:UIColor
         {
-        return(self.alphaMixed(with:.fullBlack,proportion:0.8333))
+        return(self.alphaMixed(with:.fullBlack,proportionOfSelf:0.8333))
         }
         
     var whiter:UIColor
         {
-        return(self.alphaMixed(with:.fullWhite,proportion:0.8333))
+        return(self.alphaMixed(with:.fullWhite,proportionOfSelf:0.8333))
         }
         
     var slightlyDarker:UIColor
@@ -189,7 +254,7 @@ public extension UIColor
         
     var muchDarker:UIColor
         {
-        return(self.alphaMixed(with:.fullBlack,proportion:0.5))
+        return(self.alphaMixed(with:.fullBlack,proportionOfSelf:0.5))
         }
         
     var paler:UIColor

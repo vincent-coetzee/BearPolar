@@ -10,37 +10,118 @@ import UIKit
     
 public class ThemeItem
     {
+    public struct Path:Hashable,ExpressibleByStringLiteral
+        {
+        public typealias StringLiteralType = String
+        
+        private var items:[String] = []
+        
+        public var hashValue:Int
+            {
+            if items.count == 0
+                {
+                return(0)
+                }
+            var hashValue = items[0].hashValue
+            for index in 1..<items.count
+                {
+                hashValue ^= items[index].hashValue
+                }
+            return(hashValue)
+            }
+            
+        public var firstPart:String
+            {
+            return(items[0])
+            }
+            
+        public var stringValue:String
+            {
+            return(items.joined(separator: "."))
+            }
+            
+        public var keyExcludingFirst:ThemeItem.Path
+            {
+            return(ThemeItem.Path(items:[String](items.dropFirst())))
+            }
+            
+        public var keyExcludingLast:ThemeItem.Path
+            {
+            return(ThemeItem.Path(items:[String](items.dropLast())))
+            }
+            
+        public var lastKey:ThemeItem.Path
+            {
+            return(ThemeItem.Path(items:[items[items.count-1]]))
+            }
+            
+        fileprivate init(items:[String])
+            {
+            self.items = items
+            }
+            
+        var isEmpty:Bool
+            {
+            return(items.isEmpty)
+            }
+            
+        var hasMultiple:Bool
+            {
+            return(items.count > 1)
+            }
+            
+        var isSingle:Bool
+            {
+            return(items.count == 1)
+            }
+            
+        var count:Int
+            {
+            return(items.count)
+            }
+            
+        public init(_ key:Theme.EntryKey)
+            {
+            items = [key.rawValue]
+            }
+            
+        public init(_ string:String)
+            {
+            items = string.components(separatedBy: ".")
+            }
+            
+        public init(stringLiteral string:String)
+            {
+            self.items = string.components(separatedBy: ".")
+            }
+        }
+    
     class func navigationBar(tint:UIColor,barTint:UIColor,titleAttributes:Theme.TextAttributes? = nil) -> ThemeItem
         {
         return(ThemeNavigationBarItem(tint:tint,barTint:barTint,titleAttributes:titleAttributes))
         }
         
-    class func text(textColor:UIColor? = nil,font:UIFont? = nil,alignment:Theme.Alignment? = nil) -> ThemeItem
+    class func text(textColor:UIColor = .black,font:UIFont = UIFont.systemFont(ofSize:12),alignment:Theme.Alignment = .left,wrapped:Bool = false) -> ThemeItem
         {
-        return(ThemeTextItem(textColor:textColor,font:font,alignment:alignment))
+        return(ThemeTextItem(textColor:textColor,font:font,alignment:alignment,wrapped:wrapped))
         }
         
-    class func content(backgroundColor:UIColor? = nil,contentColor:UIColor? = nil,highlightColor:UIColor? = nil,selectedColor:UIColor? = nil) -> ThemeItem
+    class func content(backgroundColor:UIColor = .white,contentColor:UIColor? = nil,highlightColor:UIColor? = nil,selectedColor:UIColor? = nil) -> ThemeItem
         {
         return(ThemeContentItem(backgroundColor:backgroundColor,contentColor:contentColor,highlightColor:highlightColor))
         }
         
-    class func border(borderColor:UIColor?,width:CGFloat?=nil,corners:UIRectCorner? = nil,radius:CGFloat?=nil,edges:UIRectEdge? = nil) -> ThemeItem
+    class func border(borderColor:UIColor = .clear,width:CGFloat = 0 ,corners:UIRectCorner? = nil,radius:CGFloat?=nil,edges:UIRectEdge? = nil) -> ThemeItem
         {
         return(ThemeBorderItem(borderColor:borderColor,width:width,corners:corners,radius:radius,edges:edges))
         }
         
-    class func line(lineColor:UIColor?,width:CGFloat? = nil) -> ThemeItem
+    class func line(lineColor:UIColor,width:CGFloat) -> ThemeItem
         {
         return(ThemeLineItem(lineColor:lineColor,width:width))
         }
         
-    class func childTheme() -> ThemeItem
-        {
-        return(ThemeChildItem(theme:Theme()))
-        }
-        
-    subscript(_ key:ThemeEntryKey) -> ThemeItem?
+    subscript(_ key:ThemeItem.Path) -> ThemeItem?
         {
         get
             {
@@ -51,8 +132,31 @@ public class ThemeItem
             }
         }
         
+    func textItem(at path:ThemeItem.Path) -> ThemeTextItem
+        {
+        guard let item = self[path] as? ThemeTextItem else
+            {
+            fatalError("No item found for path \(path)")
+            }
+        return(item)
+        }
+        
+    func contentItem(at path:ThemeItem.Path) -> ThemeContentItem
+        {
+        guard let item = self[path] as? ThemeContentItem else
+            {
+            fatalError("No item found for path \(path)")
+            }
+        return(item)
+        }
+        
     func apply(to view:UIView)
         {
+        }
+        
+    func apply(to label:UILabel)
+        {
+        
         }
         
     func apply(to layer:CALayer)
@@ -123,30 +227,25 @@ public class ThemeNavigationBarItem:ThemeItem
     }
     
 
-public class ThemeChildItem:ThemeItem
+public class ThemeContainerItem:ThemeItem
     {
-    let theme:Theme
-    
-    init(theme:Theme)
-        {
-        self.theme = theme
-        }
+    private var items = ThemeItemDictionary()
         
-    override subscript(_ inputKey:ThemeEntryKey) -> ThemeItem?
+    override subscript(_ inputKey:ThemeItem.Path) -> ThemeItem?
         {
         get
             {
-            return(theme[inputKey])
+            return(items[inputKey])
             }
         set
             {
-            theme[inputKey] = newValue
+            items[inputKey] = newValue
             }
         }
         
     override func apply(to object:UIView)
         {
-        theme.forItems
+        items.forEachValue
             {
             item in
             item.apply(to: object)
@@ -155,7 +254,7 @@ public class ThemeChildItem:ThemeItem
         
     override func apply(to object:CALayer)
         {
-        theme.forItems
+        items.forEachValue
             {
             item in
             item.apply(to: object)
@@ -164,7 +263,7 @@ public class ThemeChildItem:ThemeItem
         
     override func apply(to object:CATextLayer)
         {
-        theme.forItems
+        items.forEachValue
             {
             item in
             item.apply(to: object)
@@ -173,7 +272,7 @@ public class ThemeChildItem:ThemeItem
         
     override func apply(to object:CAShapeLayer)
         {
-        theme.forItems
+        items.forEachValue
             {
             item in
             item.apply(to: object)
@@ -181,27 +280,13 @@ public class ThemeChildItem:ThemeItem
         }
     }
     
-public class ThemeColorPalette:ThemeItem
-    {
-    let darkerPrimaryColor:UIColor
-    let primaryColor:UIColor
-    let lighterPrimaryColor:UIColor
-    
-    init(primary:UIColor,darker:UIColor? = nil,lighter:UIColor? = nil)
-        {
-        primaryColor = primary
-        darkerPrimaryColor = darker == nil ? primaryColor.darker : darker!
-        lighterPrimaryColor = lighter == nil ? primaryColor.lighter : lighter!
-        }
-    }
-    
 public class ThemeContentItem:ThemeItem
     {
-    let backgroundColor:UIColor?
+    let backgroundColor:UIColor
     let contentColor:UIColor?
     let highlightColor:UIColor?
     
-    init(backgroundColor:UIColor?,contentColor:UIColor?,highlightColor:UIColor?)
+    init(backgroundColor:UIColor,contentColor:UIColor?,highlightColor:UIColor?)
         {
         self.backgroundColor = backgroundColor
         self.contentColor = contentColor
@@ -215,51 +300,55 @@ public class ThemeContentItem:ThemeItem
         
     override func apply(to layer:CALayer)
         {
-        layer.backgroundColor = backgroundColor?.cgColor
+        layer.backgroundColor = backgroundColor.cgColor
         }
     }
     
 public class ThemeTextItem:ThemeItem
     {
-    let textColor:UIColor?
-    let font:UIFont?
-    let alignment:Theme.Alignment?
+    let textColor:UIColor
+    let font:UIFont
+    let alignment:Theme.Alignment
+    let wrapped:Bool
     
-    init(textColor:UIColor?,font:UIFont?,alignment:Theme.Alignment?)
+    init(textColor:UIColor,font:UIFont,alignment:Theme.Alignment,wrapped:Bool)
         {
         self.textColor = textColor
         self.font = font
         self.alignment = alignment
+        self.wrapped = wrapped
         }
         
     override func apply(to layer:CATextLayer)
         {
-        layer.foregroundColor = textColor?.cgColor
-        if let aFont = font
-            {
-            layer.font = aFont.fontName as CFTypeRef
-            layer.fontSize = aFont.pointSize
-            }
-        if let anAlignment = alignment 
-            {
-            layer.alignmentMode = anAlignment.caTextLayerAligment
-            }
+        layer.foregroundColor = textColor.cgColor
+        layer.font = font.fontName as CFTypeRef
+        layer.fontSize = font.pointSize
+        layer.alignmentMode = alignment.caTextLayerAligment
+        layer.isWrapped = wrapped
         layer.setNeedsLayout()
+        }
+        
+    override func apply(to label:UILabel)
+        {
+        label.textColor = textColor
+        label.font = font
+        label.textAlignment = alignment.nsTextAlignment
         }
     }
     
 public class ThemeBorderItem:ThemeItem
     {
-    let borderColor:UIColor?
-    let width:CGFloat?
+    let borderColor:UIColor
+    let borderWidth:CGFloat
     let corners:UIRectCorner?
     let edges:UIRectEdge?
     let radius:CGFloat?
     
-    init(borderColor:UIColor?,width:CGFloat?,corners:UIRectCorner?,radius:CGFloat?,edges:UIRectEdge?)
+    init(borderColor:UIColor,width:CGFloat,corners:UIRectCorner?,radius:CGFloat?,edges:UIRectEdge?)
         {
         self.borderColor = borderColor
-        self.width = width
+        self.borderWidth = width
         self.corners = corners
         self.radius = radius
         self.edges = edges
@@ -267,11 +356,8 @@ public class ThemeBorderItem:ThemeItem
         
     override func apply(to layer:CAShapeLayer)
         {
-        layer.strokeColor = borderColor?.cgColor
-        if let lineWidth = width
-            {
-            layer.lineWidth = lineWidth
-            }
+        layer.strokeColor = borderColor.cgColor
+        layer.lineWidth = borderWidth
         }
         
     override func apply(to layers:[CAShapeLayer])
@@ -285,10 +371,10 @@ public class ThemeBorderItem:ThemeItem
     
 public class ThemeLineItem:ThemeItem
     {
-    let lineColor:UIColor?
-    let width:CGFloat?
+    let lineColor:UIColor
+    let width:CGFloat
     
-    init(lineColor:UIColor?,width:CGFloat?)
+    init(lineColor:UIColor,width:CGFloat)
         {
         self.lineColor = lineColor
         self.width = width

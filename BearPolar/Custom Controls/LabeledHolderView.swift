@@ -32,7 +32,7 @@ class LabeledHolderView: UIView,Themable
     var fieldLabel = CATextLayer()
     var font:UIFont = UIFont(name:"MuseoSans-700",size:20)!
     
-    public var themeKey:Theme.Key?
+    public var themeEntryKey:Theme.EntryKey
         {
         return(.textEntry)
         }
@@ -53,7 +53,7 @@ class LabeledHolderView: UIView,Themable
         fieldLabel.fontSize = font.pointSize
         fieldLabel.foregroundColor = UIColor.lightGray.cgColor
         initBorder()
-        applyTheme()
+        applyTheming()
         setNeedsLayout()
     }
     
@@ -63,11 +63,11 @@ class LabeledHolderView: UIView,Themable
         initComponents()
         }
         
-    func applyTheme(_ theme:Theme)
+    func apply(themeItem:ThemeItem)
         {
-        theme["content"]?.apply(to: self)
-        theme["border"]?.apply(to: (self.layer as! CAShapeLayer))
-        theme["label.text"]?.apply(to: fieldLabel)
+        themeItem["content"]?.apply(to: self)
+        themeItem["border"]?.apply(to: (self.layer as! CAShapeLayer))
+        themeItem["label.text"]?.apply(to: fieldLabel)
         }
         
     func initBorder()

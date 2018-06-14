@@ -11,13 +11,18 @@ import UIKit
 class KeyboardController: NSObject 
     {
     @IBOutlet var scrollView:UIScrollView!
-    
     var activeField:FocusField?
+    
+    @discardableResult
+    func requestFocus(field:FocusField) -> Bool
         {
-        didSet(oldField)
+        if self.activeField == nil || self.activeField!.releaseFocus()
             {
-            oldField?.didLoseFocus()
+            activeField?.didLoseFocus()
+            activeField = field
             activeField?.didGainFocus()
+            return(true)
             }
+        return(false)
         }
     }

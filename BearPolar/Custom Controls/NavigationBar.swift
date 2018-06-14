@@ -10,19 +10,19 @@ import UIKit
 
 class NavigationBar: UINavigationBar,Themable
     {
-    
-    public var themeKey:Theme.Key?
+    public var themeEntryKey:Theme.EntryKey?
         {
-        return(Theme.Key.navigationBar)
+        return(.navigationBar)
         }
         
     override public func awakeFromNib()
         {
         super.awakeFromNib()
-        self.theme?.forItems
-            {
-            item in
-            item.apply(to:self)
-            }
+        applyTheming()
+        }
+        
+    func apply(themeItem:ThemeItem)
+        {
+        themeItem.apply(to: self)
         }
     }

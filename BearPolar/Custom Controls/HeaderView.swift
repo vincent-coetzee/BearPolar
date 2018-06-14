@@ -11,11 +11,12 @@ import UIKit
 @IBDesignable
 class HeaderView: UIView,Themable
     {
-    private let text = CATextLayer()
-    private let helpText = CATextLayer()
-    private var helpFont = UIFont.applicationFont(weight: .weight300, size: 14)
+    private let headingLayer = CATextLayer()
+    private var headingFont = UIFont.applicationFont(weight: .weight900, size: 30)
+    private let helpTextLayer = CATextLayer()
+    private var helpFont = UIFont.applicationFont(weight: .weight300, size: 12)
     
-    public var themeKey:Theme.Key?
+    public var themeEntryKey:Theme.EntryKey?
         {
         return(.header)
         }
@@ -23,6 +24,22 @@ class HeaderView: UIView,Themable
     override class var layerClass:AnyClass
         {
         return(CAShapeLayer.self)
+        }
+        
+    override var frame:CGRect
+        {
+        didSet
+            {
+            self.invalidateIntrinsicContentSize()
+            }
+        }
+        
+    override var bounds:CGRect
+        {
+        didSet
+            {
+            self.invalidateIntrinsicContentSize()
+            }
         }
         
     @IBInspectable public var lineWidth:CGFloat
@@ -46,7 +63,8 @@ class HeaderView: UIView,Themable
         {
         didSet
             {
-            text.string = self.heading
+            headingLayer.string = self.heading
+            self.invalidateIntrinsicContentSize()
             setNeedsLayout()
             }
         }
@@ -55,10 +73,7 @@ class HeaderView: UIView,Themable
         {
         didSet
             {
-            helpText.string = self.heading
-            let bounds = self.bounds.insetBy(dx:16,dy:16)
-            let rect = helpText.measureText(inWidth:bounds.size.width)
-            helpText.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:16),top:LayoutFrame.Edge(fraction:0,offset:48),right:LayoutFrame.Edge(fraction:1,offset:-16),bottom:LayoutFrame.Edge(fraction:0,offset:rect.size.height + 8))
+            helpTextLayer.string = self.headingLayer
             self.invalidateIntrinsicContentSize()
             setNeedsLayout()
             }
@@ -74,7 +89,8 @@ class HeaderView: UIView,Themable
         {
         self.initBorder()
         self.initText()
-        self.applyTheme()
+        self.applyTheming()
+        self.invalidateIntrinsicContentSize()
         self.setNeedsLayout()
         }
         
@@ -94,11 +110,9 @@ class HeaderView: UIView,Themable
         {
         let insets = Theme.insets
         let bounds = self.bounds.insetBy(dx:insets.left,dy:0)
-        let textRect = text.measureText(inWidth:bounds.size.width)
-        let helpRect = helpText.measureText(inWidth:bounds.size.width)
-        var height = insets.top + insets.bottom
-        height += insets.top + textRect.height + helpRect.height + insets.top
-        height += 16
+        let headerRect = TextWrangler.measure(string: heading, usingFont: headingFont, inWidth: bounds.size.width, alignment: .center, lineBreakMode: .byWordWrapping)
+        let helpRect = TextWrangler.measure(string: help, usingFont: helpFont, inWidth: bounds.size.width, alignment: .justified, lineBreakMode: .byWordWrapping)
+        let height = floor(insets.top + headerRect.height + insets.top + helpRect.height + insets.bottom + 1)
         return(CGSize(width:bounds.size.width,height:height))
         }
         
@@ -114,40 +128,33 @@ class HeaderView: UIView,Themable
         layer.path = path.cgPath
         }
         
-    public func applyTheme(_ theme:Theme)
+    public func apply(themeItem theme:ThemeItem)
         {
-        theme["heading"]?.apply(to: text)
-        theme["content"]?.apply(to: self)
+        if let headingItem = theme["heading"] as? ThemeTextItem
+            {
+            headingItem.apply(to: headingLayer)
+            headingFont = headingItem.font
+            }
+        let contentItem = theme.contentItem(at: "content")
+        contentItem.apply(to: self)
         theme["border"]?.apply(to: (self.layer as! CAShapeLayer))
-        theme["help"]?.apply(to: helpText)
-        helpFont = (theme["help"] as! ThemeTextItem).font!
+        let helpItem = theme.textItem(at: "help")
+        helpItem.apply(to: helpTextLayer)
+        helpFont = helpItem.font
+        helpTextLayer.alignmentMode = kCAAlignmentJustified
+        helpTextLayer.isWrapped = true
+        if helpItem.textColor.contrastsPoorly(with: contentItem.backgroundColor)
+            {
+            helpTextLayer.foregroundColor = helpItem.textColor.tweakedToContrast(against: contentItem.backgroundColor).cgColor
+            }
         }
         
     private func initText()
         {
-        let insets = Theme.insets
-        self.layer.addSublayer(text)
-        text.string = self.heading
-        text.font = "MuseoSans-900" as CFTypeRef
-        text.fontSize = 30.0
-        text.foregroundColor = UIColor.darkGray.cgColor
-        let bounds = self.bounds
-        var sizeRect = text.measureText(inWidth: bounds.size.width)
-        text.alignmentMode = "center"
-        var height = sizeRect.size.height
-        text.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:insets.left),top:LayoutFrame.Edge(fraction:0,offset:insets.top),right:LayoutFrame.Edge(fraction:1,offset:-insets.right),bottom:LayoutFrame.Edge(fraction:0,offset:insets.top + height + insets.bottom))
-        self.layer.addSublayer(helpText)
-        text.frame = text.layoutFrame!.rectIn(rect:self.bounds)
-        helpText.string = self.help
-        helpText.font = helpFont.fontName as CFTypeRef
-        helpText.fontSize = helpFont.pointSize
-        helpText.frame = self.bounds
-        helpText.foregroundColor = UIColor.darkGray.cgColor
-        helpText.alignmentMode = kCAAlignmentJustified
-        helpText.isWrapped = true
-        sizeRect = helpText.measureText(inWidth: bounds.size.width)
-        helpText.layoutFrame = LayoutFrame(left:LayoutFrame.Edge(fraction:0,offset:insets.left),top:LayoutFrame.Edge(fraction:0,offset:height),right:LayoutFrame.Edge(fraction:1,offset:-insets.right),bottom:LayoutFrame.Edge(fraction:0,offset: height + sizeRect.size.height + 48))
-        helpText.frame = helpText.layoutFrame!.rectIn(rect:bounds)
+        self.layer.addSublayer(headingLayer)
+        headingLayer.string = self.heading
+        self.layer.addSublayer(helpTextLayer)
+        helpTextLayer.string = self.help
         self.invalidateIntrinsicContentSize()
         self.setNeedsLayout()
         }
@@ -155,9 +162,13 @@ class HeaderView: UIView,Themable
     override func layoutSubviews()
         {
         super.layoutSubviews()
-        let bounds = self.bounds
-        text.frame = text.layoutFrame!.rectIn(rect:bounds)
-        helpText.frame = helpText.layoutFrame!.rectIn(rect:bounds)
+        let insets = Theme.insets
+        let bounds = self.bounds.insetBy(dx:insets.left,dy:0)
+        let headerSize = TextWrangler.measure(string: heading, usingFont: headingFont, inWidth: bounds.size.width, alignment: .center, lineBreakMode: .byWordWrapping)
+        let helpSize = TextWrangler.measure(string: help, usingFont: helpFont, inWidth: bounds.size.width, alignment: .justified, lineBreakMode: .byWordWrapping)
+        headingLayer.frame = CGRect(x:insets.left,y:insets.top,width: bounds.size.width,height:headerSize.height)
+        let top = insets.top*2 + headerSize.height
+        helpTextLayer.frame = CGRect(x:insets.left,y:top,width:bounds.size.width,height:helpSize.height)
         initBorder()
         }
         
@@ -170,7 +181,7 @@ class HeaderView: UIView,Themable
     override func prepareForInterfaceBuilder()
         {
         super.prepareForInterfaceBuilder()
-        ThemePalette.shared(for: type(of: self))
+        Theme.initSharedTheme(for: type(of: self))
         self.initComponents()
         }
     }

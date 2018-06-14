@@ -23,7 +23,7 @@ extension CALayer
             self.setAssociatedObject(newLayoutFrame as Any,for: &_LayoutFrameKey)
             }
         }
-        
+
     fileprivate func setAssociatedObject(_ object:Any,for key:inout String) 
         {
         objc_setAssociatedObject(self, &key, object, .OBJC_ASSOCIATION_RETAIN)

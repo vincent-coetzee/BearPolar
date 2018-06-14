@@ -10,64 +10,55 @@ import UIKit
 
 public protocol Themable
     {
-    var theme:Theme? { get }
-    var themeKey:Theme.Key? { get }
-    var themeName:String? { get set }
-    func applyTheme()
-    func applyTheme(_ theme:Theme)
+    var themeItem:ThemeItem? { get }
+    var themeEntryKey:Theme.EntryKey? { get }
+    var themeEntryName:String? { get set }
+    func applyTheming()
+    func apply(themeItem:ThemeItem)
     }
     
-fileprivate var KeyForKey = "__KEY_FOR_THEME_KEY__"
+fileprivate var KeyForPath = "__KEY_FOR_THEME_PATH__"
 
 extension Themable where Self:UIView
     {        
-    public var themeKey:Theme.Key?
+    public var themeEntryKey:Theme.EntryKey?
         {
-        guard let name = self.themeName else
+        guard let name = self.themeEntryName else
             {
             return(nil)
             }
-        return(Theme.Key(rawValue:name))
+        return(Theme.EntryKey(rawValue:name))
         }
         
-    public var themeName:String?
+    public var themeEntryName:String?
         {
         get
             {
-            return(self.associatedObject(for: &KeyForKey) as? String)
+            return(self.associatedObject(for: &KeyForPath) as? String)
             }
-        set(newThemeName)
+        set(newName)
             {
-            self.setAssociatedObject(newThemeName as Any,for: &KeyForKey)
-            (self as Themable).applyTheme()
+            self.setAssociatedObject(newName as Any,for: &KeyForPath)
+            (self as Themable).applyTheming()
             }
         }
         
-    public var theme:Theme?
+    public var themeItem:ThemeItem?
         {
-        guard let key = self.themeKey else
+        guard let path = self.themeEntryKey else
             {
             return(nil)
             }
-        return(ThemePalette.shared[key])
+        return(Theme.shared[path])
         }
         
-    public func applyTheme()
+    public func applyTheming()
         {
-        if let theme = self.theme
+        if let themeItem = self.themeItem
             {
-            self.applyTheme(theme)
+            self.apply(themeItem:themeItem)
             }
-        self.subviews.compactMap({$0 as? Themable}).forEach { $0.applyTheme()}
-        }
-        
-    public func applyTheme(_ theme:Theme)
-        {
-        theme.forItems
-            {
-            item in
-            item.apply(to:self)
-            }
+        self.subviews.compactMap({$0 as? Themable}).forEach { $0.applyTheming()}
         }
         
     fileprivate func setAssociatedObject(_ object:Any,for key:inout String) 
