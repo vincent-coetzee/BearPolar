@@ -54,6 +54,14 @@ public class LayoutFrame:NSObject
         super.init()
         }
         
+    init(left:Edge,top:Edge)
+        {
+        self.left = left
+        self.top = top
+        self.bottom = .zero
+        self.right = .zero
+        }
+        
     convenience init(origin:CGPoint,size:CGSize)
         {
         self.init(left:Edge(fraction:0,offset:origin.x),top: Edge(fraction:0,offset:origin.y),right: Edge(fraction:0,offset:origin.x + size.width),bottom: Edge(fraction:0,offset:origin.y + size.height))

@@ -10,45 +10,80 @@ import UIKit
 
 @IBDesignable
 class LabeledButtonView: LabeledHolderView
-    {
+    {    
     @IBInspectable
-    var buttonText:String = ""
+    var buttonTitle:String = ""
         {
         didSet
             {
-            self.buttonAttributedText = NSAttributedString(string:buttonText,attributes:UIFont.attributesWithFont(weight: .weight700, size: 24,color:UIColor.darkGray))
+            self.buttonAttributedTitle = NSAttributedString(string: buttonTitle,attributes: textAttributes)
             }
         }
         
-    var buttonAttributedText:NSAttributedString = NSAttributedString(string: "")
+    var buttonAttributedTitle:NSAttributedString = NSAttributedString(string: "")
         {
         didSet
             {
-            (childView as! UIButton).setAttributedTitle(buttonAttributedText,for: .normal)
-            adjustButtonPosition()
+            self.button.setAttributedTitle(buttonAttributedTitle,for: .normal)
             }
+        }
+        
+    public var onTapped:(LabeledButtonView) -> () = { _ in }
+    private var textAttributes:[NSAttributedString.Key:Any] = [:]
+    
+    private var button:UIButton
+        {
+        return(childView as! UIButton)
+        }
+        
+    public override var themeEntryKey:Theme.EntryKey?
+        {
+        return(.labeledButton)
         }
         
     override func initComponents()
         {
-        super.initComponents()
-        let button = UIButton(frame:.zero)
+        let button = UIButton(frame: .zero)
+        button.addTarget(self, action: #selector(LabeledButtonView.onButtonTapped(_:)),for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .lime
         addChildView(button)
-        adjustButtonPosition()
+        let insets = Theme.insets
+        button.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -2).isActive = true
+        button.topAnchor.constraint(equalTo: self.topAnchor, constant: 2).isActive = true
+        button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2).isActive = true
+        button.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.25).isActive = true 
+        super.initComponents()
+        self.buttonTitle = "Button"
         setNeedsLayout()
         }
         
-    func adjustButtonPosition()
+    override func apply(themeItem:ThemeItem)
         {
-        let button = childView as! UIButton
-        if let text = button.attributedTitle(for: .normal)
-            {
-            var size = text.size()
-            size.width += 48
-            let layoutFrame = LayoutFrame(left: LayoutFrame.Edge(fraction:1.0,offset:-size.width),top:LayoutFrame.Edge(fraction:0,offset:12),right:LayoutFrame.Edge(fraction:1,offset:-size.width+12),bottom:LayoutFrame.Edge(fraction:1.0,offset:-12))
-            button.layoutFrame = layoutFrame
-            }
+        super.apply(themeItem:themeItem)
+        let textItem = themeItem.textItem(at: "button.text")
+        textItem.apply(to: self.button)
+        textAttributes[.font] = textItem.font
+        textAttributes[.foregroundColor] = textItem.textColor
+        themeItem.contentItem(at: "content").apply(to: self)
+        themeItem.textItem(at: "button.text").apply(to: self.button)
+        themeItem.contentItem(at: "button.content").apply(to: self.button)
+        }
+        
+    @objc func onButtonTapped(_ sender:Any?)
+        {
+        self.onTapped(self)
+        }
+        
+    override public func awakeFromNib()
+        {
+        super.awakeFromNib()
+        initComponents()
+        }
+        
+    override func prepareForInterfaceBuilder()
+        {
+        super.prepareForInterfaceBuilder()
+        Theme.initSharedTheme(for: type(of:self))
+        initComponents()
         }
     }

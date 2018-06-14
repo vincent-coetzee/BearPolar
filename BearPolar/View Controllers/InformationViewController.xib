@@ -49,6 +49,15 @@
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="Qud-hJ-WD2" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="114" width="562" height="48"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2f-Zn-mYB">
+                            <rect key="frame" x="368" y="10" width="186" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Tap Here to Enter Your Age">
+                                <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="label" value="Age"/>
@@ -61,6 +70,18 @@
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="48" translatesAutoresizingMaskIntoConstraints="NO" id="NZw-Ze-eeA" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="161" width="562" height="48"/>
+                    <subviews>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GSN-Xs-e86">
+                            <rect key="frame" x="254" y="11" width="300" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Cis Male"/>
+                                <segment title="Cis Female"/>
+                                <segment title="Trans"/>
+                            </segments>
+                            <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </segmentedControl>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="label" value="Gender"/>
@@ -81,19 +102,42 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kHx-DJ-tG9" customClass="LabeledButtonView" customModule="BearPolar" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="298" width="562" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="XmC-Ji-DkN"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="label" value="Add a Medication"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="+"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ace-9c-MUB" customClass="LabeledHolderView" customModule="BearPolar" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="346" width="562" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="4mH-jr-TD7"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Ace-9c-MUB" firstAttribute="top" secondItem="kHx-DJ-tG9" secondAttribute="bottom" id="0Li-la-fBJ"/>
                 <constraint firstItem="Ode-Oo-QO8" firstAttribute="leading" secondItem="wyN-dr-RlA" secondAttribute="leading" id="6zU-eI-JUW"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sSD-Gl-BQb" secondAttribute="bottom" constant="1406" id="BvL-8b-cfQ"/>
                 <constraint firstItem="NZw-Ze-eeA" firstAttribute="trailing" secondItem="Ode-Oo-QO8" secondAttribute="trailing" id="DB7-uH-A7o"/>
                 <constraint firstItem="Qud-hJ-WD2" firstAttribute="top" secondItem="Ode-Oo-QO8" secondAttribute="bottom" constant="-1" id="FKr-Ku-W19"/>
                 <constraint firstItem="NZw-Ze-eeA" firstAttribute="width" secondItem="Qud-hJ-WD2" secondAttribute="width" id="GgB-Du-FRv"/>
                 <constraint firstItem="Ode-Oo-QO8" firstAttribute="trailing" secondItem="wyN-dr-RlA" secondAttribute="trailing" id="J8Q-da-Hvg"/>
+                <constraint firstItem="Ace-9c-MUB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LFT-oa-UCh"/>
                 <constraint firstItem="NZw-Ze-eeA" firstAttribute="leading" secondItem="Qud-hJ-WD2" secondAttribute="leading" id="MPZ-HD-aC7"/>
                 <constraint firstItem="wyN-dr-RlA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OPT-gR-mGl"/>
                 <constraint firstItem="NZw-Ze-eeA" firstAttribute="top" secondItem="Qud-hJ-WD2" secondAttribute="bottom" constant="-1" id="STZ-Ch-3fg"/>
                 <constraint firstItem="Qud-hJ-WD2" firstAttribute="leading" secondItem="Ode-Oo-QO8" secondAttribute="leading" id="X4v-9k-vcM"/>
+                <constraint firstItem="kHx-DJ-tG9" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="a6s-PO-mUi"/>
+                <constraint firstItem="Ace-9c-MUB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="b5m-eC-Loz"/>
+                <constraint firstItem="kHx-DJ-tG9" firstAttribute="top" secondItem="sSD-Gl-BQb" secondAttribute="bottom" id="bj7-Qc-MnJ"/>
+                <constraint firstItem="kHx-DJ-tG9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fLa-1F-e15"/>
                 <constraint firstItem="sSD-Gl-BQb" firstAttribute="top" secondItem="NZw-Ze-eeA" secondAttribute="bottom" constant="-1" id="gqC-Tf-mFe"/>
                 <constraint firstItem="wyN-dr-RlA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jYS-8r-FoI"/>
                 <constraint firstItem="sSD-Gl-BQb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jfl-GE-o2f"/>
@@ -104,7 +148,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-128" y="712"/>
+            <point key="canvasLocation" x="-165" y="706"/>
         </view>
         <customObject id="jFn-HM-GkK" customClass="TextColumn" customModule="BearPolar" customModuleProvider="target"/>
         <customObject id="t2h-4G-YXR" customClass="KeyboardController" customModule="BearPolar" customModuleProvider="target"/>
