@@ -19,7 +19,9 @@ class NavigationBar: UINavigationBar,Themable
         {
         super.awakeFromNib()
         prefersLargeTitles = true
-        applyTheming()
+//        applyTheming()
+        self.barTintColor = .black
+        self.tintColor = .white
         }
         
     func apply(themeItem:ThemeItem)

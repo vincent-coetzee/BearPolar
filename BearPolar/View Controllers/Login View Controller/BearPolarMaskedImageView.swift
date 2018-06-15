@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 public class BearPolarMaskedImageView:UIView
     {
     var backColorLayer:CALayer = CALayer()
@@ -31,8 +30,7 @@ public class BearPolarMaskedImageView:UIView
         self.backgroundColor = UIColor.black
         backColorLayer.backgroundColor = UIColor.lime.cgColor
         self.layer.addSublayer(backColorLayer)
-        let bundle = Bundle(for: type(of: self))
-        backMask.contents = UIImage(named:"BearMask",in: bundle, compatibleWith: nil)?.cgImage
+        backMask.contents = Theme.shared.image(named:"BearMask").cgImage
         backColorLayer.mask = backMask
         }
         
@@ -46,6 +44,7 @@ public class BearPolarMaskedImageView:UIView
     public override func prepareForInterfaceBuilder()
         {
         self.prepareForInterfaceBuilder()
+        Theme.initSharedTheme(for: type(of:self))
         initContents()
         }
     }

@@ -13,6 +13,8 @@ class ChoiceMatrixView: UIView,Themable
     {
     private class ChoiceEntryLayer:CALayer
         {
+        public static let TextInset:CGFloat = 8
+        
         private let labelLayer = CATextLayer()
         private var normalLabelFont = UIFont.applicationFont(weight: .weight500, size: 16)
         private var normalLabelColor:UIColor = .darkGray
@@ -44,6 +46,13 @@ class ChoiceMatrixView: UIView,Themable
             labelLayer.string = label
             self.entryLabel = label
             }
+            
+        override init(layer:Any)
+            {
+            super.init(layer:layer)
+            self.entryLabel = ""
+            initComponents()
+            }
         
         private func updateState()
             {
@@ -52,17 +61,17 @@ class ChoiceMatrixView: UIView,Themable
                 labelLayer.setUIFont(selectedLabelFont)
                 labelLayer.foregroundColor = selectedLabelColor.cgColor
                 self.backgroundColor = selectedBackgroundColor.cgColor
-                self.shadowColor = UIColor.black.cgColor
-                self.shadowOffset = CGSize.zero
-                self.shadowRadius = 6
-                self.shadowOpacity = 0.8
+//                self.shadowColor = UIColor.black.cgColor
+//                self.shadowOffset = CGSize.zero
+//                self.shadowRadius = 6
+//                self.shadowOpacity = 0.8
                 }
             else
                 {
                 labelLayer.setUIFont(normalLabelFont)
                 labelLayer.foregroundColor = normalLabelColor.cgColor
                 self.backgroundColor = normalBackgroundColor.cgColor
-                self.shadowOpacity = 0.0
+//                self.shadowOpacity = 0.0
                 }
             self.setNeedsDisplay()
             }
@@ -81,12 +90,11 @@ class ChoiceMatrixView: UIView,Themable
             {
             super.layoutSublayers()
             let bounds = self.bounds
-            let insets = Theme.insets
-            let labelSize = TextWrangler.measure(string: entryLabel, usingFont: normalLabelFont, inWidth: 10000)
-            let delta = ((bounds.size.height - insets.totalVerticallInset) - labelSize.height) / 2.0
-            let origin = CGPoint(x: insets.left,y: delta)
-            let size = CGSize(width: bounds.size.width - insets.totalHorizontalInset,height: labelSize.height)
-            labelLayer.frame = CGRect(origin: origin,size: size)
+            let labelSize = TextWrangler.measure(string: entryLabel, usingFont: selectedLabelFont, inWidth: 10000)
+            let sizeX = bounds.size.width - 2.0*ChoiceEntryLayer.TextInset
+            let originX = ChoiceEntryLayer.TextInset
+            let originY = (bounds.size.height - labelSize.height)/2.0
+            labelLayer.frame = CGRect(x: originX,y: originY, width: sizeX,height: labelSize.height)
             }
             
         func apply(themeItem:ThemeItem)
@@ -110,7 +118,6 @@ class ChoiceMatrixView: UIView,Themable
         
     private var entryThemeItem:ThemeContainerItem?
     private var entries:[ChoiceEntryLayer] = []
-    private var selectedEntryIndex:Int = 0
     private var entryLabels:[String] = []
     private var labelFont:UIFont = UIFont.applicationFont(weight: .weight500, size: 20)
     
@@ -119,12 +126,13 @@ class ChoiceMatrixView: UIView,Themable
         return(.choiceMatrix)
         }
         
+    public var onChange: (ChoiceMatrixView,String?) -> () = { a,b in }
+    
     @IBInspectable
     public var entryText:String = ""
         {
         didSet
             {
-            selectedEntryIndex = 0
             for entry in entries
                 {
                 entry.removeFromSuperlayer()
@@ -141,12 +149,22 @@ class ChoiceMatrixView: UIView,Themable
                     entry.apply(themeItem: item)
                     }
                 }
-            if selectedEntryIndex < entries.count
-                {
-                entries[selectedEntryIndex].isSelected = true
-                }
+            self.selectedEntry = entries.first
             self.invalidateIntrinsicContentSize()
             setNeedsLayout()
+            }
+        }
+        
+    private var selectedEntry:ChoiceEntryLayer?
+        {
+        willSet
+            {
+            selectedEntry?.isSelected = false
+            }
+        didSet
+            {
+            selectedEntry?.isSelected = true
+            onChange(self,selectedEntry?.entryLabel)
             }
         }
     
@@ -167,7 +185,8 @@ class ChoiceMatrixView: UIView,Themable
         var totalHeight:CGFloat = 0
         for label in entryLabels
             {
-            let labelSize = TextWrangler.measure(string: label, usingFont: labelFont, inWidth: 10000)
+            var labelSize = TextWrangler.measure(string: label, usingFont: labelFont, inWidth: 10000)
+            labelSize.height += (2.0 * ChoiceEntryLayer.TextInset)
             totalHeight += labelSize.height
             }
         let bounds = self.bounds
@@ -218,7 +237,7 @@ class ChoiceMatrixView: UIView,Themable
         let border = themeItem.borderItem(at: "border")
         let radius = border.radius!
         self.layer.cornerRadius = radius
-        labelFont = entryThemeItem!.textItem(at: "normal.text").font
+        labelFont = entryThemeItem!.textItem(at: "selection.text").font
         for entry in entries
             {
             entry.apply(themeItem: entryThemeItem!)
@@ -237,7 +256,8 @@ class ChoiceMatrixView: UIView,Themable
             {
             if entry.frame.contains(point)
                 {
-                entry.isSelected = true
+                selectedEntry = entry
+                return
                 }
             }
         }

@@ -15,7 +15,8 @@ class LabeledHolderView: UIView,Themable
     internal var labelFont:UIFont = UIFont.applicationFont(weight: .weight500, size: 16)
     
     @IBOutlet var sharedColumn:TextColumn!
-    
+    @IBOutlet var targetView:UIView!
+
     override class var layerClass:AnyClass
         {
         return(CAShapeLayer.self)

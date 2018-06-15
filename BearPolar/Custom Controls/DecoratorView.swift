@@ -11,19 +11,36 @@ import UIKit
 @IBDesignable
 class DecoratorView: UIView 
     {
+    private var topMask:UInt
+        {
+        if self.topOn
+            {
+            return(CACornerMask.layerMinXMinYCorner.rawValue | CACornerMask.layerMaxXMinYCorner.rawValue)
+            }
+        else
+            {
+            return(0)
+            }
+        }
+        
+    private var bottomMask:UInt
+        {
+        if self.bottomOn
+            {
+            return(CACornerMask.layerMinXMaxYCorner.rawValue | CACornerMask.layerMaxXMaxYCorner.rawValue)
+            }
+        else
+            {
+            return(0)
+            }
+        }
+        
     @IBInspectable var topOn:Bool = false
         {
         didSet
             {
-            var mask = self.layer.maskedCorners
-            mask.remove(.layerMinXMinYCorner)
-            mask.remove(.layerMaxXMinYCorner)
-            if topOn
-                {
-                mask.insert(.layerMinXMinYCorner)
-                mask.insert(.layerMaxXMinYCorner)
-                }
-            self.layer.maskedCorners = mask
+            self.layer.maskedCorners = CACornerMask(rawValue: self.topMask | self.bottomMask)
+            self.layer.setNeedsDisplay()
             }
         }
         
@@ -31,15 +48,8 @@ class DecoratorView: UIView
         {
         didSet
             {
-            var mask = self.layer.maskedCorners
-            mask.remove(.layerMinXMaxYCorner)
-            mask.remove(.layerMaxXMaxYCorner)
-            if bottomOn
-                {
-                mask.insert(.layerMinXMaxYCorner)
-                mask.insert(.layerMaxXMaxYCorner)
-                }
-            self.layer.maskedCorners = mask
+            self.layer.maskedCorners = CACornerMask(rawValue: self.topMask | self.bottomMask)
+            self.layer.setNeedsDisplay()
             }
         }
         
@@ -48,6 +58,7 @@ class DecoratorView: UIView
         didSet
             {
             self.layer.borderColor = borderColor?.cgColor
+            self.layer.setNeedsDisplay()
             }
         }
         
@@ -56,6 +67,7 @@ class DecoratorView: UIView
         didSet
             {
             self.layer.borderWidth = self.borderWidth
+            self.layer.setNeedsDisplay()
             }
         }
         
@@ -64,6 +76,7 @@ class DecoratorView: UIView
         didSet
             {
             self.layer.cornerRadius = self.cornerRadius
+            self.layer.setNeedsDisplay()
             }
         }
     }

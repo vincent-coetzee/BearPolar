@@ -17,13 +17,13 @@ class PINPadView: UIView,Themable
     private var pin = PIN()
     
     private static let KeySpacing:CGFloat = 20
-    private static let DigitMarkerDiameter:CGFloat = 20
-    private static let DigitMarkerKeySpacing:CGFloat = 30
+    private static var DigitMarkerDiameter:CGFloat = 20
+    private static var DigitMarkerKeySpacing:CGFloat = 30
     private static let KeyPressAnimationDuration:CFTimeInterval = 0.3
     
     typealias TextAttributes = [NSAttributedStringKey:Any]
     
-    public var themeEntryKey:Theme.EntryKey
+    public var themeEntryKey:Theme.EntryKey?
         {
         return(.pinPad)
         }
@@ -176,9 +176,11 @@ class PINPadView: UIView,Themable
         {
         self.backgroundColor = UIColor.clear
         let textAttributes:TextAttributes = [.font: UIFont.systemFont(ofSize:10),.foregroundColor: UIColor.black]
+        var index = 0
         for keyEntry in keyEntries
             {
-            makeKeyLayer(for: keyEntry,textAttributes: textAttributes,filled: !(keyEntry == " "))
+            makeKeyLayer(for: keyEntry,textAttributes: textAttributes,filled: index != 9)
+            index += 1
             }
         for _ in 0..<PIN.standardPINLength
             {
@@ -215,14 +217,17 @@ class PINPadView: UIView,Themable
             }
         box.origin.x = 0
         box.origin.y += (PINPadView.DigitMarkerDiameter + PINPadView.DigitMarkerKeySpacing)
-        box.size.width = (viewBounds.size.width - 2*PINPadView.KeySpacing) / 3.0
-        box.size.height = box.size.width
+        let width = (viewBounds.size.width - 2*PINPadView.KeySpacing) / 3.0
+        let height = (viewBounds.size.height - box.origin.y - 3.0*PINPadView.KeySpacing) / 4.0
+        box.size.height = min(width,height)
+        box.size.width = box.size.height
+        let keySpacingX = (viewBounds.size.width - 3*box.size.width) / 2.0
         var index = 0
         for key in keys
             {
             key.frame = box
             key.setNeedsLayout()
-            box.origin.x += (box.size.width + PINPadView.KeySpacing)
+            box.origin.x += (box.size.width + keySpacingX)
             index += 1
             if index % 3 == 0
                 {
