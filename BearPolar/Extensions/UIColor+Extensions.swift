@@ -107,6 +107,16 @@ public extension UIColor
          return(UIColor(red:84.0/255.0,green:157.0/255.0,blue:32.0/255.0,alpha:1))
         }
         
+    class var lightGoodGreen:UIColor
+        {
+         return(UIColor(red:86.0/255.0,green:188.0/255.0,blue:14.0/255.0,alpha:1))
+        }
+        
+    class var darkGoodGreen:UIColor
+        {
+         return(UIColor(red:70.0/255.0,green:115.0/255.0,blue:40.0/255.0,alpha:1))
+        }
+        
     convenience init(_ components:RGBA)
         {
         self.init(red:components.red,green:components.green,blue:components.blue,alpha:components.alpha)

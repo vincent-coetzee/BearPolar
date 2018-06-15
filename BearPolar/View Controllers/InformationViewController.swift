@@ -14,12 +14,7 @@ class InformationViewController: UIViewController
     @IBOutlet var rightView:UIView!
     @IBOutlet var bottomView:UIView!
     @IBOutlet var leftView:UIView!
-    
-    @IBOutlet var genderMatrix:ChoiceMatrixView!
-    @IBOutlet var conditionMatrix:ChoiceMatrixView!
-    
-    @IBOutlet var genderField:UILabel!
-    @IBOutlet var conditionField:UILabel!
+
     
     override var nibName:String
         {
@@ -29,16 +24,6 @@ class InformationViewController: UIViewController
     override func viewDidLoad() 
         {
         super.viewDidLoad()
-        genderMatrix.onChange =
-            {
-            matrix,entry in
-            self.genderField.text = entry
-            }
-        conditionMatrix.onChange =
-            {
-            matrix,entry in
-            self.conditionField.text = entry
-            }
         }
 
     @IBAction func onAddMedicationTapped(_ sender:Any?)
