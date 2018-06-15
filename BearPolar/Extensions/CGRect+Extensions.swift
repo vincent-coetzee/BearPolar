@@ -43,4 +43,21 @@ extension CGRect
         let deltaX = floor((self.width - size.width)/2.0)
         return(origin + CGPoint(x:deltaX,y:deltaY))
         }
+        
+    public func rowSlices(rowCount:Int) -> [CGRect]
+        {
+        let totalHeight = self.size.height
+        let rowHeight = totalHeight / CGFloat(rowCount)
+        let rows = stride(from: 0, to: totalHeight, by: rowHeight).map { top in CGRect(x:self.origin.x,y:top,width:self.size.width,height:rowHeight) }
+        return(rows)
+        }
+        
+    public func columnSlices(columnCount:Int) -> [CGRect]
+        {
+        let totalWidth = self.size.width
+        let columnWidth = totalWidth / CGFloat(columnCount)
+        let columns = stride(from: 0, to: totalWidth, by: columnWidth).map { left in CGRect(x:left,y:self.origin.y,width:columnWidth,height:self.size.height) }
+        return(columns)
+        }
+
     }

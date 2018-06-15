@@ -19,11 +19,19 @@
 		BF13080020CCFD5C0044E093 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1307FF20CCFD5C0044E093 /* UITextField.swift */; };
 		BF1CC24F20C8716200E3D97A /* EditableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1CC24E20C8716200E3D97A /* EditableView.swift */; };
 		BF1CC26320D3090F0088F5E7 /* ControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1CC26220D3090F0088F5E7 /* ControllerSegue.swift */; };
+		BF2A483720D3F20D006CFFB0 /* InitialPrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A483620D3F20D006CFFB0 /* InitialPrivacyViewController.swift */; };
+		BF2A483920D3F22D006CFFB0 /* InitialNamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A483820D3F22D006CFFB0 /* InitialNamesViewController.swift */; };
+		BF2A483B20D3F244006CFFB0 /* InitialGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A483A20D3F244006CFFB0 /* InitialGenderViewController.swift */; };
+		BF2A483D20D3F264006CFFB0 /* InitialMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A483C20D3F264006CFFB0 /* InitialMedicationViewController.swift */; };
+		BF2A483F20D3F298006CFFB0 /* InitialIllnesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A483E20D3F298006CFFB0 /* InitialIllnesViewController.swift */; };
+		BF2A484120D3F2AE006CFFB0 /* InitialSharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A484020D3F2AE006CFFB0 /* InitialSharingViewController.swift */; };
 		BF31C23720D1A056006E07C4 /* ThemeItemDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31C23620D1A056006E07C4 /* ThemeItemDictionary.swift */; };
 		BF31C23920D1A201006E07C4 /* ThemeColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31C23820D1A201006E07C4 /* ThemeColorPalette.swift */; };
 		BF3BF74B20D3629B000D8F29 /* FormattingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3BF74A20D3629B000D8F29 /* FormattingLabel.swift */; };
-		BF57F45520D327D000D8F1A3 /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF57F45420D327D000D8F1A3 /* TitleView.xib */; };
-		BF57F45720D3297200D8F1A3 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57F45620D3297200D8F1A3 /* TitleView.swift */; };
+		BF4E36ED20D377F500941AEA /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E36EC20D377F500941AEA /* StepView.swift */; };
+		BF4E36EF20D39E5F00941AEA /* RadioGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E36EE20D39E5F00941AEA /* RadioGroup.swift */; };
+		BF4E36F120D3A37B00941AEA /* SelectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E36F020D3A37B00941AEA /* SelectableButton.swift */; };
+		BF4E36F320D3AD2B00941AEA /* ChoiceMatrixRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E36F220D3AD2B00941AEA /* ChoiceMatrixRow.swift */; };
 		BF57F46520D34F6700D8F1A3 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF57F45920D34E4500D8F1A3 /* SF-Pro-Text-Bold.otf */; };
 		BF57F46620D34F6D00D8F1A3 /* SF-Pro-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF57F45D20D34E4600D8F1A3 /* SF-Pro-Text-BoldItalic.otf */; };
 		BF57F46720D34F6D00D8F1A3 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF57F46220D34E4700D8F1A3 /* SF-Pro-Text-Heavy.otf */; };
@@ -124,11 +132,19 @@
 		BF1CC24E20C8716200E3D97A /* EditableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableView.swift; sourceTree = "<group>"; };
 		BF1CC26220D3090F0088F5E7 /* ControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerSegue.swift; sourceTree = "<group>"; };
 		BF1F354020C2261B0021ECA1 /* MuseoSans_100.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSans_100.otf; sourceTree = "<group>"; };
+		BF2A483620D3F20D006CFFB0 /* InitialPrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPrivacyViewController.swift; sourceTree = "<group>"; };
+		BF2A483820D3F22D006CFFB0 /* InitialNamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialNamesViewController.swift; sourceTree = "<group>"; };
+		BF2A483A20D3F244006CFFB0 /* InitialGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialGenderViewController.swift; sourceTree = "<group>"; };
+		BF2A483C20D3F264006CFFB0 /* InitialMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialMedicationViewController.swift; sourceTree = "<group>"; };
+		BF2A483E20D3F298006CFFB0 /* InitialIllnesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialIllnesViewController.swift; sourceTree = "<group>"; };
+		BF2A484020D3F2AE006CFFB0 /* InitialSharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSharingViewController.swift; sourceTree = "<group>"; };
 		BF31C23620D1A056006E07C4 /* ThemeItemDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeItemDictionary.swift; sourceTree = "<group>"; };
 		BF31C23820D1A201006E07C4 /* ThemeColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorPalette.swift; sourceTree = "<group>"; };
 		BF3BF74A20D3629B000D8F29 /* FormattingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingLabel.swift; sourceTree = "<group>"; };
-		BF57F45420D327D000D8F1A3 /* TitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
-		BF57F45620D3297200D8F1A3 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		BF4E36EC20D377F500941AEA /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
+		BF4E36EE20D39E5F00941AEA /* RadioGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroup.swift; sourceTree = "<group>"; };
+		BF4E36F020D3A37B00941AEA /* SelectableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButton.swift; sourceTree = "<group>"; };
+		BF4E36F220D3AD2B00941AEA /* ChoiceMatrixRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceMatrixRow.swift; sourceTree = "<group>"; };
 		BF57F45920D34E4500D8F1A3 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
 		BF57F45A20D34E4500D8F1A3 /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
 		BF57F45B20D34E4600D8F1A3 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
@@ -259,8 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				BF72C01020C30D5E000806F2 /* InitInformationViewController.swift */,
-				BF57F45420D327D000D8F1A3 /* TitleView.xib */,
-				BF57F45620D3297200D8F1A3 /* TitleView.swift */,
 			);
 			path = "Identity View Controller";
 			sourceTree = "<group>";
@@ -295,6 +309,12 @@
 				BFA5461920CC0405007385A7 /* InitAccessControlTypeViewController.swift */,
 				BF1307F320CCCAB50044E093 /* InformationViewController.swift */,
 				BF1307F420CCCAB50044E093 /* InformationViewController.xib */,
+				BF2A483620D3F20D006CFFB0 /* InitialPrivacyViewController.swift */,
+				BF2A483820D3F22D006CFFB0 /* InitialNamesViewController.swift */,
+				BF2A483A20D3F244006CFFB0 /* InitialGenderViewController.swift */,
+				BF2A483C20D3F264006CFFB0 /* InitialMedicationViewController.swift */,
+				BF2A483E20D3F298006CFFB0 /* InitialIllnesViewController.swift */,
+				BF2A484020D3F2AE006CFFB0 /* InitialSharingViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -426,10 +446,12 @@
 		BFD8EE7020C2C2BF009AB3C6 /* Custom Controls */ = {
 			isa = PBXGroup;
 			children = (
+				BF4E36F220D3AD2B00941AEA /* ChoiceMatrixRow.swift */,
 				BF9B087B20D2BF09006D5A92 /* ChoiceMatrixView.swift */,
 				BF1307ED20CCB8910044E093 /* DecoratorView.swift */,
 				BF1CC24E20C8716200E3D97A /* EditableView.swift */,
 				BF60136220CE332E008EBFB9 /* FocusField.swift */,
+				BF3BF74A20D3629B000D8F29 /* FormattingLabel.swift */,
 				BFAA2B8520CC7BC700BE6950 /* HeaderView.swift */,
 				BF01E48F20CD4942005D4AF8 /* ImageLayer.swift */,
 				BF1307F120CCC2F50044E093 /* KeyboardController.swift */,
@@ -439,8 +461,10 @@
 				BF9B087720D2A1BB006D5A92 /* MaskingImageButton.swift */,
 				BFD8EE7120C2C2E5009AB3C6 /* NavigationBar.swift */,
 				BFE2009420CD59CC008F7D48 /* PaddingView.swift */,
+				BF4E36EE20D39E5F00941AEA /* RadioGroup.swift */,
+				BF4E36F020D3A37B00941AEA /* SelectableButton.swift */,
+				BF4E36EC20D377F500941AEA /* StepView.swift */,
 				BF1307EF20CCC2120044E093 /* TextEntryView.swift */,
-				BF3BF74A20D3629B000D8F29 /* FormattingLabel.swift */,
 			);
 			path = "Custom Controls";
 			sourceTree = "<group>";
@@ -578,7 +602,6 @@
 				BF57F47020D34F6D00D8F1A3 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				BF57F46820D34F6D00D8F1A3 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				BF57F46720D34F6D00D8F1A3 /* SF-Pro-Text-Heavy.otf in Resources */,
-				BF57F45520D327D000D8F1A3 /* TitleView.xib in Resources */,
 				BF72C00820C30516000806F2 /* MuseoSans_100_Italic.otf in Resources */,
 				BFA4695F20C1A0F70038FC24 /* Assets.xcassets in Resources */,
 				BF72C00B20C30516000806F2 /* MuseoSansRounded-1000.otf in Resources */,
@@ -647,13 +670,18 @@
 				BF13080020CCFD5C0044E093 /* UITextField.swift in Sources */,
 				BFA4695A20C1A0F40038FC24 /* LaunchViewController.swift in Sources */,
 				BF1CC24F20C8716200E3D97A /* EditableView.swift in Sources */,
+				BF2A483B20D3F244006CFFB0 /* InitialGenderViewController.swift in Sources */,
 				BFA5461C20CC050B007385A7 /* Themable.swift in Sources */,
 				BFA4697B20C1A14E0038FC24 /* CryptographicKey.swift in Sources */,
+				BF2A483720D3F20D006CFFB0 /* InitialPrivacyViewController.swift in Sources */,
 				BFA5461A20CC0405007385A7 /* InitAccessControlTypeViewController.swift in Sources */,
 				BF9B087E20D2C17B006D5A92 /* UIEdgeInsets+Extensions.swift in Sources */,
+				BF2A483D20D3F264006CFFB0 /* InitialMedicationViewController.swift in Sources */,
 				BFE2009820CD61FA008F7D48 /* AlertViewController.swift in Sources */,
+				BF4E36F120D3A37B00941AEA /* SelectableButton.swift in Sources */,
 				BF1CC26320D3090F0088F5E7 /* ControllerSegue.swift in Sources */,
 				BFE2009520CD59CC008F7D48 /* PaddingView.swift in Sources */,
+				BF2A484120D3F2AE006CFFB0 /* InitialSharingViewController.swift in Sources */,
 				BFA5462920CC5795007385A7 /* ThemeItem.swift in Sources */,
 				BFD8EE7220C2C2E5009AB3C6 /* NavigationBar.swift in Sources */,
 				BF1307F820CCEB790044E093 /* UIColor+Extensions.swift in Sources */,
@@ -664,12 +692,14 @@
 				BF01E49220CD4D78005D4AF8 /* PanelView.swift in Sources */,
 				BF1307F020CCC2120044E093 /* TextEntryView.swift in Sources */,
 				BF1307EE20CCB8910044E093 /* DecoratorView.swift in Sources */,
+				BF2A483920D3F22D006CFFB0 /* InitialNamesViewController.swift in Sources */,
 				BF80DD8820CEF2E100360750 /* BearPolarMaskedImageView.swift in Sources */,
 				BF72BFEC20C2DA4E000806F2 /* InitAccessControlViewController.swift in Sources */,
-				BF57F45720D3297200D8F1A3 /* TitleView.swift in Sources */,
 				BF1307F520CCCAB50044E093 /* InformationViewController.swift in Sources */,
 				BF80DD8A20CF0B1400360750 /* Person.swift in Sources */,
 				BF9B087820D2A1BB006D5A92 /* MaskingImageButton.swift in Sources */,
+				BF4E36EF20D39E5F00941AEA /* RadioGroup.swift in Sources */,
+				BF4E36F320D3AD2B00941AEA /* ChoiceMatrixRow.swift in Sources */,
 				BFDA9F4420C790AA00CBF35B /* PIN.swift in Sources */,
 				BFA4695820C1A0F40038FC24 /* AppDelegate.swift in Sources */,
 				BFA5462720CC284E007385A7 /* BorderLayer.swift in Sources */,
@@ -686,6 +716,8 @@
 				BF9B087C20D2BF09006D5A92 /* ChoiceMatrixView.swift in Sources */,
 				BFAA2B8620CC7BC700BE6950 /* HeaderView.swift in Sources */,
 				BFA5462520CC26D3007385A7 /* Theme.swift in Sources */,
+				BF4E36ED20D377F500941AEA /* StepView.swift in Sources */,
+				BF2A483F20D3F298006CFFB0 /* InitialIllnesViewController.swift in Sources */,
 				BF60136320CE332E008EBFB9 /* FocusField.swift in Sources */,
 				BFA4697920C1A1190038FC24 /* Keychain.swift in Sources */,
 				BFA4697F20C1A19F0038FC24 /* PrivateKey.swift in Sources */,

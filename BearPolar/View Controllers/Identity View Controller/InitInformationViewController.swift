@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InitInformationViewController: UIViewController,UIAdaptivePresentationControllerDelegate,UIPopoverPresentationControllerDelegate
+class InitInformationViewController: UIViewController
     {
 
     override func viewDidLoad() 

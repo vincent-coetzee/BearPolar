@@ -12,16 +12,17 @@ extension UIFont
     {
     public enum FontWeight:String
         {
-        case weight100 = "100"
-        case weight300 = "300"
-        case weight500 = "500"
-        case weight700 = "700"
-        case weight900 = "900"
+        case heavy = "Heavy"
+        case bold = "Bold"
+        case semiBold = "Semibold"
+        case light = "Light"
+        case medium = "Medium"
+        case regular = "Regular"
         }
         
     static func applicationFont(weight weight:FontWeight,size size:CGFloat) -> UIFont
         {
-        let name = "MuseoSans-\(weight.rawValue)"
+        let name = "SFProText-\(weight.rawValue)"
         return(UIFont(name: name,size: size)!)
         }
         

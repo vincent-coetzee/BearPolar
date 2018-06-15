@@ -166,7 +166,7 @@ class PINPadView: UIView,Themable
             key.font = text.font
             key.text.foregroundColor = text.textColor.cgColor
             key.backgroundColor = content.backgroundColor.cgColor
-            key.circle.fillColor = content.contentColor?.cgColor
+            key.circle.fillColor = key.filled ? content.contentColor?.cgColor : UIColor.clear.cgColor
             key.setNeedsLayout()
             }
         setNeedsLayout()

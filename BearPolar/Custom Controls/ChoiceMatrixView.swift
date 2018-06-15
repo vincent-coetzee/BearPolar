@@ -11,196 +11,161 @@ import UIKit
 @IBDesignable
 class ChoiceMatrixView: UIView,Themable
     {
-    private class ChoiceEntryLayer:CALayer
+    private var entryThemeItem:ThemeContainerItem?
+    private var entryLabels:[String] = []
+    private var labelFont:UIFont = UIFont.applicationFont(weight: .medium, size: 20)
+    private var rows:[ChoiceMatrixRow] = []
+    private let radioGroup = RadioGroup()
+    
+    typealias ItemType = UIView & Selectable
+    
+    public var choiceMaker: (String) -> ItemType? = { a in fatalError() }
         {
-        public static let TextInset:CGFloat = 8
-        
-        private let labelLayer = CATextLayer()
-        private var normalLabelFont = UIFont.applicationFont(weight: .weight500, size: 16)
-        private var normalLabelColor:UIColor = .darkGray
-        private var normalBackgroundColor:UIColor = .black
-        private var selectedLabelColor:UIColor = .white
-        private var selectedLabelFont:UIFont = UIFont.applicationFont(weight: .weight700, size: 16)
-        private var selectedBackgroundColor:UIColor = .black
-        
-        fileprivate var isSelected:Bool = false
+        didSet
             {
-            didSet
-                {
-                self.updateState()
-                }
-            }
-            
-        var entryLabel:String = "Entry"
-            {
-            didSet
-                {
-                labelLayer.string = entryLabel
-                }
-            }
-            
-        init(label:String)
-            {
-            super.init()
-            initComponents()
-            labelLayer.string = label
-            self.entryLabel = label
-            }
-            
-        override init(layer:Any)
-            {
-            super.init(layer:layer)
-            self.entryLabel = ""
-            initComponents()
-            }
-        
-        private func updateState()
-            {
-            if isSelected
-                {
-                labelLayer.setUIFont(selectedLabelFont)
-                labelLayer.foregroundColor = selectedLabelColor.cgColor
-                self.backgroundColor = selectedBackgroundColor.cgColor
-//                self.shadowColor = UIColor.black.cgColor
-//                self.shadowOffset = CGSize.zero
-//                self.shadowRadius = 6
-//                self.shadowOpacity = 0.8
-                }
-            else
-                {
-                labelLayer.setUIFont(normalLabelFont)
-                labelLayer.foregroundColor = normalLabelColor.cgColor
-                self.backgroundColor = normalBackgroundColor.cgColor
-//                self.shadowOpacity = 0.0
-                }
-            self.setNeedsDisplay()
-            }
-        required init?(coder aDecoder: NSCoder) 
-            {
-            fatalError("init(coder:) has not been implemented")
-            }
-            
-        private func initComponents()
-            {
-            self.addSublayer(labelLayer)
-            setNeedsLayout()
-            }
-            
-        override func layoutSublayers()
-            {
-            super.layoutSublayers()
-            let bounds = self.bounds
-            let labelSize = TextWrangler.measure(string: entryLabel, usingFont: selectedLabelFont, inWidth: 10000)
-            let sizeX = bounds.size.width - 2.0*ChoiceEntryLayer.TextInset
-            let originX = ChoiceEntryLayer.TextInset
-            let originY = (bounds.size.height - labelSize.height)/2.0
-            labelLayer.frame = CGRect(x: originX,y: originY, width: sizeX,height: labelSize.height)
-            }
-            
-        func apply(themeItem:ThemeItem)
-            {
-            var container = themeItem.containerItem(at: "normal")
-            var textItem = container.textItem(at: "text")
-            normalLabelColor = textItem.textColor
-            normalLabelFont = textItem.font
-            var contentItem = container.contentItem(at: "content")
-            normalBackgroundColor = contentItem.backgroundColor
-            container = themeItem.containerItem(at: "selection")
-            textItem = container.textItem(at: "text")
-            selectedLabelColor = textItem.textColor
-            selectedLabelFont = textItem.font
-            contentItem = container.contentItem(at: "content")
-            selectedBackgroundColor = contentItem.backgroundColor
-            updateState()
-            setNeedsLayout()
+            ChoiceMatrixRow.choiceMaker = choiceMaker
             }
         }
         
-    private var entryThemeItem:ThemeContainerItem?
-    private var entries:[ChoiceEntryLayer] = []
-    private var entryLabels:[String] = []
-    private var labelFont:UIFont = UIFont.applicationFont(weight: .weight500, size: 20)
-    
     public var themeEntryKey:Theme.EntryKey?
         {
         return(.choiceMatrix)
         }
         
-    public var onChange: (ChoiceMatrixView,String?) -> () = { a,b in }
-    
-    @IBInspectable
-    public var entryText:String = ""
+    public var onChange: (Selectable?) -> () = { value in }
         {
         didSet
             {
-            for entry in entries
+            radioGroup.onChange = onChange
+            }
+        }
+    
+    subscript(row:Int,column:Int) -> ItemType?
+        {
+        get
+            {
+            guard row < rows.count else
                 {
-                entry.removeFromSuperlayer()
+                return(nil)
                 }
-            entries = []
+            return(rows[row][column])
+            }
+        set
+            {
+            guard row < rows.count,var value = newValue else
+                {
+                return
+                }
+            rows[row][column] = value
+            value.radioGroup = radioGroup
+            self.setNeedsLayout()
+            }
+        }
+        
+    @IBInspectable public var entryText:String = ""
+        {
+        didSet
+            {
             entryLabels = entryText.components(separatedBy: ",")
-            for label in entryLabels
-                {
-                let entry = ChoiceEntryLayer(label:label)
-                self.layer.addSublayer(entry)
-                entries.append(entry)
-                if let item = entryThemeItem
-                    {
-                    entry.apply(themeItem: item)
-                    }
-                }
-            self.selectedEntry = entries.first
-            self.invalidateIntrinsicContentSize()
-            setNeedsLayout()
             }
         }
         
-    private var selectedEntry:ChoiceEntryLayer?
+    @IBInspectable public var rowCount:Int = 2
         {
-        willSet
-            {
-            selectedEntry?.isSelected = false
-            }
         didSet
             {
-            selectedEntry?.isSelected = true
-            onChange(self,selectedEntry?.entryLabel)
+            updateRows()
             }
+        }
+        
+    @IBInspectable public var columnCount:Int = 2
+        {
+        didSet
+            {
+            updateColumns()
+            }
+        }        
+        
+    private func updateColumns()
+        {
+        for row in rows
+            {
+            row.columnCount = columnCount
+            }
+        }
+        
+    private func updateRows()
+        {
+        guard rowCount != rows.count else
+            {
+            return
+            }
+        if rowCount < rows.count
+            {
+            var newRows:[ChoiceMatrixRow] = []
+            for rowIndex in 0..<rowCount
+                {
+                newRows.append(rows[rowIndex])
+                }
+            rows = newRows
+            }
+        else
+            {
+            let extraRowCount = rowCount - rows.count
+            for _ in 0..<extraRowCount
+                {
+                let row = ChoiceMatrixRow(frame: CGRect(x: 0,y: 0,width: 1000,height: 1000))
+                addSubview(row)
+                row.translatesAutoresizingMaskIntoConstraints = false
+                row.radioGroup = radioGroup
+                row.columnCount = columnCount
+                rows.append(row)
+                }
+            }
+        defineConstraints()
+        setNeedsLayout()
+        setNeedsDisplay()
         }
     
-    public override func layoutSubviews()
+    private func defineConstraints()
         {
-        super.layoutSubviews()
-        let bounds = self.bounds
-        var frame = CGRect(x:0,y:0,width:bounds.size.width,height: bounds.size.height / CGFloat(entries.count))
-        for entry in entries
+        for row in rows
             {
-            entry.frame = frame.insetBy(dx: 2, dy: 2)
-            frame.origin.y += frame.size.height
+            row.removeConstraints(row.constraints)
             }
-        }
-        
-    private func measure() -> CGSize
-        {
-        var totalHeight:CGFloat = 0
-        for label in entryLabels
+        var lastRow:UIView?
+        var topAnchor = self.topAnchor
+        for row in rows
             {
-            var labelSize = TextWrangler.measure(string: label, usingFont: labelFont, inWidth: 10000)
-            labelSize.height += (2.0 * ChoiceEntryLayer.TextInset)
-            totalHeight += labelSize.height
+            row.topAnchor.constraint(equalTo: topAnchor)
+            topAnchor = row.bottomAnchor
+            row.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            row.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+            lastRow?.heightAnchor.constraint(equalTo: row.heightAnchor).isActive = true
+            lastRow = row
+            row.backgroundColor = .black
             }
-        let bounds = self.bounds
-        return(CGSize(width: bounds.size.width,height:totalHeight))
-        }
-        
-    public override var intrinsicContentSize:CGSize
-        {
-        let size = measure()
-        return(CGSize(width: 300.0,height: size.height))
+        lastRow?.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        if let lastRow = rows.last
+            {
+            lastRow.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            }
         }
         
     private func initComponents()
         {
+        self.choiceMaker = 
+            {
+            string in
+            let button = SelectableButton(frame: CGRect(x:0,y:0,width:100,height:30))
+            button.text = string
+            return(button)
+            }
+        updateRows()
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .magenta
+        self.addSubview(view)
+        view.frame = CGRect(x:20,y:20,width:200,height:200)
         applyTheming()
         }
         
@@ -216,10 +181,13 @@ class ChoiceMatrixView: UIView,Themable
         initComponents()
         }
         
-    override func awakeFromNib()
+    override func layoutSubviews()
         {
-        super.awakeFromNib()
-        initComponents()
+        var nextRow = rows.makeIterator()
+        for frame in self.bounds.rowSlices(rowCount: rows.count)
+            {
+            nextRow.next()?.frame = frame
+            }
         }
     
     override public func prepareForInterfaceBuilder()
@@ -231,34 +199,15 @@ class ChoiceMatrixView: UIView,Themable
         
     func apply(themeItem:ThemeItem)
         {
-        let item = themeItem.contentItem(at: "content")
-        item.apply(to: self)
-        entryThemeItem = themeItem.item(at: "entry")
-        let border = themeItem.borderItem(at: "border")
-        let radius = border.radius!
-        self.layer.cornerRadius = radius
-        labelFont = entryThemeItem!.textItem(at: "selection.text").font
-        for entry in entries
-            {
-            entry.apply(themeItem: entryThemeItem!)
-            entry.cornerRadius = radius
-            entry.setNeedsLayout()
-            }
-        self.invalidateIntrinsicContentSize()
-        setNeedsLayout()
-        }
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) 
-        {
-        let touch = touches.first!
-        let point = touch.location(in: self)
-        for entry in entries
-            {
-            if entry.frame.contains(point)
-                {
-                selectedEntry = entry
-                return
-                }
-            }
+//        let item = themeItem.contentItem(at: "content")
+//        item.apply(to: self)
+//        entryThemeItem = themeItem.item(at: "entry")
+//        let border = themeItem.borderItem(at: "border")
+//        for row in rows
+//            {
+//            row.apply(themeItem:entryThemeItem!)
+//            }
+//        self.invalidateIntrinsicContentSize()
+//        setNeedsLayout()
         }
     }

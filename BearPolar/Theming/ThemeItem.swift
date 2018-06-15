@@ -96,9 +96,9 @@ public class ThemeItem
             }
         }
     
-    class func navigationBar(tint:UIColor,barTint:UIColor,titleAttributes:Theme.TextAttributes? = nil,prefersLargeTitles:Bool = false,largeTitleAttributes:Theme.TextAttributes?=nil) -> ThemeItem
+    class func navigationBar(tint:UIColor,barTint:UIColor,titleAttributes:Theme.TextAttributes? = nil,prefersLargeTitles:Bool = false,largeTitleAttributes:Theme.TextAttributes?=nil,translucent:Bool = true) -> ThemeItem
         {
-        return(ThemeNavigationBarItem(tint:tint,barTint:barTint,titleAttributes:titleAttributes,prefersLargeTitles:prefersLargeTitles,largeTitleAttributes:largeTitleAttributes))
+        return(ThemeNavigationBarItem(tint:tint,barTint:barTint,titleAttributes:titleAttributes,prefersLargeTitles:prefersLargeTitles,largeTitleAttributes:largeTitleAttributes,translucent:translucent))
         }
         
     class func text(textColor:UIColor = .black,font:UIFont = UIFont.systemFont(ofSize:12),alignment:Theme.Alignment = .left,wrapped:Bool = false) -> ThemeItem
@@ -244,20 +244,23 @@ public class ThemeNavigationBarItem:ThemeItem
     let titleAttributes:Theme.TextAttributes?
     let prefersLargeTitles:Bool
     let largeTitleAttributes:Theme.TextAttributes?
+    let translucent:Bool
     
-    init(tint:UIColor,barTint:UIColor,titleAttributes:Theme.TextAttributes?,prefersLargeTitles:Bool,largeTitleAttributes:Theme.TextAttributes?)
+    init(tint:UIColor,barTint:UIColor,titleAttributes:Theme.TextAttributes?,prefersLargeTitles:Bool,largeTitleAttributes:Theme.TextAttributes?,translucent:Bool)
         {
         self.tint = tint
         self.barTint = barTint
         self.titleAttributes = titleAttributes
         self.prefersLargeTitles = prefersLargeTitles
         self.largeTitleAttributes = largeTitleAttributes
+        self.translucent = translucent
         }
         
     override func apply(to bar:UINavigationBar)
         {
         bar.tintColor = tint
         bar.barTintColor = barTint
+        bar.isTranslucent = self.translucent
         if self.prefersLargeTitles
             {
             bar.prefersLargeTitles = true

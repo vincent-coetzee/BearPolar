@@ -12,9 +12,9 @@ import UIKit
 class HeaderView: UIView,Themable
     {
     private let headingLayer = CATextLayer()
-    private var headingFont = UIFont.applicationFont(weight: .weight900, size: 30)
+    private var headingFont = UIFont.applicationFont(weight: .heavy, size: 30)
     private let helpTextLayer = CATextLayer()
-    private var helpFont = UIFont.applicationFont(weight: .weight300, size: 12)
+    private var helpFont = UIFont.applicationFont(weight: .heavy, size: 12)
     
     public var themeEntryKey:Theme.EntryKey?
         {

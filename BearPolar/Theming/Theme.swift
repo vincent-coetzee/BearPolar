@@ -169,28 +169,28 @@ public class Theme
         items["pinPad.digits.border"] = ThemeItem.border(borderColor:colorPalette.primaryColor,width:2.0)
         items["pinPad.content"] = ThemeItem.content(backgroundColor: .white)
         items["pinPad.keys.content"] = ThemeItem.content(backgroundColor:.clear,contentColor:colorPalette.primaryColor)
-        items["pinPad.keys.text"] = ThemeItem.text(textColor:.black,font:UIFont.applicationFont(weight: .weight900, size: 40))
+        items["pinPad.keys.text"] = ThemeItem.text(textColor:.black,font:UIFont.applicationFont(weight: .heavy, size: 40))
         items["header.content"] = ThemeItem.content(backgroundColor:colorPalette.primaryColor)
         items["header.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1)
-        items["header.heading"] = ThemeItem.text(textColor: .black,font:UIFont.boldSystemFont(ofSize: 16),alignment: .center)
-        items["header.help"] = ThemeItem.text(textColor: colorPalette.textColor,font:UIFont.boldSystemFont(ofSize: 12))
-        let attributes:Theme.TextAttributes = [.font: themeFont(weight:.weight900,size:28),.foregroundColor: UIColor.white]
-        items["navigationBar"] = ThemeItem.navigationBar(tint:.black,barTint: colorPalette.primaryColor,prefersLargeTitles:true,largeTitleAttributes: attributes)
+        items["header.heading"] = ThemeItem.text(textColor: .black,font:themeFont(weight: .bold,size:16),alignment: .center)
+        items["header.help"] = ThemeItem.text(textColor: colorPalette.textColor,font:themeFont(weight: .regular,size:12))
+        let attributes:Theme.TextAttributes = [.font: themeFont(weight:.heavy,size:32),.foregroundColor: UIColor.white]
+        items["navigationBar"] = ThemeItem.navigationBar(tint:.black,barTint: colorPalette.primaryColor,prefersLargeTitles:true,largeTitleAttributes: attributes,translucent:false)
         items["textEntry.content"] = ThemeItem.content(backgroundColor:.white,highlightColor: colorPalette.primaryColor)
         items["textEntry.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1)
-        items["textEntry.label.text"] = ThemeItem.text(textColor: colorPalette.textColor,font:themeFont(weight:.weight500,size:16))
-        items["textEntry.field.text"] = ThemeItem.text(textColor: colorPalette.textColor,font:themeFont(weight:.weight500,size:16))
+        items["textEntry.label.text"] = ThemeItem.text(textColor: colorPalette.textColor,font:themeFont(weight:.medium,size:16))
+        items["textEntry.field.text"] = ThemeItem.text(textColor: colorPalette.textColor,font:themeFont(weight:.medium,size:16))
         items["textEntry.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1)
         items["labeledButton.content"] = ThemeItem.content(backgroundColor: .white)
         items["labeledButton.button.content"] = ThemeItem.content(backgroundColor: colorPalette.primaryColor)
-        items["labeledButton.button.text"] = ThemeItem.text(textColor: .white,font:themeFont(weight:.weight500,size:16))
-        items["labeledButton.label.text"] = ThemeItem.text(textColor: .darkGray,font:themeFont(weight:.weight500,size:16))
+        items["labeledButton.button.text"] = ThemeItem.text(textColor: .white,font:themeFont(weight:.medium,size:16))
+        items["labeledButton.label.text"] = ThemeItem.text(textColor: .darkGray,font:themeFont(weight:.medium,size:16))
         items["labeledButton.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1)
         items["choiceMatrix.content"] = ThemeItem.content(backgroundColor: colorPalette.primaryColor)
         items["choiceMatrix.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1,radius:6)
-        items["choiceMatrix.entry.normal.text"] = ThemeItem.text(textColor: .white,font:themeFont(weight:.weight500,size:16))
+        items["choiceMatrix.entry.normal.text"] = ThemeItem.text(textColor: .white,font:themeFont(weight:.medium,size:16))
         items["choiceMatrix.entry.normal.content"] = ThemeItem.content(backgroundColor: colorPalette.primaryColor)
-        items["choiceMatrix.entry.selection.text"] = ThemeItem.text(textColor: .black,font:themeFont(weight:.weight500,size:18))
+        items["choiceMatrix.entry.selection.text"] = ThemeItem.text(textColor: .black,font:themeFont(weight:.medium,size:18))
         items["choiceMatrix.entry.selection.content"] = ThemeItem.content(backgroundColor: .lime)
         }
         
@@ -260,7 +260,7 @@ public class Theme
         
     func themeFont(weight:UIFont.FontWeight,size:CGFloat) -> UIFont
         {
-        let name = "MuseoSans-\(weight.rawValue)"
+        let name = "SFProText-\(weight.rawValue)"
         return(UIFont(name:name,size:size)!)
         }
     }

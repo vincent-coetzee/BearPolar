@@ -12,7 +12,7 @@ import UIKit
 class LabeledHolderView: UIView,Themable
     {
     internal var labelLayer = CATextLayer()
-    internal var labelFont:UIFont = UIFont.applicationFont(weight: .weight500, size: 16)
+    internal var labelFont:UIFont = UIFont.applicationFont(weight: .semiBold, size: 16)
     
     @IBOutlet var sharedColumn:TextColumn!
     @IBOutlet var targetView:UIView!
