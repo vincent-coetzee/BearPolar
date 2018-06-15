@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="MuseoSansRounded-900.otf">
-            <string>MuseoSansRounded-900</string>
+        <array key="MuseoSans_100.otf">
+            <string>MuseoSans-100</string>
         </array>
         <array key="MuseoSans_500.otf">
             <string>MuseoSans-500</string>
         </array>
         <array key="MuseoSans_900.otf">
             <string>MuseoSans-900</string>
+        </array>
+        <array key="SF-Pro-Text-Bold.otf">
+            <string>SFProText-Bold</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
         </array>
     </customFonts>
     <scenes>
@@ -50,10 +60,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m82-SU-onM">
-                                <rect key="frame" x="143" y="655" width="89" height="38"/>
-                                <fontDescription key="fontDescription" name="MuseoSansRounded-900" family="Museo Sans Rounded" pointSize="21"/>
+                                <rect key="frame" x="127" y="645" width="121" height="48"/>
+                                <fontDescription key="fontDescription" name="MuseoSans-100" family="Museo Sans" pointSize="30"/>
                                 <state key="normal" title="continue">
-                                    <color key="titleColor" name="Green.Bright.Text"/>
+                                    <color key="titleColor" name="Color.PureGreen"/>
                                 </state>
                             </button>
                         </subviews>
@@ -93,9 +103,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRy-YE-enA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRy-YE-enA">
                                 <rect key="frame" x="158" y="333" width="76" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MuseoSans-500" family="Museo Sans" pointSize="24"/>
                                 <state key="normal" title="LOGIN">
@@ -104,6 +113,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nRy-YE-enA" firstAttribute="top" secondItem="gTT-CS-0gu" secondAttribute="top" constant="289" id="41y-3r-PEc"/>
+                            <constraint firstItem="gTT-CS-0gu" firstAttribute="trailing" secondItem="nRy-YE-enA" secondAttribute="trailing" constant="141" id="JVA-Og-MsQ"/>
+                            <constraint firstItem="nRy-YE-enA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gTT-CS-0gu" secondAttribute="leading" symbolic="YES" id="ZZ6-W1-bsB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gTT-CS-0gu"/>
                     </view>
                 </viewController>
@@ -115,9 +129,19 @@
         <scene sceneID="RDt-U9-nSL">
             <objects>
                 <navigationController id="mhs-Tj-qyq" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qLy-sy-57O" customClass="NavigationBar" customModule="BearPolar" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="qLy-sy-57O" customClass="NavigationBar" customModule="BearPolar" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="Color.GoodGreen"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="40"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="32"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="bUV-Zl-ngl" kind="relationship" relationship="rootViewController" id="DBx-Th-Ybc"/>
@@ -125,7 +149,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ac-RL-Nk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1239" y="133"/>
+            <point key="canvasLocation" x="1450" y="-147"/>
         </scene>
         <!--Protection-->
         <scene sceneID="Cbm-cz-dmL">
@@ -143,21 +167,649 @@
             </objects>
             <point key="canvasLocation" x="2999" y="767"/>
         </scene>
-        <!--Init Information View Controller-->
+        <!--HELLO-->
         <scene sceneID="mJW-kE-1db">
             <objects>
                 <viewController id="bUV-Zl-ngl" customClass="InitInformationViewController" customModule="BearPolar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OoL-1u-KRi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5DT-eT-1CR" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="32" y="20" width="311" height="141"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kn0-Zh-KhD">
+                                        <rect key="frame" x="12" y="12" width="287" height="117"/>
+                                        <string key="text">BearPolar takes privacy very seriously and so before it collects any information it will ask you to protect your data either by means of a biometric or a PIN. Only once this has been done will BearPolar ask you five sets of questions to collect the data needed for it to function.</string>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="kn0-Zh-KhD" firstAttribute="top" secondItem="5DT-eT-1CR" secondAttribute="top" constant="12" id="6ev-vF-SUK"/>
+                                    <constraint firstItem="kn0-Zh-KhD" firstAttribute="leading" secondItem="5DT-eT-1CR" secondAttribute="leading" constant="12" id="aPy-ws-LIu"/>
+                                    <constraint firstAttribute="trailing" secondItem="kn0-Zh-KhD" secondAttribute="trailing" constant="12" id="ckT-Ml-f7Y"/>
+                                    <constraint firstAttribute="bottom" secondItem="kn0-Zh-KhD" secondAttribute="bottom" constant="12" id="l4k-Vg-3km"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tN6-9w-Rvx" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="32" y="162" width="311" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eg4-mC-CV2">
+                                        <rect key="frame" x="122" y="9.6666666666666856" width="67" height="41"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="24"/>
+                                        <state key="normal" title="NEXT"/>
+                                        <connections>
+                                            <segue destination="Zhf-2B-M1s" kind="show" id="6lg-GZ-0yi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Eg4-mC-CV2" firstAttribute="centerY" secondItem="tN6-9w-Rvx" secondAttribute="centerY" id="cvx-hI-wzX"/>
+                                    <constraint firstAttribute="height" constant="60" id="dlj-90-84D"/>
+                                    <constraint firstItem="Eg4-mC-CV2" firstAttribute="centerX" secondItem="tN6-9w-Rvx" secondAttribute="centerX" id="gZC-sR-6yY"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="Color.GoodGreen"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Kbt-ah-i1q" firstAttribute="trailing" secondItem="5DT-eT-1CR" secondAttribute="trailing" constant="32" id="7OD-Qb-MHm"/>
+                            <constraint firstItem="Kbt-ah-i1q" firstAttribute="trailing" secondItem="5DT-eT-1CR" secondAttribute="trailing" constant="32" id="9DF-2Z-9eW"/>
+                            <constraint firstItem="5DT-eT-1CR" firstAttribute="leading" secondItem="Kbt-ah-i1q" secondAttribute="leading" constant="32" id="EKt-Wu-3fr"/>
+                            <constraint firstItem="Kbt-ah-i1q" firstAttribute="trailing" secondItem="tN6-9w-Rvx" secondAttribute="trailing" constant="32" id="Ek6-OJ-9DT"/>
+                            <constraint firstItem="5DT-eT-1CR" firstAttribute="top" secondItem="Kbt-ah-i1q" secondAttribute="top" constant="20" id="Rzl-Zc-SpD"/>
+                            <constraint firstItem="tN6-9w-Rvx" firstAttribute="top" secondItem="5DT-eT-1CR" secondAttribute="bottom" constant="1" id="SQb-FQ-RIY"/>
+                            <constraint firstItem="5DT-eT-1CR" firstAttribute="leading" secondItem="Kbt-ah-i1q" secondAttribute="leading" constant="32" id="mvR-F0-X0y"/>
+                            <constraint firstItem="tN6-9w-Rvx" firstAttribute="leading" secondItem="Kbt-ah-i1q" secondAttribute="leading" constant="32" id="zGB-Ke-NBf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Kbt-ah-i1q"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xbx-a2-OXG"/>
+                    <navigationItem key="navigationItem" title="HELLO" id="xbx-a2-OXG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aiM-sf-Ajq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2276" y="131"/>
+            <point key="canvasLocation" x="2373.5999999999999" y="-132.26600985221674"/>
+        </scene>
+        <!--0/5 PRIVACY-->
+        <scene sceneID="qEZ-Zf-A9Q">
+            <objects>
+                <viewController title="0/5 PRIVACY" id="Zhf-2B-M1s" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tp6-WF-HSd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DK2-wH-9ww" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="335" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter a 6 digit PIN to protect your data." textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5PD-Vk-m6L">
+                                        <rect key="frame" x="12" y="12" width="311" height="36.333333333333336"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="5PD-Vk-m6L" secondAttribute="trailing" constant="12" id="15H-G0-mvc"/>
+                                    <constraint firstAttribute="height" constant="60" id="2fS-5q-fNf"/>
+                                    <constraint firstAttribute="bottom" secondItem="5PD-Vk-m6L" secondAttribute="bottom" constant="12" id="F8P-v1-MHr"/>
+                                    <constraint firstItem="5PD-Vk-m6L" firstAttribute="leading" secondItem="DK2-wH-9ww" secondAttribute="leading" constant="12" id="Gni-jD-3tE"/>
+                                    <constraint firstItem="5PD-Vk-m6L" firstAttribute="top" secondItem="DK2-wH-9ww" secondAttribute="top" constant="12" id="nvS-Xr-8F8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDe-74-fKE" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="81" width="335" height="456"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Zc-IT-rms" customClass="PINPadView" customModule="BearPolar" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="16" width="303" height="424"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="9Zc-IT-rms" secondAttribute="trailing" constant="16" id="1By-wx-Jx2"/>
+                                    <constraint firstAttribute="bottom" secondItem="9Zc-IT-rms" secondAttribute="bottom" constant="16" id="1Wq-8P-lqe"/>
+                                    <constraint firstItem="9Zc-IT-rms" firstAttribute="top" secondItem="NDe-74-fKE" secondAttribute="top" constant="16" id="OrD-Ro-Xwm"/>
+                                    <constraint firstItem="9Zc-IT-rms" firstAttribute="leading" secondItem="NDe-74-fKE" secondAttribute="leading" constant="16" id="vMB-YB-6ld"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLX-wI-pnl" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="538" width="335" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fu-6I-5RK">
+                                        <rect key="frame" x="134" y="8" width="67" height="44"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="24"/>
+                                        <state key="normal" title="NEXT">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="QcK-X4-Vc0" kind="show" id="2iy-sO-lKt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="OON-lA-KWt"/>
+                                    <constraint firstAttribute="bottom" secondItem="0fu-6I-5RK" secondAttribute="bottom" constant="8" id="b4j-uH-fW0"/>
+                                    <constraint firstItem="0fu-6I-5RK" firstAttribute="top" secondItem="WLX-wI-pnl" secondAttribute="top" constant="8" id="gUj-C4-rko"/>
+                                    <constraint firstItem="0fu-6I-5RK" firstAttribute="centerX" secondItem="WLX-wI-pnl" secondAttribute="centerX" id="wuZ-oC-SPg"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="Color.GoodGreen"/>
+                        <constraints>
+                            <constraint firstItem="WLX-wI-pnl" firstAttribute="top" secondItem="NDe-74-fKE" secondAttribute="bottom" constant="1" id="1Pn-FI-Aft"/>
+                            <constraint firstItem="NDe-74-fKE" firstAttribute="top" secondItem="DK2-wH-9ww" secondAttribute="bottom" constant="1" id="CP9-Bo-yAu"/>
+                            <constraint firstItem="ylz-Bg-cip" firstAttribute="trailing" secondItem="NDe-74-fKE" secondAttribute="trailing" constant="20" id="NhC-xO-MG3"/>
+                            <constraint firstItem="ylz-Bg-cip" firstAttribute="bottom" secondItem="WLX-wI-pnl" secondAttribute="bottom" constant="40" id="YhB-Xu-mME"/>
+                            <constraint firstItem="WLX-wI-pnl" firstAttribute="leading" secondItem="ylz-Bg-cip" secondAttribute="leading" constant="20" id="iFM-c8-usr"/>
+                            <constraint firstItem="ylz-Bg-cip" firstAttribute="trailing" secondItem="WLX-wI-pnl" secondAttribute="trailing" constant="20" id="loA-ps-UyC"/>
+                            <constraint firstItem="DK2-wH-9ww" firstAttribute="leading" secondItem="ylz-Bg-cip" secondAttribute="leading" constant="20" id="ltH-gp-DTi"/>
+                            <constraint firstItem="ylz-Bg-cip" firstAttribute="trailing" secondItem="DK2-wH-9ww" secondAttribute="trailing" constant="20" id="n13-Qf-lUx"/>
+                            <constraint firstItem="DK2-wH-9ww" firstAttribute="top" secondItem="ylz-Bg-cip" secondAttribute="top" constant="20" id="qBj-yQ-jK1"/>
+                            <constraint firstItem="NDe-74-fKE" firstAttribute="leading" secondItem="ylz-Bg-cip" secondAttribute="leading" constant="20" id="uYd-n4-VyX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ylz-Bg-cip"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hWb-jk-Tv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3248.8000000000002" y="-132.26600985221674"/>
+        </scene>
+        <!--1/5 NAMES-->
+        <scene sceneID="j3s-Z6-oO3">
+            <objects>
+                <viewController title="1/5 NAMES" id="QcK-X4-Vc0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QjZ-HF-F9h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ilc-Fg-Cpm" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="335" height="91"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqi-kc-2mT">
+                                        <rect key="frame" x="12" y="12" width="311" height="67"/>
+                                        <string key="text">BearPolar  will save information on your behalf, this may be into HealthKit if you so wish, or into BearPolars own database, it therefore needs your name to do so.</string>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="zqi-kc-2mT" secondAttribute="bottom" constant="12" id="9Mz-tr-A2O"/>
+                                    <constraint firstAttribute="trailing" secondItem="zqi-kc-2mT" secondAttribute="trailing" constant="12" id="HvK-8J-yPI"/>
+                                    <constraint firstItem="zqi-kc-2mT" firstAttribute="leading" secondItem="Ilc-Fg-Cpm" secondAttribute="leading" constant="12" id="WtC-v9-kUC"/>
+                                    <constraint firstItem="zqi-kc-2mT" firstAttribute="top" secondItem="Ilc-Fg-Cpm" secondAttribute="top" constant="12" id="qwQ-q9-HSS"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5q-Ue-Qj1" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="112" width="335" height="50"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hT6-6E-cEz" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="First Name"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="keyboardController" destination="75T-sd-SUr" id="McT-6D-xiZ"/>
+                                            <outlet property="nextField" destination="egu-8P-Xuz" id="rvh-jf-jQb"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hT6-6E-cEz" secondAttribute="trailing" id="JiB-j7-HUL"/>
+                                    <constraint firstItem="hT6-6E-cEz" firstAttribute="leading" secondItem="g5q-Ue-Qj1" secondAttribute="leading" id="Oee-PW-KLo"/>
+                                    <constraint firstAttribute="bottom" secondItem="hT6-6E-cEz" secondAttribute="bottom" id="TyP-y4-x0j"/>
+                                    <constraint firstAttribute="height" constant="50" id="rqc-PB-xeh"/>
+                                    <constraint firstItem="hT6-6E-cEz" firstAttribute="top" secondItem="g5q-Ue-Qj1" secondAttribute="top" id="x10-bT-ten"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MdT-9L-Zi6" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="163" width="335" height="50"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="egu-8P-Xuz" customClass="TextEntryView" customModule="BearPolar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Last Name"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="keyboardController" destination="75T-sd-SUr" id="4qU-oJ-hak"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="egu-8P-Xuz" secondAttribute="bottom" id="MYn-Ah-s7f"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Q5v-Ki-0K5"/>
+                                    <constraint firstItem="egu-8P-Xuz" firstAttribute="leading" secondItem="MdT-9L-Zi6" secondAttribute="leading" id="Uos-xb-DEA"/>
+                                    <constraint firstAttribute="trailing" secondItem="egu-8P-Xuz" secondAttribute="trailing" id="Xlg-kC-uuv"/>
+                                    <constraint firstAttribute="height" constant="50" id="wWF-DE-vbX"/>
+                                    <constraint firstItem="egu-8P-Xuz" firstAttribute="top" secondItem="MdT-9L-Zi6" secondAttribute="top" id="ySW-B2-ahw"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5CU-et-8fX" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="214" width="335" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AyU-bQ-cxT">
+                                        <rect key="frame" x="138.66666666666666" y="8" width="58" height="44"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="24"/>
+                                        <state key="normal" title="SKIP">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="NlX-az-nqu" kind="show" id="lpp-ko-BPj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="0Du-cA-Vbr"/>
+                                    <constraint firstAttribute="bottom" secondItem="AyU-bQ-cxT" secondAttribute="bottom" constant="8" id="fJ5-zb-k06"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="mGS-6d-5Wt"/>
+                                    <constraint firstItem="AyU-bQ-cxT" firstAttribute="top" secondItem="5CU-et-8fX" secondAttribute="top" constant="8" id="qAc-01-FUr"/>
+                                    <constraint firstItem="AyU-bQ-cxT" firstAttribute="centerX" secondItem="5CU-et-8fX" secondAttribute="centerX" id="rwN-WK-AA4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJr-DQ-t9X" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="275" width="335" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjB-IA-b6e">
+                                        <rect key="frame" x="132.66666666666666" y="8" width="71" height="44"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="24"/>
+                                        <state key="normal" title="DONE">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="NlX-az-nqu" kind="show" id="1zL-iA-KT7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="5Xh-FM-Hjm"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="SSw-IM-zve"/>
+                                    <constraint firstAttribute="bottom" secondItem="wjB-IA-b6e" secondAttribute="bottom" constant="8" id="XQc-cV-Wib"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="XYL-BD-9SZ"/>
+                                    <constraint firstItem="wjB-IA-b6e" firstAttribute="top" secondItem="HJr-DQ-t9X" secondAttribute="top" constant="8" id="hdH-Pr-IaS"/>
+                                    <constraint firstItem="wjB-IA-b6e" firstAttribute="centerX" secondItem="HJr-DQ-t9X" secondAttribute="centerX" id="oEb-cl-WJ7"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="Color.GoodGreen"/>
+                        <color key="tintColor" name="Color.GoodGreen"/>
+                        <constraints>
+                            <constraint firstItem="MdT-9L-Zi6" firstAttribute="top" secondItem="g5q-Ue-Qj1" secondAttribute="bottom" constant="1" id="3eZ-op-Taf"/>
+                            <constraint firstItem="g5q-Ue-Qj1" firstAttribute="leading" secondItem="0n7-mT-WBR" secondAttribute="leading" constant="20" id="Ak2-29-ufn"/>
+                            <constraint firstItem="0n7-mT-WBR" firstAttribute="trailing" secondItem="g5q-Ue-Qj1" secondAttribute="trailing" constant="20" id="Amb-ye-SSG"/>
+                            <constraint firstItem="0n7-mT-WBR" firstAttribute="trailing" secondItem="5CU-et-8fX" secondAttribute="trailing" constant="20" id="MtI-aT-TBm"/>
+                            <constraint firstItem="0n7-mT-WBR" firstAttribute="trailing" secondItem="MdT-9L-Zi6" secondAttribute="trailing" constant="20" id="N7z-U8-QGi"/>
+                            <constraint firstItem="5CU-et-8fX" firstAttribute="leading" secondItem="0n7-mT-WBR" secondAttribute="leading" constant="20" id="OXO-Yc-0qh"/>
+                            <constraint firstItem="HJr-DQ-t9X" firstAttribute="leading" secondItem="0n7-mT-WBR" secondAttribute="leading" constant="20" id="TEZ-Fh-t8O"/>
+                            <constraint firstItem="0n7-mT-WBR" firstAttribute="trailing" secondItem="Ilc-Fg-Cpm" secondAttribute="trailing" constant="20" id="Y64-Nd-HjY"/>
+                            <constraint firstItem="5CU-et-8fX" firstAttribute="top" secondItem="MdT-9L-Zi6" secondAttribute="bottom" constant="1" id="ba4-eD-UkA"/>
+                            <constraint firstItem="0n7-mT-WBR" firstAttribute="trailing" secondItem="HJr-DQ-t9X" secondAttribute="trailing" constant="20" id="dpT-dh-qRB"/>
+                            <constraint firstItem="HJr-DQ-t9X" firstAttribute="top" secondItem="5CU-et-8fX" secondAttribute="bottom" constant="1" id="ekN-Of-qkP"/>
+                            <constraint firstItem="Ilc-Fg-Cpm" firstAttribute="top" secondItem="0n7-mT-WBR" secondAttribute="top" constant="20" id="nFR-HE-jNJ"/>
+                            <constraint firstItem="MdT-9L-Zi6" firstAttribute="leading" secondItem="0n7-mT-WBR" secondAttribute="leading" constant="20" id="p7v-4w-4G9"/>
+                            <constraint firstItem="Ilc-Fg-Cpm" firstAttribute="leading" secondItem="0n7-mT-WBR" secondAttribute="leading" constant="20" id="zg2-XQ-Snb"/>
+                            <constraint firstItem="g5q-Ue-Qj1" firstAttribute="top" secondItem="Ilc-Fg-Cpm" secondAttribute="bottom" constant="1" id="zvh-dp-Sgf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0n7-mT-WBR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NbK-8G-kR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="75T-sd-SUr" customClass="KeyboardController" customModule="BearPolar" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="4164" y="-132.26600985221674"/>
+        </scene>
+        <!--2/5 GENDER-->
+        <scene sceneID="oI2-69-NdX">
+            <objects>
+                <viewController title="2/5 GENDER" id="NlX-az-nqu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fGJ-0f-z5a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0c-QX-B2U" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="128" width="335" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yg0-cg-GWp">
+                                        <rect key="frame" x="133" y="15.666666666666687" width="69.666666666666686" height="28.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Yg0-cg-GWp" firstAttribute="centerX" secondItem="bxF-uJ-372" secondAttribute="centerX" id="34u-Rz-9gR"/>
+                                    <constraint firstAttribute="height" constant="60" id="pAx-wP-SLq"/>
+                                    <constraint firstItem="Yg0-cg-GWp" firstAttribute="centerY" secondItem="bxF-uJ-372" secondAttribute="centerY" id="pfh-I2-ds4"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="bxF-uJ-372"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaW-CQ-9G9" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20.000000000000007" width="335" height="107.66666666666669"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pW-Ms-noS">
+                                        <rect key="frame" x="12" y="12" width="311" height="83.666666666666671"/>
+                                        <string key="text">BearPolar knows that gender is a very personal thing but from the point of view of depression gender is an important statistic, which is why it asks you to reveal you gender. Feel free to skip this step if you like.</string>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="7pW-Ms-noS" secondAttribute="bottom" constant="12" id="2h9-Jv-3IA"/>
+                                    <constraint firstAttribute="trailing" secondItem="7pW-Ms-noS" secondAttribute="trailing" constant="12" id="odY-dZ-r3L"/>
+                                    <constraint firstItem="7pW-Ms-noS" firstAttribute="top" secondItem="SaW-CQ-9G9" secondAttribute="top" constant="12" id="tDE-pI-nhs"/>
+                                    <constraint firstItem="7pW-Ms-noS" firstAttribute="leading" secondItem="SaW-CQ-9G9" secondAttribute="leading" constant="12" id="vHJ-4w-JaE"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcF-Q7-09n" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="189" width="335" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZQ-gq-GgQ">
+                                        <rect key="frame" x="1" y="1" width="166" height="58"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="20"/>
+                                        <state key="normal" title="Cis Female">
+                                            <color key="titleColor" name="Color.GoodGreen"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRI-JD-LOH">
+                                        <rect key="frame" x="168" y="1" width="166" height="58"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="20"/>
+                                        <state key="normal" title="Cis Male">
+                                            <color key="titleColor" name="Color.GoodGreen"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="VRI-JD-LOH" firstAttribute="top" secondItem="BcF-Q7-09n" secondAttribute="top" constant="1" id="7F2-fJ-xPQ"/>
+                                    <constraint firstItem="IZQ-gq-GgQ" firstAttribute="top" secondItem="BcF-Q7-09n" secondAttribute="top" constant="1" id="L3x-Vh-Qgj"/>
+                                    <constraint firstAttribute="height" constant="60" id="PtU-lx-KIS"/>
+                                    <constraint firstAttribute="bottom" secondItem="VRI-JD-LOH" secondAttribute="bottom" constant="1" id="UzO-8a-lEi"/>
+                                    <constraint firstAttribute="trailing" secondItem="VRI-JD-LOH" secondAttribute="trailing" constant="1" id="XlP-u6-8K4"/>
+                                    <constraint firstItem="IZQ-gq-GgQ" firstAttribute="width" secondItem="VRI-JD-LOH" secondAttribute="width" id="Yjt-SN-N6P"/>
+                                    <constraint firstItem="VRI-JD-LOH" firstAttribute="leading" secondItem="IZQ-gq-GgQ" secondAttribute="trailing" constant="1" id="hwf-4w-b5m"/>
+                                    <constraint firstItem="VRI-JD-LOH" firstAttribute="leading" secondItem="IZQ-gq-GgQ" secondAttribute="trailing" constant="1" id="mGV-tD-7M4"/>
+                                    <constraint firstItem="IZQ-gq-GgQ" firstAttribute="leading" secondItem="B7G-rk-4y3" secondAttribute="leading" constant="1" id="rQ1-Wt-Abw"/>
+                                    <constraint firstAttribute="bottom" secondItem="IZQ-gq-GgQ" secondAttribute="bottom" constant="1" id="uHt-FT-XvG"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="B7G-rk-4y3"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rgf-An-FWj" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="250" width="335" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubK-DM-eT6">
+                                        <rect key="frame" x="1" y="1" width="166" height="58"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="20"/>
+                                        <state key="normal" title="Trans Female">
+                                            <color key="titleColor" name="Color.GoodGreen"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwc-iB-u5a">
+                                        <rect key="frame" x="168" y="1" width="166" height="58"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="20"/>
+                                        <state key="normal" title="Trans Male">
+                                            <color key="titleColor" name="Color.GoodGreen"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ubK-DM-eT6" firstAttribute="width" secondItem="rwc-iB-u5a" secondAttribute="width" id="DYB-uf-lkb"/>
+                                    <constraint firstItem="ubK-DM-eT6" firstAttribute="leading" secondItem="tfx-Ul-045" secondAttribute="leading" constant="1" id="FQz-mF-eji"/>
+                                    <constraint firstItem="ubK-DM-eT6" firstAttribute="top" secondItem="rgf-An-FWj" secondAttribute="top" constant="1" id="VhL-QI-01i"/>
+                                    <constraint firstAttribute="height" constant="60" id="X3o-cC-NIu"/>
+                                    <constraint firstAttribute="bottom" secondItem="ubK-DM-eT6" secondAttribute="bottom" constant="1" id="crj-2K-p11"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="fAU-kh-94e"/>
+                                    <constraint firstItem="rwc-iB-u5a" firstAttribute="top" secondItem="rgf-An-FWj" secondAttribute="top" constant="1" id="los-oO-cuR"/>
+                                    <constraint firstAttribute="bottom" secondItem="rwc-iB-u5a" secondAttribute="bottom" constant="1" id="oik-Nk-ec3"/>
+                                    <constraint firstAttribute="trailing" secondItem="rwc-iB-u5a" secondAttribute="trailing" constant="1" id="pW3-Fk-Sd3"/>
+                                    <constraint firstItem="rwc-iB-u5a" firstAttribute="leading" secondItem="ubK-DM-eT6" secondAttribute="trailing" constant="1" id="wS3-02-IaG"/>
+                                    <constraint firstItem="rwc-iB-u5a" firstAttribute="leading" secondItem="ubK-DM-eT6" secondAttribute="trailing" constant="1" id="zpU-7S-Kto"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="tfx-Ul-045"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9c1-pj-qFf" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="311" width="335" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ou8-mh-wlc">
+                                        <rect key="frame" x="1" y="1" width="333" height="58"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="20"/>
+                                        <state key="normal" title="Other">
+                                            <color key="titleColor" name="Color.GoodGreen"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ou8-mh-wlc" secondAttribute="bottom" constant="1" id="2KK-vl-YRw"/>
+                                    <constraint firstItem="ou8-mh-wlc" firstAttribute="top" secondItem="9c1-pj-qFf" secondAttribute="top" constant="1" id="AEX-se-Knj"/>
+                                    <constraint firstAttribute="height" constant="60" id="H0m-cO-Um7"/>
+                                    <constraint firstItem="0DE-4e-HD7" firstAttribute="trailing" secondItem="ou8-mh-wlc" secondAttribute="trailing" constant="1" id="JiV-1X-Cql"/>
+                                    <constraint firstItem="ou8-mh-wlc" firstAttribute="centerX" secondItem="0DE-4e-HD7" secondAttribute="centerX" id="Rq6-LJ-gdt"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="UY8-c3-gZ2"/>
+                                    <constraint firstItem="ou8-mh-wlc" firstAttribute="leading" secondItem="0DE-4e-HD7" secondAttribute="leading" constant="1" id="VgG-71-EBz"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="zKw-nU-BIm"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="0DE-4e-HD7"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u88-ck-W0b" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="372" width="335" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8E-fS-av0">
+                                        <rect key="frame" x="139.33333333333334" y="8" width="58" height="44"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="24"/>
+                                        <state key="normal" title="SKIP">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="8mI-qf-wQ5" kind="show" id="zx8-xx-fev"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="3LQ-RY-TRH"/>
+                                    <constraint firstAttribute="bottom" secondItem="S8E-fS-av0" secondAttribute="bottom" constant="8" id="6NC-EV-rcr"/>
+                                    <constraint firstAttribute="height" constant="60" id="MPu-AN-8zb"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="PQX-5z-Jxf"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="bya-kX-hUq"/>
+                                    <constraint firstItem="S8E-fS-av0" firstAttribute="centerX" secondItem="u88-ck-W0b" secondAttribute="centerX" id="hgc-hL-0tq"/>
+                                    <constraint firstItem="S8E-fS-av0" firstAttribute="top" secondItem="u88-ck-W0b" secondAttribute="top" constant="8" id="lWC-2I-lF8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7er-2X-Qjh" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="433" width="335" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elY-Z6-gbt">
+                                        <rect key="frame" x="132.66666666666666" y="8" width="71" height="44"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="24"/>
+                                        <state key="normal" title="DONE">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="8mI-qf-wQ5" kind="show" id="XsM-um-X0h"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="elY-Z6-gbt" firstAttribute="centerX" secondItem="7er-2X-Qjh" secondAttribute="centerX" id="0oG-eQ-1OK"/>
+                                    <constraint firstAttribute="height" constant="60" id="8Cw-gt-UbB"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Hfr-WY-066"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="Q6S-0P-vlF"/>
+                                    <constraint firstAttribute="bottom" secondItem="elY-Z6-gbt" secondAttribute="bottom" constant="8" id="QrN-tK-zHH"/>
+                                    <constraint firstItem="elY-Z6-gbt" firstAttribute="top" secondItem="7er-2X-Qjh" secondAttribute="top" constant="8" id="TOX-Et-5ds"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="iT6-8f-QaU"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="nvS-mb-Lfl"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="Color.GoodGreen"/>
+                        <constraints>
+                            <constraint firstItem="NuD-0n-zqa" firstAttribute="trailing" secondItem="9c1-pj-qFf" secondAttribute="trailing" constant="20" id="26E-w8-AUK"/>
+                            <constraint firstItem="SaW-CQ-9G9" firstAttribute="top" secondItem="NuD-0n-zqa" secondAttribute="top" constant="20" id="2ns-bQ-jO4"/>
+                            <constraint firstItem="u88-ck-W0b" firstAttribute="top" secondItem="9c1-pj-qFf" secondAttribute="bottom" constant="1" id="4As-7q-3lM"/>
+                            <constraint firstItem="BcF-Q7-09n" firstAttribute="top" secondItem="F0c-QX-B2U" secondAttribute="bottom" constant="1" id="6w7-hT-ClJ"/>
+                            <constraint firstItem="rgf-An-FWj" firstAttribute="top" secondItem="BcF-Q7-09n" secondAttribute="bottom" constant="1" id="98R-4M-f5R"/>
+                            <constraint firstItem="SaW-CQ-9G9" firstAttribute="leading" secondItem="NuD-0n-zqa" secondAttribute="leading" constant="20" id="CIX-ZW-pxD"/>
+                            <constraint firstItem="u88-ck-W0b" firstAttribute="leading" secondItem="NuD-0n-zqa" secondAttribute="leading" constant="20" id="Fpl-ie-aEs"/>
+                            <constraint firstItem="9c1-pj-qFf" firstAttribute="top" secondItem="rgf-An-FWj" secondAttribute="bottom" constant="1" id="Ipm-0f-7hr"/>
+                            <constraint firstItem="9c1-pj-qFf" firstAttribute="leading" secondItem="NuD-0n-zqa" secondAttribute="leading" constant="20" id="L4f-pa-hWg"/>
+                            <constraint firstItem="NuD-0n-zqa" firstAttribute="trailing" secondItem="u88-ck-W0b" secondAttribute="trailing" constant="20" id="NQC-9Z-WxQ"/>
+                            <constraint firstItem="7er-2X-Qjh" firstAttribute="leading" secondItem="NuD-0n-zqa" secondAttribute="leading" constant="20" id="P65-Mv-vD6"/>
+                            <constraint firstItem="NuD-0n-zqa" firstAttribute="trailing" secondItem="BcF-Q7-09n" secondAttribute="trailing" constant="20" id="aEc-g1-toj"/>
+                            <constraint firstItem="F0c-QX-B2U" firstAttribute="top" secondItem="SaW-CQ-9G9" secondAttribute="bottom" constant="1" id="dgF-1p-y9g"/>
+                            <constraint firstItem="BcF-Q7-09n" firstAttribute="leading" secondItem="NuD-0n-zqa" secondAttribute="leading" constant="20" id="jAN-Yk-ODT"/>
+                            <constraint firstItem="F0c-QX-B2U" firstAttribute="leading" secondItem="NuD-0n-zqa" secondAttribute="leading" constant="20" id="n8x-9z-GHp"/>
+                            <constraint firstItem="NuD-0n-zqa" firstAttribute="trailing" secondItem="SaW-CQ-9G9" secondAttribute="trailing" constant="20" id="oJd-Cy-1gZ"/>
+                            <constraint firstItem="7er-2X-Qjh" firstAttribute="top" secondItem="u88-ck-W0b" secondAttribute="bottom" constant="1" id="qn6-Iy-ckB"/>
+                            <constraint firstItem="NuD-0n-zqa" firstAttribute="trailing" secondItem="F0c-QX-B2U" secondAttribute="trailing" constant="20" id="sFm-8E-Wgm"/>
+                            <constraint firstItem="NuD-0n-zqa" firstAttribute="trailing" secondItem="7er-2X-Qjh" secondAttribute="trailing" constant="20" id="sNm-Kf-7HO"/>
+                            <constraint firstItem="NuD-0n-zqa" firstAttribute="trailing" secondItem="rgf-An-FWj" secondAttribute="trailing" constant="20" id="seE-0L-UKd"/>
+                            <constraint firstItem="rgf-An-FWj" firstAttribute="leading" secondItem="NuD-0n-zqa" secondAttribute="leading" constant="20" id="ulm-eb-RUI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NuD-0n-zqa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9O3-eS-5MY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5048.8000000000002" y="-132.26600985221674"/>
         </scene>
         <!--Home-->
         <scene sceneID="iis-pU-CvG">
@@ -231,7 +883,89 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TTF-bh-3T3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4855" y="133"/>
+            <point key="canvasLocation" x="4814" y="403"/>
+        </scene>
+        <!--3/5 CONDITION-->
+        <scene sceneID="a3m-EB-GEI">
+            <objects>
+                <viewController title="3/5 CONDITION" id="8mI-qf-wQ5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UHq-lK-UB4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fn-mJ-nIg" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="335" height="74.333333333333329"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BearPolar needs to know what mood affecting condition you struggle with, if you are not sure select &quot;Other&quot;." textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07c-tC-gdQ">
+                                        <rect key="frame" x="12" y="12.000000000000004" width="311" height="50.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="07c-tC-gdQ" firstAttribute="leading" secondItem="2fn-mJ-nIg" secondAttribute="leading" constant="12" id="2jv-F5-QHm"/>
+                                    <constraint firstAttribute="bottom" secondItem="07c-tC-gdQ" secondAttribute="bottom" constant="12" id="PkT-gd-QSr"/>
+                                    <constraint firstAttribute="trailing" secondItem="07c-tC-gdQ" secondAttribute="trailing" constant="12" id="jAH-1O-jkF"/>
+                                    <constraint firstItem="07c-tC-gdQ" firstAttribute="top" secondItem="2fn-mJ-nIg" secondAttribute="top" constant="12" id="qul-V7-JuB"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARN-qu-6IQ" customClass="DecoratorView" customModule="BearPolar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="225" width="335" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fo7-4O-aV5">
+                                        <rect key="frame" x="132.66666666666666" y="8" width="71" height="44"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="24"/>
+                                        <state key="normal" title="DONE">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="mI8-U4-84W" kind="show" id="JzQ-Hf-1Hp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="9qj-hR-wgn"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="M8E-l4-xOd"/>
+                                    <constraint firstAttribute="bottom" secondItem="fo7-4O-aV5" secondAttribute="bottom" constant="8" id="Xnd-H4-OEN"/>
+                                    <constraint firstItem="fo7-4O-aV5" firstAttribute="top" secondItem="ARN-qu-6IQ" secondAttribute="top" constant="8" id="ggd-dC-Iue"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="idS-Kj-MAf"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="jHl-AL-5Mv"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="rO0-40-nmi"/>
+                                    <constraint firstItem="fo7-4O-aV5" firstAttribute="centerX" secondItem="ARN-qu-6IQ" secondAttribute="centerX" id="yQ3-dN-AKr"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="zDF-lA-Znj"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topOn" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomOn" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="Color.GoodGreen"/>
+                        <constraints>
+                            <constraint firstItem="2fn-mJ-nIg" firstAttribute="top" secondItem="0V2-Ei-3rR" secondAttribute="top" constant="20" id="HYq-SD-3EG"/>
+                            <constraint firstItem="ARN-qu-6IQ" firstAttribute="leading" secondItem="0V2-Ei-3rR" secondAttribute="leading" constant="20" id="Ld6-Jr-94d"/>
+                            <constraint firstItem="0V2-Ei-3rR" firstAttribute="trailing" secondItem="2fn-mJ-nIg" secondAttribute="trailing" constant="20" id="NVg-R9-DuJ"/>
+                            <constraint firstItem="ARN-qu-6IQ" firstAttribute="top" secondItem="2fn-mJ-nIg" secondAttribute="bottom" constant="130.66999999999999" id="SLf-1u-OVa"/>
+                            <constraint firstItem="2fn-mJ-nIg" firstAttribute="leading" secondItem="0V2-Ei-3rR" secondAttribute="leading" constant="20" id="jzN-BT-cSL"/>
+                            <constraint firstItem="0V2-Ei-3rR" firstAttribute="trailing" secondItem="ARN-qu-6IQ" secondAttribute="trailing" constant="20" id="n4x-p7-uil"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0V2-Ei-3rR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YAw-VI-REC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6060" y="-132"/>
         </scene>
         <!--Login-->
         <scene sceneID="CEu-Ik-5Iq">
@@ -260,12 +994,113 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lYp-Jn-JPH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6006" y="131"/>
+            <point key="canvasLocation" x="5953" y="491"/>
+        </scene>
+        <!--SHARING-->
+        <scene sceneID="4TM-cf-Ri3">
+            <objects>
+                <viewController title="SHARING" id="xO1-6h-GaZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DLN-xk-BzR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Qy-qi-HJl">
+                                <rect key="frame" x="0.0" y="44" width="375" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05/05" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCw-jR-xPZ">
+                                        <rect key="frame" x="16" y="0.0" width="94" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="3qY-Ra-cyw"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="77b-dR-uiw"/>
+                                    <constraint firstItem="uCw-jR-xPZ" firstAttribute="leading" secondItem="9Qy-qi-HJl" secondAttribute="leading" constant="16" id="UPB-G2-GCZ"/>
+                                    <constraint firstItem="uCw-jR-xPZ" firstAttribute="top" secondItem="9Qy-qi-HJl" secondAttribute="top" id="UVv-hk-OfX"/>
+                                    <constraint firstAttribute="height" constant="60" id="Xlx-gV-x72"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMH-FA-SIm">
+                                <rect key="frame" x="32" y="136" width="311" height="202"/>
+                                <string key="text">WE WILL NOT SHARE ANY OF YOUR DATA WITH ANYONE, UNLESS YOU EXPRESSLY REQUEST IT, HOWEVER YOU MAY WISH TO SHARE YOUR RECORDS WITH YOUR CAREGIVERS. YOU CAN ALWAYS DO THIS AT  LATER STAGE IF YOU WISH. IF NOT, JUST SKIP THIS STEP.</string>
+                                <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hF8-qq-R7C">
+                                <rect key="frame" x="32" y="370" width="311" height="33"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="Hr6-sE-XO8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
+                                <state key="normal" title="CONFIGURE SHARING">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTO-09-zBO">
+                                <rect key="frame" x="32" y="419" width="311" height="33"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="8CF-RT-wwF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
+                                <state key="normal" title="SKIP SHARING">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="Color.GoodGreen"/>
+                        <constraints>
+                            <constraint firstItem="hF8-qq-R7C" firstAttribute="leading" secondItem="bqs-AW-Co0" secondAttribute="leading" constant="32" id="3TG-gM-Csi"/>
+                            <constraint firstItem="9Qy-qi-HJl" firstAttribute="trailing" secondItem="bqs-AW-Co0" secondAttribute="trailing" id="4bM-zL-XkF"/>
+                            <constraint firstItem="hTO-09-zBO" firstAttribute="leading" secondItem="bqs-AW-Co0" secondAttribute="leading" constant="32" id="70I-jV-U63"/>
+                            <constraint firstItem="hTO-09-zBO" firstAttribute="top" secondItem="hF8-qq-R7C" secondAttribute="bottom" constant="16" id="7GJ-8r-vqx"/>
+                            <constraint firstItem="bqs-AW-Co0" firstAttribute="trailing" secondItem="hF8-qq-R7C" secondAttribute="trailing" constant="32" id="DG5-11-xq2"/>
+                            <constraint firstItem="wMH-FA-SIm" firstAttribute="top" secondItem="9Qy-qi-HJl" secondAttribute="bottom" constant="32" id="Py5-b8-J3u"/>
+                            <constraint firstItem="hF8-qq-R7C" firstAttribute="top" secondItem="wMH-FA-SIm" secondAttribute="bottom" constant="32" id="UyS-pU-udg"/>
+                            <constraint firstItem="wMH-FA-SIm" firstAttribute="leading" secondItem="bqs-AW-Co0" secondAttribute="leading" constant="32" id="VbE-s5-gAX"/>
+                            <constraint firstAttribute="trailing" secondItem="wMH-FA-SIm" secondAttribute="trailing" constant="32" id="dOc-Cl-aIJ"/>
+                            <constraint firstItem="bqs-AW-Co0" firstAttribute="trailing" secondItem="hTO-09-zBO" secondAttribute="trailing" constant="32" id="e7I-d9-daw"/>
+                            <constraint firstItem="9Qy-qi-HJl" firstAttribute="leading" secondItem="bqs-AW-Co0" secondAttribute="leading" id="izy-UK-Q5q"/>
+                            <constraint firstItem="9Qy-qi-HJl" firstAttribute="top" secondItem="bqs-AW-Co0" secondAttribute="top" id="yXV-rh-fsi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bqs-AW-Co0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I7m-m4-6dk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8103" y="-147"/>
+        </scene>
+        <!--4/5 MEDICATIONS-->
+        <scene sceneID="7uJ-bY-HUf">
+            <objects>
+                <viewController title="4/5 MEDICATIONS" id="mI8-U4-84W" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eN8-jj-rd8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="Color.GoodGreen"/>
+                        <viewLayoutGuide key="safeArea" id="G36-Cs-pgO"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Fz-JE-vOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7046" y="-132"/>
         </scene>
     </scenes>
     <resources>
-        <namedColor name="Green.Bright.Text">
-            <color red="0.67450980392156867" green="0.96862745098039216" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Color.GoodGreen">
+            <color red="0.32941176470588235" green="0.61568627450980395" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Color.PureGreen">
+            <color red="0.0" green="0.65098039215686276" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="zx8-xx-fev"/>
+        <segue reference="lpp-ko-BPj"/>
+    </inferredMetricsTieBreakers>
 </document>

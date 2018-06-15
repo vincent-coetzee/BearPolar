@@ -15,6 +15,12 @@ class InformationViewController: UIViewController
     @IBOutlet var bottomView:UIView!
     @IBOutlet var leftView:UIView!
     
+    @IBOutlet var genderMatrix:ChoiceMatrixView!
+    @IBOutlet var conditionMatrix:ChoiceMatrixView!
+    
+    @IBOutlet var genderField:UILabel!
+    @IBOutlet var conditionField:UILabel!
+    
     override var nibName:String
         {
         return("InformationViewController")
@@ -23,22 +29,24 @@ class InformationViewController: UIViewController
     override func viewDidLoad() 
         {
         super.viewDidLoad()
+        genderMatrix.onChange =
+            {
+            matrix,entry in
+            self.genderField.text = entry
+            }
+        conditionMatrix.onChange =
+            {
+            matrix,entry in
+            self.conditionField.text = entry
+            }
         }
 
-    override func didReceiveMemoryWarning() {
+    @IBAction func onAddMedicationTapped(_ sender:Any?)
+        {
+        }
+        
+    override func didReceiveMemoryWarning() 
+        {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}

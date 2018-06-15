@@ -10,9 +10,18 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="MuseoSans_500.otf">
+            <string>MuseoSans-500</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InformationViewController" customModule="BearPolar" customModuleProvider="target">
             <connections>
+                <outlet property="conditionField" destination="wBJ-b0-Ega" id="yUz-ZH-pVg"/>
+                <outlet property="conditionMatrix" destination="f8F-6E-dtb" id="b5W-zI-oLc"/>
+                <outlet property="genderField" destination="oJe-W1-1oy" id="T0x-Ga-ZBc"/>
+                <outlet property="genderMatrix" destination="IN6-n8-9IE" id="c1e-pX-OC3"/>
                 <outlet property="leftView" destination="Ode-Oo-QO8" id="lmT-QV-UNL"/>
                 <outlet property="rightView" destination="Ode-Oo-QO8" id="BUe-Fq-WQK"/>
                 <outlet property="topView" destination="wyN-dr-RlA" id="1Xt-aj-Z8F"/>
@@ -60,10 +69,10 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="160" translatesAutoresizingMaskIntoConstraints="NO" id="hRl-qn-fJ3" customClass="LabeledHolderView" customModule="BearPolar" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="162" width="562" height="166"/>
+                    <rect key="frame" x="0.0" y="162" width="562" height="206"/>
                     <subviews>
                         <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="IN6-n8-9IE" customClass="ChoiceMatrixView" customModule="BearPolar" customModuleProvider="target">
-                            <rect key="frame" x="274" y="8" width="280" height="150"/>
+                            <rect key="frame" x="274" y="48" width="280" height="150"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="280" id="jRG-IE-ENU"/>
@@ -72,12 +81,21 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="entryText" value="Cis Male,Cis Female,Trans Male,Trans Female,Other"/>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJe-W1-1oy">
+                            <rect key="frame" x="8" y="16" width="546" height="22"/>
+                            <fontDescription key="fontDescription" name="MuseoSans-500" family="Museo Sans" pointSize="18"/>
+                            <color key="textColor" name="Color.PureGreen"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="oJe-W1-1oy" firstAttribute="top" secondItem="hRl-qn-fJ3" secondAttribute="top" constant="16" id="Dyg-0j-JkS"/>
+                        <constraint firstItem="oJe-W1-1oy" firstAttribute="leading" secondItem="hRl-qn-fJ3" secondAttribute="leading" constant="8" id="O1s-Qn-zgs"/>
+                        <constraint firstAttribute="trailing" secondItem="oJe-W1-1oy" secondAttribute="trailing" constant="8" id="ccq-Ur-x5A"/>
                         <constraint firstAttribute="bottom" secondItem="IN6-n8-9IE" secondAttribute="bottom" constant="8" id="fsX-XD-QTo"/>
                         <constraint firstAttribute="trailing" secondItem="IN6-n8-9IE" secondAttribute="trailing" constant="8" id="vgP-P4-a6q"/>
-                        <constraint firstItem="IN6-n8-9IE" firstAttribute="top" secondItem="hRl-qn-fJ3" secondAttribute="top" constant="8" id="yyI-KW-Dv4"/>
+                        <constraint firstItem="IN6-n8-9IE" firstAttribute="top" secondItem="hRl-qn-fJ3" secondAttribute="top" constant="48" id="yyI-KW-Dv4"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="label" value="Gender"/>
@@ -87,10 +105,10 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="3jL-ol-8FG" customClass="LabeledHolderView" customModule="BearPolar" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="328" width="562" height="166"/>
+                    <rect key="frame" x="0.0" y="368" width="562" height="206"/>
                     <subviews>
                         <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="f8F-6E-dtb" customClass="ChoiceMatrixView" customModule="BearPolar" customModuleProvider="target">
-                            <rect key="frame" x="274" y="8" width="280" height="150"/>
+                            <rect key="frame" x="274" y="48" width="280" height="150"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="280" id="dmg-xk-MRk"/>
@@ -99,11 +117,20 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="entryText" value="Bipolar Disorder Type 1,Bipolar Disorder Type 2,Clinical Depression,Mood Related Disorder,I don't know"/>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBJ-b0-Ega">
+                            <rect key="frame" x="8" y="16" width="546" height="22"/>
+                            <fontDescription key="fontDescription" name="MuseoSans-500" family="Museo Sans" pointSize="18"/>
+                            <color key="textColor" name="Color.PureGreen"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="wBJ-b0-Ega" firstAttribute="leading" secondItem="3jL-ol-8FG" secondAttribute="leading" constant="8" id="Med-Hy-2iw"/>
                         <constraint firstAttribute="bottom" secondItem="f8F-6E-dtb" secondAttribute="bottom" constant="8" id="aa9-Y7-eHE"/>
-                        <constraint firstItem="f8F-6E-dtb" firstAttribute="top" secondItem="3jL-ol-8FG" secondAttribute="top" constant="8" id="hWm-x6-13M"/>
+                        <constraint firstAttribute="trailing" secondItem="wBJ-b0-Ega" secondAttribute="trailing" constant="8" id="cA5-SS-iHG"/>
+                        <constraint firstItem="wBJ-b0-Ega" firstAttribute="top" secondItem="3jL-ol-8FG" secondAttribute="top" constant="16" id="dBa-AO-X7A"/>
+                        <constraint firstItem="f8F-6E-dtb" firstAttribute="top" secondItem="3jL-ol-8FG" secondAttribute="top" constant="48" id="hWm-x6-13M"/>
                         <constraint firstAttribute="trailing" secondItem="f8F-6E-dtb" secondAttribute="trailing" constant="8" id="o3b-a7-05h"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -111,7 +138,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" verticalCompressionResistancePriority="752" placeholderIntrinsicWidth="562" placeholderIntrinsicHeight="90" translatesAutoresizingMaskIntoConstraints="NO" id="sSD-Gl-BQb" customClass="HeaderView" customModule="BearPolar" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="495" width="562" height="90"/>
+                    <rect key="frame" x="0.0" y="575" width="562" height="90"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <userDefinedRuntimeAttributes>
@@ -120,7 +147,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ace-9c-MUB" customClass="LabeledHolderView" customModule="BearPolar" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="586" width="562" height="48"/>
+                    <rect key="frame" x="0.0" y="666" width="562" height="48"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JO4-GK-OHw" customClass="MaskingImageButton" customModule="BearPolar" customModuleProvider="target">
                             <rect key="frame" x="524" y="9" width="30" height="30"/>

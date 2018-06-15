@@ -39,7 +39,7 @@ public class MaskingImageButton:UIButton
         initComponents()
         }
     
-    required init?(coder aDecoder: NSCoder) 
+    required public init?(coder aDecoder: NSCoder) 
         {
         super.init(coder: aDecoder)
         initComponents()

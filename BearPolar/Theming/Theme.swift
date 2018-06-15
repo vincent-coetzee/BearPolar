@@ -188,9 +188,9 @@ public class Theme
         items["labeledButton.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1)
         items["choiceMatrix.content"] = ThemeItem.content(backgroundColor: colorPalette.primaryColor)
         items["choiceMatrix.border"] = ThemeItem.border(borderColor: colorPalette.primaryColor,width: 1,radius:6)
-        items["choiceMatrix.entry.normal.text"] = ThemeItem.text(textColor: .darkGray,font:themeFont(weight:.weight500,size:16))
+        items["choiceMatrix.entry.normal.text"] = ThemeItem.text(textColor: .white,font:themeFont(weight:.weight500,size:16))
         items["choiceMatrix.entry.normal.content"] = ThemeItem.content(backgroundColor: colorPalette.primaryColor)
-        items["choiceMatrix.entry.selection.text"] = ThemeItem.text(textColor: .white,font:themeFont(weight:.weight900,size:20))
+        items["choiceMatrix.entry.selection.text"] = ThemeItem.text(textColor: .black,font:themeFont(weight:.weight500,size:18))
         items["choiceMatrix.entry.selection.content"] = ThemeItem.content(backgroundColor: .lime)
         }
         
@@ -221,8 +221,12 @@ public class Theme
         
     public func image(named: String) -> UIImage
         {
-        let image = UIImage(named: named,in: Theme.defaultBundle,compatibleWith: nil)!
-        return(image)
+        let image = UIImage(named: named,in: Theme.defaultBundle,compatibleWith: nil)
+        if image == nil
+            {
+            print("Image named \(named) was not found in the theme bundle")
+            }
+        return(image!)
         }
         
     subscript(_ inputKey:Theme.EntryKey) -> ThemeItem?
